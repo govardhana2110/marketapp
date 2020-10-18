@@ -1,0 +1,119 @@
+
+<div class="container">
+  <div *ngIf="flag1"><br>
+  <form (ngSubmit)="login(f)" #f="ngForm">
+    <div class="form-group">
+      <label>Enter email</label>
+      <input name="emp_email" ngModel required email #emp_email="ngModel" type="text" placeholder="Enter Email"
+        class="form-control" >
+      <label *ngIf="emp_email.hasError('required') && !emp_email.pristine " class="alert alert-danger">emp email is
+        required.</label>
+      <label *ngIf="emp_email.hasError('email') && !emp_email.pristine " class="alert alert-danger">invalid email
+        address</label>
+    </div>
+    <div class="form-group">
+      <label>Enter password</label>
+      <input type="text" ngModel placeholder="enter password" class="form-control">
+    </div>
+    <button type="submit" class="form controle btn btn-primary">Login</button>
+  </form>
+</div>
+<br>
+<div class="container">
+  <button (click)="onregisterclick()" class="form control btn btn-success">Register Here</button><br>
+  <div *ngIf="flag"><br>
+    <div class="container">
+      <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <div class="from-group">
+          <label>User Name:<span class="lblError">*</span></label>
+          <div class="controls">
+            <input formControlName="user_name" placeholder="User Name" type="text" class="form-control">
+            <p class="lblError"
+              *ngIf="signupForm.get('user_name').hasError('required') && !signupForm.get('user_name').pristine "> Name is
+              Required. </p>
+            <p class="lblError"
+              *ngIf="signupForm.get('user_name').hasError('minlength') && !signupForm.get('user_name').pristine ">
+              Min 5 length
+            </p>
+            <p class="lblError"
+              *ngIf="signupForm.get('user_name').hasError('invalidName') && !signupForm.get('user_name').pristine ">
+              Invalid Names
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <input type="radio" value="email" class="form-check-input" formControlName="user_notification">Email
+            <input type="radio" value="phone" class="form-check-input" formControlName="user_notification">Phone
+          </div>
+        </div>
+        <div class="from-group">
+          <label>User Email:<span class="lblError">*</span></label>
+          <div class="controls">
+            <input formControlName="user_email" placeholder="Enter Email" type="email" class="form-control">
+            <p *ngIf="signupForm.get('user_email').hasError('required') && !signupForm.get('user_email').pristine "
+              class="lblError">Email is required</p>
+            <p *ngIf="signupForm.get('user_email').hasError('email') && !signupForm.get('user_email').pristine "
+              class="lblError">Invalid Email</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>User Phone: </label>
+          <div class="controls">
+            <input type="text" formControlName="user_phone" placeholder="Enter mobile no" class="form-control">
+            <p *ngIf="signupForm.get('user_phone').hasError('required') && !signupForm.get('user_phone').pristine "
+              class="lblError">Phone is required</p>
+          </div>
+        </div>
+        <div formGroupName="password_group" class="form-row">
+          <div class="from-group">
+            <label>Password:<span class="lblError">*</span></label>
+            <div class="controls">
+              <input formControlName="password" placeholder="Enter Password" type="password" class="form-control">
+              <p class="lblError"
+                *ngIf="signupForm.get('password_group').get('password').hasError('required') && !signupForm.get('password_group').get('password').pristine ">
+                password is
+                required</p>
+            </div>
+          </div>
+          <div class="from-group">
+            <label>Confirm Password:<span class="lblError">*</span></label>
+            <div class="controls">
+              <input formControlName="confirm_password" placeholder="Enter Confirm Password" type="password"
+                class="form-control">
+              <p class="lblError"
+                *ngIf="signupForm.get('password_group').get('confirm_password').hasError('required') && !signupForm.get('password_group').get('confirm_password').pristine ">
+                confirm password is
+                required</p>
+            </div>
+          </div>
+          <p class="lblError"
+            *ngIf="signupForm.get('password_group').hasError('passwordMatchError') && !signupForm.get('password_group').pristine ">
+            password doesn't match
+          </p>
+        </div>
+        <div class="form-group">
+          <label>Hobbies</label>
+          <div class="controls">
+            <button type="button" class="btn btn-secondary" (click)="onAddHobbiesClick()">Add</button>
+
+            <div formArrayName="user_hobbies" *ngFor="let item of getControl();let i=index"><br>
+              <input type="text" [formControlName]="i" class="form-control"><br>
+              <button type="button" class="btn btn-danger btn-sm pull" (click)="onRemoveHobbiesClick(i)"> Remove </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" [disabled]="signupForm.invalid" type="submit" style="width: 15%">
+            Sign Up
+          </button>
+          <!--  -->
+        </div>
+      </form>
+
+
+    <p> already user </p> <a href="">login </a>
+
+  </div>
+</div>

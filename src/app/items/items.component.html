@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="col-mdm-3">
+  <!--app-cart [Cart]="Productarr1"></app-cart-->
+  <!-- <app-cart [cartarr]="Productarr1"></app-cart> -->
+
+  <input #input1 placeholder="enter text to search" class="form-control">
+<br>
+  <button (click)="onSearchClick(input1.value)" class="btn btn-primary">Search</button>
+  </div>
+</div><br>
+<div class="containetr">
+  <div *ngIf="flag1"><br>
+  <!--div class="col-md-3"> slide</div-->
+  <div class= "col-md-9">
+    <div class="row">
+      <div *ngFor="let item of productsarr" class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <p>{{item.pname}}</p>
+            <p>{{item.pcost | currency:'INR'}}</p>
+            <p><button class="btn btn-warning" (click)="onaddClick(item) ">Add To Cart</button><br><br>
+              <a href="#" class="btn btn-success" role="button">buy</a></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="container">
+
+  <!--div class="col-md-3"> slide</div-->
+  <div class= "col-md-9">
+    <div class="row">
+      <button (click)="oncartclick()" class="form control btn btn-success">Items In Cart</button><br>
+      <div *ngIf="flag"><br>
+      <div *ngFor="let item of Productarr1" class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <p>{{item.pname}}</p>
+            <p>{{item.pcost | currency:'INR'}}</p>
+            <p> <a href="#" class="btn btn-success" role="button">buy</a></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+

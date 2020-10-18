@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "marketapp"
+    }
+  },
+  "defaultProject": "marketapp",
+  "cli": {
+    "analytics": false
+  }
 }

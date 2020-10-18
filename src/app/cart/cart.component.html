@@ -1,0 +1,16 @@
+<div class="containetr">
+  <!--div class="col-md-3"> slide</div-->
+  <div class= "col-md-9">
+    <div class="row">
+     <div *ngFor="let item of " class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <p>{{item.pname}}</p>
+            <p>{{item.pcost | currency:'INR'}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
