@@ -26,6 +26,9 @@ export class Task7Component implements OnInit {
    sdistrict:String;
    spin_code:String;
    spresent_address:FormGroup;
+   fromdate;
+   todate;
+   organisation;
    //qualiarr:Qualification [] = [];
    skillarr:Skill [] = [];
    qualification;
@@ -98,7 +101,7 @@ export class Task7Component implements OnInit {
 
     this.qualificationform.controls[ 'qualification_details'].valueChanges.subscribe(value=>{});
     this.qualificationform.controls[ 'skill_details'].valueChanges.subscribe(value=>{});
-    this.qualificationform.controls[ 'experience_details'].valueChanges.subscribe(value=>{});
+    // this.qualificationform.controls[ 'experience_details'].valueChanges.subscribe(value=>{});
 
     this.detailsform.get('permanent_address').valueChanges.subscribe((x)=> this.updateaddress(x));
     this.registrationform.get('user_dob').valueChanges.subscribe((x)=> this.updateage(x));
@@ -186,8 +189,9 @@ export class Task7Component implements OnInit {
   }
   experiencegroup(){
     return this.fb.group({
-        fromdate: new FormControl(null,[Validators.required]),
-        todate:new FormControl (null,[Validators.required]),
+      dategroup:new FormGroup({ fromdate: new FormControl(null,[Validators.required]),
+        todate:new FormControl (null,[Validators.required])}, [this.fromToDate('fromdate', 'todate').bind(this)] ),
+
         organisation: new FormControl (null,[Validators.required]),
         experience: new FormControl (null,[Validators.required]),
 
@@ -209,6 +213,61 @@ export class Task7Component implements OnInit {
 
   }
   }
+  fromToDate(fromdate: string, todate: string)
+  {
+    return (group: FormGroup): {[key: string]: any} => {
+      let f = group.controls[fromdate];
+      let t = group.controls[todate];
+      if (f.value > t.value) {
+        return {
+          dates: "Date from should be less than Date to"
+        };
+      }
+      return {};
+    }
+  }
+  timeCalculation(val: Date){
+    let myArray = this.getang(this.qualificationform);
+
+    var fyear= new Date(val).getFullYear();
+
+    var today=new Date();
+    var tyear=new Date(today).getFullYear();
+    var a=tyear-fyear;
+    console.log(a);
+
+  }
+  Duplicate(fromdate, todate): boolean {
+    let myArray = this.expgetang(this.qualificationform);
+    let test = myArray.filter(data => data.controls.dategroup.get('todate').value >= fromdate && fromdate != null)
+    if (test.length > 1) {
+      return true;
+    } else {
+      return false
+    }
+  }
+  expgetang(form): Array<any> {
+    return form.controls.experience_details.controls;
+  }
+
+  Duplicate1(fromdate): boolean {
+    let myArray = this.expgetang(this.qualificationform);
+    let test = myArray.filter(data => data.controls.dategroup.get('fromdate').value == fromdate && fromdate != null)
+    if (test.length > 1) {
+      return true;
+    } else {
+      return false
+    }
+  }
+  fromToDateValidation(fromdate, todate): boolean {
+    let myArray = this.expgetang(this.qualificationform);
+    let test = myArray.filter(data => data.controls.fromto.get('fromdate').value > todate && todate != null)
+       // the fromDate and toDate are numbers. In not convert them first after null check
+        if (test !== null ) {
+            return true;
+        }
+        return false;
+    };
   getang(form):Array<any>{
     return form.controls.qualification_details.controls;
   }

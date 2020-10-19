@@ -349,17 +349,22 @@
 
 
   <div class="row">
+    <div formGroupName="dategroup">
     <div class="col-sm-2 form-group div">
-    <label>From Date<span class="lblError">*</span></label>
-    <input type="date" class="form-control" formControlName="fromdate" >
-    <p class="lblError"*ngIf="item.get('fromdate').hasError('required') && !item.get('fromdate').pristine">from dtae is required</p>
+      <label>From Date<span class="lblError">*</span></label>
+      <input type="date" class="form-control" formControlName="fromdate" placeholder="Enter From Date">
+      <p class="lblError"*ngIf="item.get('dategroup').get('fromdate').hasError('required') && !item.get('dategroup').get('fromdate').pristine ">From Date is required!...</p>
+      <p class="lblError" *ngIf="Duplicate(item.get('dategroup').get('fromdate').value, y) && y > 0">Overlapping not Allowed!...</p>
+      <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">Duplicate not Allowed!...</p>
   </div>
 
   <div class="col-sm-2 form-group div">
-    <label>To Date<span class="lblError">*</span></label><br>
-    <input type="date" class="form-control" formControlName="todate"  >
-    <p class="lblError"*ngIf="item.get('todate').hasError('required') && !item.get('todate').pristine ">to date is required</p>
+    <label>To Date<span class="lblError">*</span></label>
+    <input type="date" class="form-control" formControlName="todate"  placeholder="To Date name">
+        <p class="lblError"*ngIf="item.get('dategroup').get('todate').hasError('required') && !item.get('dategroup').get('todate').pristine ">To Date is required!...</p>
+        <p class="lblError"*ngIf="item.get('dategroup').hasError('dates') && !item.get('dategroup').pristine ">From Date should be less than To Date!...</p>
   </div>
+</div>
 
   <div class="col-sm-2 form-group div">
     <label>Organisation<span class="lblError">*</span></label>
