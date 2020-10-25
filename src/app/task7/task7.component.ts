@@ -62,13 +62,17 @@ export class Task7Component implements OnInit {
     });
     this.detailsform = new FormGroup({
 
+      paddress_group:new FormGroup({
         dno_street:new FormControl(null,[Validators.required]),
         village:new FormControl(null,[Validators.required]),
         post_office:new FormControl(null,[Validators.required]),
         mandal:new FormControl(null,[Validators.required]),
         district:new FormControl(null,[Validators.required]),
         pin_code:new FormControl(null,[Validators.required]),
-        permanent_address:new FormControl(),
+        Permanent_address:new FormControl(),
+
+      }),
+
 
 
         presentdno_street:new FormControl(null,[Validators.required]),
@@ -103,11 +107,16 @@ export class Task7Component implements OnInit {
     this.qualificationform.controls[ 'skill_details'].valueChanges.subscribe(value=>{});
     // this.qualificationform.controls[ 'experience_details'].valueChanges.subscribe(value=>{});
 
-    this.detailsform.get('permanent_address').valueChanges.subscribe((x)=> this.updateaddress(x));
+    this.detailsform.get('paddress_group').get('Permanent_address').valueChanges.subscribe((x) => this.setAddress(x, this.detailsform.get('paddress_group').value));
+    this.detailsform.get('paddress_group').get('Permanent_address').valueChanges.subscribe((t) => this.editAddress(t));
     this.registrationform.get('user_dob').valueChanges.subscribe((x)=> this.updateage(x));
 
   }
-
+  editAddress(v:boolean){
+    if(v==true){
+        this.detailsform.get('paddress_group').valueChanges.subscribe((y) => this.setAddress(this.detailsform.get('paddress_group').get('Permanent_address').value, y));//this.editAddress(x, this.empInfo.get('Padd').value));
+    }
+  }
   get qualiArray()
   {
     return<FormArray>this.qualificationform.get('qualification_details');
@@ -181,7 +190,7 @@ export class Task7Component implements OnInit {
       skillcatagory: new FormControl(null,[Validators.required]),
         skill:new FormControl (null,[Validators.required]),
         skilllevel: new FormControl (null,[Validators.required]),
-        iscurrent: new FormControl (null,[Validators.required]),
+        iscurrent: new FormControl ('yes',[Validators.required]),
         experience: new FormControl (null,[Validators.required]),
 
 
@@ -290,31 +299,31 @@ export class Task7Component implements OnInit {
  console.log(ans);
  this.age=ans;
   }
-  updateaddress(val:boolean){
-    if(val){
-  this.sdno_street=this.detailsform.get('dno_street').value;
-  this.spost_office=this.detailsform.get('post_office').value;
-  this.svillage=this.detailsform.get('village').value;
-  this.smandal=this.detailsform.get('mandal').value;
-  this.sdistrict=this.detailsform.get('district').value;
-  this.spin_code=this.detailsform.get('pin_code').value;
-}
-else{
-  this.sdno_street=null;
-  this.spost_office=null;
-  this.svillage=null;
-  this.smandal=null;
-  this.sdistrict=null;
-  this.spin_code=null
-}
-
-}
-
+  setAddress(val:boolean, paddressGrp:FormGroup){
+    if(val==true){
+      this.sdno_street=paddressGrp['dno_street'];
+      this.svillage=paddressGrp['village'];
+      this.spost_office=paddressGrp['post_office'];
+      this.smandal=paddressGrp['mandal'];
+      this.sdistrict=paddressGrp['district'];
+      this.spin_code=paddressGrp['pin_code'];
+    }
+    else{
+      this.sdno_street=null;
+      this.svillage=null;
+      this.spost_office=null;
+      this.smandal=null;
+      this.sdistrict=null;
+      this.spin_code=null;
+    }
+  }
 
 onNextClick(){
   this.flag1=false;
   this.flag2=true;
   this.flag3=false;
+  console.log(this.registrationform.value);
+
 }
 getAddress(){
  return(<FormArray>this.detailsform.get('address_arr')).controls;
@@ -327,6 +336,7 @@ onProceedClick(){
   this.flag1=false;
   this.flag2=false;
   this.flag3=true;
+  console.log(this.detailsform.value);
 }
 onBackClick(){
   this.flag1=true;
@@ -341,6 +351,7 @@ onPreviousClick(){
 
 onSubmitClick(){
   alert("Details submitted successfully")
+  console.log(this.qualificationform.value)
 
   }
 onEditQualificationClick(){

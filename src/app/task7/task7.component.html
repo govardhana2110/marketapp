@@ -1,4 +1,5 @@
 <div style="background-color: blanchedalmond;">
+  <div class="border">
 <div class="container">
 <form [formGroup]='registrationform'(ngSubmit)="onNextClick()">
   <h1 style="text-align: center;">Registration Form</h1>
@@ -79,11 +80,12 @@
 </div>
 <div class="col-md-4"></div>
 <div class="col-md-4">
-  <button type="submit"  class="btn btn-primary">Next</button>
+  <button type="submit" [disabled]="registrationform.invalid" class="btn btn-primary">Next</button>
 </div>
 </div>
 </div>
 </form>
+</div>
 </div>
 <div class="container">
 <div *ngIf="flag2">
@@ -92,37 +94,37 @@
   <div class="row">
   <div class="col-sm-6 form-group div">
 <h3> Permanent Address Details <span>(</span><span class="lblError" >*</span><span>)</span></h3>
-<div>
+  <div formGroupName="paddress_group">
   <label>D.No/Street :</label><br>
 <input type="text" formControlName='dno_street' class="form-control"  placeholder="Enter D.no/street" ><br>
-<p class="lblError" *ngIf="detailsform.get('dno_street').hasError('required') && !detailsform.get('dno_street').pristine ">
-  D.no/Street Is required </p>
+<p *ngIf="detailsform.get('paddress_group').get('dno_street').hasError('required') && !detailsform.get('paddress_group').get('dno_street').pristine" class="lblError">dno_street is required</p>
   <label>Village :</label><br>
 <input type="text"  formControlName='village' placeholder="Enter village" class="form-control"  ><br>
-<p class="lblError" *ngIf="detailsform.get('village').hasError('required') && !detailsform.get('village').pristine ">
+<p class="lblError" *ngIf="detailsform.get('paddress_group').get('village').hasError('required') && !detailsform.get('paddress_group').get('village').pristine ">
   Village Is Required</p>
   <label>Post Office :</label><br>
 <input type="text" formControlName='post_office' placeholder="Enter post office" class="form-control"  ><br>
-<p class="lblError" *ngIf="detailsform.get('dno_street').hasError('required') && !detailsform.get('post_office').pristine ">
+<p class="lblError" *ngIf="detailsform .get('paddress_group').get('dno_street').hasError('required') && !detailsform.get('paddress_group').get('post_office').pristine ">
   Post Office Is Required</p>
   <label>Mandal :</label><br>
 <input type="text" formControlName='mandal' placeholder="Enter mandal" class="form-control"  ><br>
-<p class="lblError" *ngIf="detailsform.get('mandal').hasError('required') && !detailsform.get('mandal').pristine ">
+<p class="lblError" *ngIf="detailsform.get('paddress_group').get('mandal').hasError('required') && !detailsform.get('paddress_group').get('mandal').pristine ">
   Mandal Is Required</p>
   <label>District :</label><br>
 <input type="text" formControlName='district' placeholder="Enter district" class="form-control"  ><br>
-<p class="lblError" *ngIf="detailsform.get('district').hasError('required') && !detailsform.get('district').pristine ">
+<p class="lblError" *ngIf="detailsform.get('paddress_group').get('district').hasError('required') && !detailsform.get('paddress_group').get('district').pristine ">
   District Is Required</p>
   <label>Pin Code :</label><br>
   <input type="number" formControlName='pin_code' placeholder="Enter Pin code" class="form-control"  ><br>
-<p class="lblError" *ngIf="detailsform.get('pin_code').hasError('required') && !detailsform.get('pin_code').pristine ">
+<p class="lblError" *ngIf="detailsform.get('paddress_group').get('pin_code').hasError('required') && !detailsform.get('paddress_group').get('pin_code').pristine ">
   Pin Code Is Required</p>
-</div>
+
 <div class="form-check">
-  <input formControlName="permanent_address" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <input formControlName="Permanent_address" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
   <label class="form-check-label" for="defaultCheck1" >
    Copy Same to Permanent Address
   </label>
+</div>
 </div>
 <h3> Present Address Details</h3>
 <div>
@@ -295,7 +297,7 @@
 </div>
 <div class="container">
 <div *ngIf="flag3">
-<form [formGroup]='qualificationform'  >
+<form [formGroup]='qualificationform' (ngSubmit)="onSubmitClick()" >
   <h3 style="text-align: center;">Qualification</h3>
   &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success"  (click)="addqualification()" >Add Qualification</button><div><br></div>
   <div formArrayName="qualification_details" ><div><br></div>
@@ -308,7 +310,7 @@
     <label>Qualification<span class="lblError">*</span></label>
     <input type="text" class="form-control" formControlName="qualification" placeholder="Enter Qualification">
     <p class="lblError"*ngIf="item.get('qualification').hasError('required') && !item.get('qualification').pristine">Qualification is required</p>
-    <p class="lblError" *ngIf="duplicate(item.get('qualification').value) && i > 0">Duplicates not Allowed</p>
+    <p class="lblError" *ngIf="item.get('qualification').value!='' && duplicate(item.get('qualification').value,i) && i > 0">Duplicates not Allowed</p>
   </div>
 
   <div class="col-sm-2 form-group div">
@@ -354,15 +356,15 @@
       <label>From Date<span class="lblError">*</span></label>
       <input type="date" class="form-control" formControlName="fromdate" placeholder="Enter From Date">
       <p class="lblError"*ngIf="item.get('dategroup').get('fromdate').hasError('required') && !item.get('dategroup').get('fromdate').pristine ">From Date is required!...</p>
-      <p class="lblError" *ngIf="Duplicate(item.get('dategroup').get('fromdate').value, y) && y > 0">Overlapping not Allowed!...</p>
-      <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">Duplicate not Allowed!...</p>
+      <p class="lblError" *ngIf="Duplicate(item.get('dategroup').get('fromdate').value, y) && y > 0">Date should not overlap</p>
+      <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">No Date duplicatesnallowed</p>
   </div>
 
   <div class="col-sm-2 form-group div">
     <label>To Date<span class="lblError">*</span></label>
     <input type="date" class="form-control" formControlName="todate"  placeholder="To Date name">
         <p class="lblError"*ngIf="item.get('dategroup').get('todate').hasError('required') && !item.get('dategroup').get('todate').pristine ">To Date is required!...</p>
-        <p class="lblError"*ngIf="item.get('dategroup').hasError('dates') && !item.get('dategroup').pristine ">From Date should be less than To Date!...</p>
+        <p class="lblError"*ngIf="item.get('dategroup').hasError('dates') && !item.get('dategroup').pristine ">From Date should be less than To Date</p>
   </div>
 </div>
 
@@ -402,7 +404,7 @@
     <label>Skill<span class="lblError">*</span></label>
     <input type="text" class="form-control" formControlName="skill" placeholder="Enter catagory">
     <p class="lblError"*ngIf="item.get('skill').hasError('required') && !item.get('skill').pristine">skill is required</p>
-    <p class="lblError" *ngIf="skillduplicate(item.get('skill').value, a) && a > 0">Duplicates not Allowed</p>
+    <p class="lblError" *ngIf=" item.get('skill').value!='' &&skillduplicate(item.get('skill').value, a) && a > 0">Duplicates not Allowed</p>
   </div>
 
   <div class="col-sm-2 form-group div">
@@ -418,8 +420,9 @@
   </div>
 
   <div class="col-sm-2 form-group div">
-    <label>iscurrent<span class="lblError">*</span></label>
-    <input type="text" class="form-control" formControlName="iscurrent" placeholder="is current">
+    <label>iscurrent<span class="lblError">*</span></label><br>
+    <input type="radio" formControlName="iscurrent"  value="yes"> Yes
+    <input type="radio" formControlName="iscurrent"  value="no"> No<br>
     <p class="lblError"*ngIf="item.get('iscurrent').hasError('required') && !item.get('iscurrent').pristine ">is current required</p>
   </div>
   <div class="col-sm-2 form-group div">
@@ -443,7 +446,7 @@
   <div class="col-md-5"></div>
 <div class="col-md-4">
   <button (click)="onPreviousClick()" class="btn btn-primary"><< back</button>&nbsp;
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" [disabled]="qualificationform.invalid" class="btn btn-primary">Submit</button>
 </div>
 </form>
 </div>

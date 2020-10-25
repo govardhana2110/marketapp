@@ -1,6 +1,9 @@
 .lblError {
   color:orangered;
 }
+.border{
+border: 1px solid;
+}
 /*
 .center {
   margin: 0;
