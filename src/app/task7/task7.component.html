@@ -80,7 +80,7 @@
 </div>
 <div class="col-md-4"></div>
 <div class="col-md-4">
-  <button type="submit" [disabled]="registrationform.invalid" class="btn btn-primary">Next</button>
+  <button type="submit"[disabled]="registrationform.invalid" class="btn btn-primary">Next</button>
 </div>
 </div>
 </div>
@@ -357,7 +357,7 @@
       <input type="date" class="form-control" formControlName="fromdate" placeholder="Enter From Date">
       <p class="lblError"*ngIf="item.get('dategroup').get('fromdate').hasError('required') && !item.get('dategroup').get('fromdate').pristine ">From Date is required!...</p>
       <p class="lblError" *ngIf="Duplicate(item.get('dategroup').get('fromdate').value, y) && y > 0">Date should not overlap</p>
-      <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">No Date duplicatesnallowed</p>
+      <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">No Date duplicates allowed</p>
   </div>
 
   <div class="col-sm-2 form-group div">
