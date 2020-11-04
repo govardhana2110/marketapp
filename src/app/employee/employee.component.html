@@ -1,0 +1,224 @@
+<div class="container">
+  <h2>Registration Details</h2>
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Title</th>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last Name</th>
+      <th>Gender</th>
+      <th>DOB</th>
+      <th>Age</th>
+      <th>Official Phone</th>
+      <th>Personal Phone</th>
+      <th>Extn Ofc Phn</th>
+      <th>Fax</th>
+      <th>Office Mail</th>
+      <th>Personal Mail</th>
+      <th>Photo</th>
+      <th>Birth Place</th>
+      <th>Relegion</th>
+      <th>Cast</th>
+      <th>Nationality</th>
+      <th>Voter ID</th>
+      <th>PAN</th>
+      <th>Aadhar</th>
+      <th>Marital Status</th>
+      <th>Bank Name</th>
+      <th>Account Type</th>
+      <th>Payment Type</th>
+      <th>Account No</th>
+      <th>IFSC</th>
+
+
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of reg_arr">
+        <td>{{item.employee_number}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.first_name}}</td>
+        <td>{{item.middle_name}}</td>
+        <td>{{item.last_name}}</td>
+        <td>{{item.user_gender}}</td>
+        <td>{{item.user_dob}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.official_phone}}</td>
+         <td>{{item.personal_phone}}</td>
+         <td>{{item.extn_ofc_phn}}</td>
+         <td>{{item.fax}}</td>
+          <td>{{item.ofc_mail}}</td>
+         <td>{{item.personal_mail}}</td>
+         <td>{{item.photo}}</td>
+         <td>{{item.birth_place}}</td>
+         <td>{{item.relegion}}</td>
+         <td>{{item.cast}}</td>
+         <td>{{item.nationality}}</td>
+         <td>{{item.voter_id}}</td>
+         <td>{{item.PAN}}</td>
+         <td>{{item.aadhar}}</td>
+         <td>{{item.marital_status}}</td>
+         <td>{{item.bank_name}}</td>
+         <td>{{item.account_type}}</td>
+         <td>{{item.payment_type}}</td>
+         <td>{{item.acc_no}}</td>
+         <td>{{item.IFSC}}</td>
+
+        <td>
+          <!-- <button (click)="ondeleteclick(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
+          <button (click)="editclick(item)" class="btn btn-warning">Edit</button> -->
+        </td>
+      </tr>
+    </tbody>
+
+  </table><br><br>
+  <h2>Address Details</h2>
+  <h3>Permanent Address</h3>
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>Dno/Street</th>
+      <th>Village</th>
+      <th>Post Office</th>
+      <th>Mandal</th>
+      <th>District</th>
+      <th>Pin Code</th>
+      <th>Country</th>
+      <th>State</th>
+      <th>City</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of permanent_arr">
+        <td>{{item.id}}</td>
+        <td>{{item.village}}</td>
+        <td>{{item.post_office}}</td>
+        <td>{{item.mandal}}</td>
+        <td>{{item.district}}</td>
+        <td>{{item.pin_code}}</td>
+        <td>{{item.country}}</td>
+        <td>{{item.state}}</td>
+        <td>{{item.city}}</td>
+        <td>
+          <!-- <button (click)="ondeleteemployee(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
+          <button (click)="editemp(item)" class="btn btn-warning">Edit</button> -->
+        </td>
+      </tr>
+    </tbody>
+
+  </table><br><br>
+  <h3>Present Address</h3>
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>Dno/Street</th>
+      <th>Village</th>
+      <th>Post Office</th>
+      <th>Mandal</th>
+      <th>District</th>
+      <th>Pin Code</th>
+      <th>Country</th>
+      <th>State</th>
+      <th>City</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of present_arr">
+        <td>{{item.id}}</td>
+        <td>{{item.present_village}}</td>
+        <td>{{item.presentpost_office}}</td>
+        <td>{{item.present_mandal}}</td>
+        <td>{{item.present_district}}</td>
+        <td>{{item.presentpin_code}}</td>
+        <td>{{item.country}}</td>
+        <td>{{item.state}}</td>
+        <td>{{item.city}}</td>
+        <td>
+          <!-- <button (click)="ondeleteemployee(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
+          <button (click)="editemp(item)" class="btn btn-warning">Edit</button> -->
+        </td>
+      </tr>
+    </tbody>
+
+  </table><br><br>
+  <h2>Qualification Display</h2>
+  <table class="table">
+    <thead>
+      <th> Id</th>
+      <th>Qualification</th>
+      <th>Institute</th>
+      <th>Year</th>
+      <th>Score</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of quali_arr">
+        <td>{{item.id}}</td>
+        <td>{{item.qualification}}</td>
+        <td>{{item.institute}}</td>
+        <td>{{item.year}}</td>
+        <td>{{item.score}}</td>
+        <td>
+          <!-- <button (click)="ondeleteproduct(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
+          <button (click)="editpro(item)" class="btn btn-warning">Edit</button> -->
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+  <h2>Experience Display</h2>
+  <table class="table">
+    <thead>
+      <th> Id</th>
+      <th>From Date</th>
+      <th>To Date</th>
+      <th>Organisation</th>
+      <th>Experience</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of exp_arr">
+        <td>{{item.id}}</td>
+        <td>{{item.fromdate}}</td>
+        <td>{{item.todate}}</td>
+        <td>{{item.organisation}}</td>
+        <td>{{item.experience}}</td>
+        <td>
+          <!-- <button (click)="ondeleteproduct(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
+          <button (click)="editpro(item)" class="btn btn-warning">Edit</button> -->
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+<h2>Skill Display</h2>
+<table class="table">
+  <thead>
+    <th> Id</th>
+    <th>Skill Catagory</th>
+    <th>Skill</th>
+    <th>Skill Level</th>
+    <th>IS Current</th>
+    <th>Experience</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of skill_arr">
+      <td>{{item.id}}</td>
+      <td>{{item.skillcatagory}}</td>
+      <td>{{item.skill}}</td>
+      <td>{{item.skilllevel}}</td>
+      <td>{{item.iscurrent}}</td>
+      <td>{{item.experience}}</td>
+      <td>
+        <!-- <button (click)="ondeleteproduct(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
+        <button (click)="editpro(item)" class="btn btn-warning">Edit</button> -->
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+
+</div>
+

@@ -51,6 +51,7 @@ export class Task7Component implements OnInit {
       first_name:new FormControl(null,[Validators.required]),
       user_gender:new FormControl("male"),
       user_dob:new FormControl(null,[Validators.required]),
+      age:new FormControl(null),
       personal_phone:new FormControl (null,[Validators.required,Validators.minLength(10)]),
       personal_email:new FormControl(null,[Validators.required,Validators.email]),
       office_email:new FormControl(null,[Validators.email]),
