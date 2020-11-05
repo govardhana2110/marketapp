@@ -188,14 +188,94 @@ skill:FormGroup;
   }
 
   onSaveClick(){
+    alert('Saved Successfully')
+ console.log(this.registrationform.value)
+  }
+  onNextClick(){
+    this.flag=false;
+    this.flag1=true;
+    this.flag2=false;
+    this.flag3=false;
+    this.flag4=false;
 
   }
   onBackClick(){
+    this.flag=true;
+    this.flag1=false;
+    this.flag2=false;
+    this.flag3=false;
+    this.flag4=false;
 
   }
   onSave1Click(){
+    alert('Saved Successfully')
+ console.log(this.permanent.value)
 
   }
+  onNextClick1(){
+    this.flag=false;
+    this.flag1=false;
+    this.flag2=true;
+    this.flag3=false;
+    this.flag4=false;
+
+  }
+  onBack1Click(){
+    this.flag=false;
+    this.flag1=true;
+    this.flag2=false;
+    this.flag3=false;
+    this.flag4=false;
+
+  }
+  onSave2Click(){
+    alert('Saved Successfully')
+    console.log(this.qualification.value)
+
+  }
+  onNextClick2(){
+    this.flag=false;
+    this.flag1=false;
+    this.flag2=false;
+    this.flag3=true;
+    this.flag4=false;
+
+  }
+  onBack2Click(){
+    this.flag=false;
+    this.flag1=false;
+    this.flag2=true;
+    this.flag3=false;
+    this.flag4=false;
+
+  }
+  onSave3Click(){
+    alert('Saved Successfully')
+    console.log(this.experience.value)
+
+  }
+  onNextClick3(){
+    this.flag=false;
+    this.flag1=false;
+    this.flag2=false;
+    this.flag3=false;
+    this.flag4=true;
+
+  }
+  onBack3Click(){
+    this.flag=false;
+    this.flag1=false;
+    this.flag2=false;
+    this.flag3=true;
+    this.flag4=false;
+
+  }
+  onSave4Click(){
+    alert('Saved Successfully')
+    console.log(this.skill.value)
+
+  }
+
   updateage(val:Date){
     var td=new Date();
     var yd=td.getFullYear();

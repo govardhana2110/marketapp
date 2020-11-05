@@ -12,9 +12,11 @@ import { EditaddressComponent } from './employee/editaddress/editaddress.compone
 import { EditexperienceComponent } from './employee/editexperience/editexperience.component';
 import { EditqualificationComponent } from './employee/editqualification/editqualification.component';
 import { EditskillComponent } from './employee/editskill/editskill.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { from } from 'rxjs';
 
 const arr:Routes=[
+  {path : 'employee',component:EmployeeComponent},
   {path : 'home',component:HomeComponent},
   {path : 'cart',component:CartComponent},
   {path : 'login',component:LoginComponent },
