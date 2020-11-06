@@ -9,6 +9,8 @@ import { EmpService } from './emp.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
+  flag:boolean=true;
+  flag1:boolean=false;
   exp_arr:experience[]=[];
   skill_arr:skill[]=[];
   quali_arr:qualification[]=[];
@@ -38,6 +40,34 @@ export class EmployeeComponent implements OnInit {
     });
 
   }
+onshowclick(){
+  this.flag=false;
+  this.flag1=true;
+}
+onhideclick(){
+  this.flag=true;
+  this.flag1=false;
+}
+oneditbasicclick(){
+  this._router.navigate(['/editdetails'])
+
+}
+oneditaddressclick(){
+  this._router.navigate(['/editaddress'])
+
+}
+oneditqualificationclick(){
+  this._router.navigate(['/editqualification'])
+
+}
+oneditexperienceclick(){
+  this._router.navigate(['/editexperience'])
+
+}
+oneditskillclick(){
+  this._router.navigate(['/editskill'])
+
+}
 
 
 }

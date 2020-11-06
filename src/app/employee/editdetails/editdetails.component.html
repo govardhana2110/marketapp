@@ -1,1 +1,145 @@
-<p>editdetails works!</p>
+<div style="background-color: blanchedalmond;">
+  <div class="border">
+<div class="container"></div>
+<form [formGroup]='registrationform'(ngSubmit)="onSaveClick()">
+  <h1 style="text-align: center;">Registration Form</h1>
+  <div class="row">
+
+    <h3 style="text-align: center;">Basic Information</h3>
+    <div class="col-sm-6 form-froup div">
+  <label>Employee Number <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
+  <input type="text" formControlName="employee_number" placeholder="Enter Employee Number" class="form-control" ><br>
+  <p class="lblError" *ngIf="registrationform.get('employee_number').hasError('required') && !registrationform.get('employee_number').pristine ">
+    Employee number is required</p>
+  <label> Name <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
+  <input type="text" formControlName="name" placeholder="Enter Employee Name" class="form-control"  ><br>
+  <p class="lblError" *ngIf="registrationform.get('name').hasError('required') && !registrationform.get('name').pristine ">
+    name is required</p>
+  <label> Title <span>(</span><span class="lblError">*</span><span>) :</span></label>
+  <select class="form-control" formControlName="title">
+    <option>Mrs.</option>
+    <option>Mr.</option>
+    <option>Miss</option>
+  </select><br>
+  <label>First Name <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
+  <input type="text" [disabled]="true" formControlName="first_name" placeholder="Enter First Name" class="form-control" ><br>
+  <p class="lblError" *ngIf="registrationform.get('first_name').hasError('required') && !registrationform.get('first_name').pristine ">
+    First Name is required</p>
+  <label>Middle Name :</label><br>
+  <input type="text" placeholder="Enter Middle Name" formControlName="middle_name" class="form-control"  >
+  <label>Last Name :</label><br>
+  <input type="text" placeholder="Enter Last Name" formControlName="last_name" class="form-control"  >
+  <div>
+    <label>Select Gender :</label>
+    <input type="radio" formControlName="user_gender"  value="male"> Male
+    <input type="radio" formControlName="user_gender"  value="female"> Female<br>
+  </div><br>
+  <label>Date Of Birth <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
+  <input type="date" formControlName="user_dob" class="form-control"  ><br>
+  <p class="lblError" *ngIf="registrationform.get('user_dob').hasError('required') && !registrationform.get('user_dob').pristine ">
+    date of birth is required</p>
+  <label>Age :</label><br>
+  <input type="number" [disabled]="true" class="form-control" formControlName="age" value={{age}} ><br>
+</div>
+<div class="col-sm-6 form-group div">
+  <label>Official Phone :</label><br>
+  <input type="number" placeholder="Enter Official Phone Number" class="form-control"  officephone><br>
+  <label>Personal Phone  <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
+  <input type="text" formControlName="personal_phone"placeholder="Enter Personal Phone Number" class="form-control"  phone><br>
+  <p class="lblError" *ngIf="registrationform.get('personal_phone').hasError('required') && !registrationform.get('personal_phone').pristine ">
+    Personal phone is required</p>
+    <p class="lblError" *ngIf="registrationform.get('personal_phone').hasError('minlength') && !registrationform.get('personal_phone').pristine ">
+      Phone Should Have minimum 10 digits</p>
+  <label>Extension Official Phone : </label><br>
+  <input type="number" placeholder="Enter Official Phone Number" formControlName="ofc_extn_phn" class="form-control" ><br>
+  <label>Fax :</label><br>
+  <input type="text" placeholder="Enter Fax" formControlName="fax"  class="form-control" ><br>
+  <label>Official Mail :</label><br>
+  <input type="text" formControlName="ofc_email" placeholder="Enter Official Mail" class="form-control"  ><br>
+  <p class="lblError" *ngIf="registrationform.get('ofc_email').hasError('email') && !registrationform.get('ofc_email').pristine ">
+    enter currect mail</p>
+  <label>Personal Mail <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
+  <input type="text" formControlName="personal_mail" placeholder="Enter Personal Mail" class="form-control"  ><br>
+  <p class="lblError" *ngIf="registrationform.get('personal_mail').hasError('required') && !registrationform.get('personal_mail').pristine ">
+    Personal mail is required</p>
+    <p class="lblError" *ngIf="registrationform.get('personal_mail').hasError('email') && !registrationform.get('personal_mail').pristine ">
+    enter currect mail</p>
+  <label>Photo :</label><br>
+  <input type="file" placeholder="Upload Photo" formControlName="photo" class="form-control"  ><br>
+<div class="col-sm-6 form-group div"></div>
+<label>Birth Place <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
+<input type="text" formControlName="birth_place" placeholder="Enter Birth Place" class="form-control"  ><br><br>
+<p class="lblError" *ngIf="registrationform.get('birth_place').hasError('required') && !registrationform.get('birth_place').pristine">
+Birth place Is Required</p>
+<label>Religion :</label>
+<select>
+<option formControlName="relegion">Select</option>
+<option formControlName="relegion">Hindu</option>
+<option formControlName="relegion">Muslim</option>
+<option formControlName="relegion">Cristian</option>
+</select>
+<label>Cast :</label>
+<select>
+<option formControlName="cast">Select</option>
+<option formControlName="cast">OC</option>
+<option formControlName="cast">SC&ST</option>
+<option formControlName="cast">BC</option>
+<option formControlName="cast">OBC</option>
+</select><br>
+<label>Nationality <span>(</span><span class="lblError">*</span><span>) :</span> </label>
+<select>
+<option formControlName="nationality">Select</option>
+<option formControlName="nationality">Indian</option>
+<option formControlName="nationality">NRI</option>
+</select><br>
+<label>Voter Id :</label><br>
+<input type="text" placeholder="Enter Voter Id Number" class="form-control" formControlName="voter_id" ><br>
+<label>PAN No <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
+<input type="text" formControlName="PAN" placeholder="Enter PAN Number" class="form-control"  ><br>
+<p class="lblError" *ngIf="registrationform.get('PAN').hasError('required') && !registrationform.get('PAN').pristine">
+PAN no Is Required</p>
+<label>Aadhar No <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
+<input type="text" formControlName="aadhar_no" placeholder="Enter Aadhar Number" class="form-control"  aadhar><br><br>
+<p class="lblError" *ngIf="registrationform.get('aadhar_no').hasError('required') && !registrationform.get('aadhar_no').pristine">
+Aadhar Is Required</p>
+<p class="lblError" *ngIf="registrationform.get('aadhar_no').hasError('minlength') && !registrationform.get('aadhar_no').pristine">
+  Aadhar Should have 12 Digits</p>
+<label>Marital Status :</label>
+<select>
+<option formControlName="marital_status">Select</option>
+<option  formControlName="marital_status">Single</option>
+<option  formControlName="marital_status">Married</option>
+</select><br>
+<label>Bank name <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
+<input type="text" formControlName="bank_name" placeholder="Enter Bank Name" class="form-control"  ><br>
+<p class="lblError" *ngIf="registrationform.get('bank_name').hasError('required') && !registrationform.get('bank_name').pristine">
+bank name Is Required</p>
+<label>Payment Type <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
+<input type="text" formControlName="payment_type" placeholder="Enter Payment Type" class="form-control"  ><br>
+<p class="lblError" *ngIf="registrationform.get('payment_type').hasError('required') && !registrationform.get('payment_type').pristine">
+Payment Type Is Required</p>
+<label>Account Type :</label><br>
+<input type="text" placeholder="Enter Account Type" class="form-control" formControlName="accouunt_type"  ><br>
+<p class="lblError" *ngIf="registrationform.get('account_type').hasError('required') && !registrationform.get('account_type').pristine">
+  Account Type Is Required</p>
+<label>Account No <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
+<input type="number" formControlName="acc_no" placeholder="Enter Account No" class="form-control"  ><br>
+<p class="lblError" *ngIf="registrationform.get('acc_no').hasError('required') && !registrationform.get('acc_no').pristine">
+Account no Is Required</p>
+<label>IFCS Code <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
+<input type="text" formControlName="IFSC" placeholder="Enter IFSC Code" class="form-control"  ><br>
+<p class="lblError" *ngIf="registrationform.get('IFSC').hasError('required') && !registrationform.get('IFSC').pristine">
+IFSC code Is Required</p>
+</div>
+
+
+</div>
+<div class="col-md-4"></div>
+<div class="col-md-4">
+  <button type="submit" class="btn btn-primary">Save</button>
+</div>
+
+</form>
+</div>
+</div>
+

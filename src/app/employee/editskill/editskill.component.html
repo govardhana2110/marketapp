@@ -1,1 +1,52 @@
-<p>editskill works!</p>
+<div>
+  <form [formGroup]='skill'(ngSubmit)="onSaveClick()">
+
+ <h3 style="text-align: center;">Skill</h3>
+ <div formArrayName="skill_details" ><div><br></div>
+<!-- <div *ngFor="let item of skill.controls; let a=index;" [formGroupName]="a" > -->
+ <div class="row">
+   <div class="col-sm-2 form-group div">
+    <label>ID<span class="lblError">*</span></label>
+    <input type="text" class="form-control" formControlName="id" placeholder="Enter catagory">
+   <label>Skill<span class="lblError">*</span></label>
+   <input type="text" class="form-control" formControlName="skill" placeholder="Enter catagory">
+   <p class="lblError"*ngIf="skill.get('skill').hasError('required') && !skill.get('skill').pristine">skill is required</p>
+   <!-- <p class="lblError" *ngIf=" item.get('skill').value!='' &&skillduplicate(item.get('skill').value, a) && a > 0">Duplicates not Allowed</p> -->
+ </div>
+
+ <div class="col-sm-2 form-group div">
+   <label>skill catagory<span class="lblError">*</span></label><br>
+   <input type="text" class="form-control" formControlName="skillcatagory"  placeholder="skillcatogary">
+   <p class="lblError"*ngIf="skill.get('skillcatagory').hasError('required') && !skill.get('skillcatagory').pristine ">catogary is required</p>
+ </div>
+
+ <div class="col-sm-2 form-group div">
+   <label>skill level<span class="lblError">*</span></label>
+   <input type="text" class="form-control"  formControlName="skilllevel" placeholder="skill level">
+   <p class="lblError"*ngIf="skill.get('skilllevel').hasError('required') && !skill.get('skilllevel').pristine ">skill leve is required</p>
+ </div>
+
+ <div class="col-sm-2 form-group div">
+   <label>iscurrent<span class="lblError">*</span></label><br>
+   <input type="radio" formControlName="iscurrent"  value="yes"> Yes
+   <input type="radio" formControlName="iscurrent"  value="no"> No<br>
+   <p class="lblError"*ngIf="skill.get('iscurrent').hasError('required') && !skill.get('iscurrent').pristine ">is current required</p>
+ </div>
+ <div class="col-sm-2 form-group div">
+   <label>experience<span class="lblError">*</span></label>
+   <input type="text" class="form-control" formControlName="experience" placeholder="Enter experience">
+   <p class="lblError"*ngIf="skill.get('experience').hasError('required') && !skill.get('experience').pristine ">experience is required</p>
+ </div>
+
+
+
+ <div>&nbsp;&nbsp;</div>
+ <div class="col-sm-2 form-group div">
+</div>
+</div>
+</div>
+ <!-- </div> -->
+<button type="submit">Save</button>
+  </form>
+</div>
+

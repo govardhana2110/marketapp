@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators,FormBuilder, Form } from '@angular/forms';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-addemp',
   templateUrl: './addemp.component.html',
@@ -15,11 +15,10 @@ flag3:boolean=false;
 flag4:boolean=false;
 registrationform:FormGroup;
 permanent:FormGroup;
-present:FormGroup;
 qualification:FormGroup;
 experience:FormGroup;
 skill:FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private _router:Router) { }
 
   ngOnInit(): void {
     this.registrationform = new FormGroup({
@@ -273,6 +272,7 @@ skill:FormGroup;
   onSave4Click(){
     alert('Saved Successfully')
     console.log(this.skill.value)
+    this._router.navigate(['/employee'])
 
   }
 

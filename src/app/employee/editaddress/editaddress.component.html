@@ -1,1 +1,161 @@
-<p>editaddress works!</p>
+<div class="container">
+
+  <form [formGroup]='permanent' (ngSubmit)="onSaveClick()">
+    <div class="row">
+    <div class="col-sm-6 form-group div">
+  <h3> Permanent Address Details <span>(</span><span class="lblError" >*</span><span>)</span></h3>
+    <div formGroupName="address_group">
+      <label>ID :</label><br>
+      <input type="text" formControlName='id' class="form-control"  placeholder="Enter ID" ><br>
+    <label>D.No/Street :</label><br>
+  <input type="text" formControlName='dno_street' class="form-control"  placeholder="Enter D.no/street" ><br>
+  <p *ngIf="permanent.get('address_group').get('dno_street').hasError('required') && !permanent.get('address_group').get('dno_street').pristine" class="lblError">dno_street is required</p>
+    <label>Village :</label><br>
+  <input type="text"  formControlName='village' placeholder="Enter village" class="form-control"  ><br>
+  <p class="lblError" *ngIf="permanent.get('address_group').get('village').hasError('required') && !permanent.get('address_group').get('village').pristine ">
+    Village Is Required</p>
+    <label>Post Office :</label><br>
+  <input type="text" formControlName='post_office' placeholder="Enter post office" class="form-control"  ><br>
+  <p class="lblError" *ngIf="permanent .get('address_group').get('post_office').hasError('required') && !permanent.get('address_group').get('post_office').pristine ">
+    Post Office Is Required</p>
+    <label>Mandal :</label><br>
+  <input type="text" formControlName='mandal' placeholder="Enter mandal" class="form-control"  ><br>
+  <p class="lblError" *ngIf="permanent.get('address_group').get('mandal').hasError('required') && !permanent.get('address_group').get('mandal').pristine ">
+    Mandal Is Required</p>
+    <label>District :</label><br>
+    <select>
+      <option formControlName="district">Select</option>
+      <option formControlName="district">Anantapur</option>
+      <option formControlName="district">Karnool</option>
+      <option formControlName="district">Kadapa</option>
+      <option formControlName="district">Chittor</option>
+      <option formControlName="district">Nellor</option>
+    </select><br><br>
+    <label>Pin Code :</label><br>
+    <input type="number" formControlName='pin_code' placeholder="Enter Pin code" class="form-control"  ><br>
+  <p class="lblError" *ngIf="permanent.get('address_group').get('pin_code').hasError('required') && !permanent.get('address_group').get('pin_code').pristine ">
+    Pin Code Is Required</p>
+    <label>Country :</label>
+  <select>
+    <option formControlName="country">Select</option>
+    <option formControlName="country">America</option>
+    <option formControlName="country"> United Kingdom</option>
+    <option formControlName="country">Japan</option>
+    <option formControlName="country">Austrelia</option>
+    <option formControlName="country">Singapor</option>
+    <option formControlName="country">Russia</option>
+    <option formControlName="country">China</option>
+    <option formControlName="country">India</option>
+    <option formControlName="country">UAE</option>
+    <option formControlName="country">Bangladesh</option>
+    <option formControlName="country">Nepal</option>
+    <option formControlName="country">Africa</option>
+    <option formControlName="country">Argentina</option>
+    <option formControlName="country">Belgium</option>
+    <option formControlName="country">Canada</option>
+    <option formControlName="country">Denkark</option>
+    <option formControlName="country">England</option>
+    <option formControlName="country">France</option>
+  </select>
+  <label>State :</label>
+  <select>
+    <option formControlName="state">Select</option>
+    <option formControlName="state">Andhrapradesh</option>
+    <option formControlName="state">Telangana</option>
+    <option formControlName="state">Karnataka</option>
+    <option formControlName="state">Tamilnadu</option>
+    <option formControlName="state">Kerala</option>
+  </select>
+  <label>City :</label>
+  <select formControlName='city' >
+    <option value="">Select</option>
+    <option value="hyderabad">Hyderabad</option>
+    <option value="bengaluru">Bengaluru</option>
+    <option value="mumbai">Mumbai</option>
+  </select><br><br>
+<p class="lblError" *ngIf="permanent.get('city').hasError('required') && !permanent.get('city').pristine ">
+  City Is Required</p>
+  <div class="form-check">
+    <input  class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+    <label class="form-check-label" for="defaultCheck1" >
+     Copy Same to Permanent Address
+    </label>
+  </div>
+  </div>
+  <h3> Present Address Details</h3>
+  <div>
+    <label>ID :</label><br>
+  <input type="text" formControlName='id' placeholder="Enter D.no/street" class="form-control"  ><br>
+    <label>D.No/Street :</label><br>
+  <input type="text" formControlName='presentdno_street' placeholder="Enter D.no/street" class="form-control"  ><br>
+    <label>Village :</label><br>
+  <input type="text"  formControlName='present_village' placeholder="Enter village"  class="form-control" ><br>
+    <label>Post Office :</label><br>
+  <input type="text" formControlName='presentpost_office' placeholder="Enter post office" class="form-control"  ><br>
+    <label>Mandal :</label><br>
+  <input type="text" formControlName='present_mandal' placeholder="Enter mandal" class="form-control" ><br>
+  <label>District :</label><br>
+  <select>
+    <option formControlName="present_district">Select</option>
+    <option formControlName="present_district">Anantapur</option>
+    <option formControlName="present_district">Karnool</option>
+    <option formControlName="present_district">Kadapa</option>
+    <option formControlName="present_district">Chittor</option>
+    <option formControlName="present_district">Nellor</option>
+  </select><br><br>
+    <label>Pin Code :</label><br>
+  <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control" ><br>
+    </div>
+    <label>Country :</label>
+    <select>
+      <option formControlName="country">Select</option>
+      <option formControlName="country">America</option>
+      <option formControlName="country"> United Kingdom</option>
+      <option formControlName="country">Japan</option>
+      <option formControlName="country">Austrelia</option>
+      <option formControlName="country">Singapor</option>
+      <option formControlName="country">Russia</option>
+      <option formControlName="country">China</option>
+      <option formControlName="country">India</option>
+      <option formControlName="country">UAE</option>
+      <option formControlName="country">Bangladesh</option>
+      <option formControlName="country">Nepal</option>
+      <option formControlName="country">Africa</option>
+      <option formControlName="country">Argentina</option>
+      <option formControlName="country">Belgium</option>
+      <option formControlName="country">Canada</option>
+      <option formControlName="country">Denkark</option>
+      <option formControlName="country">England</option>
+      <option formControlName="country">France</option>
+    </select>
+    <label>State :</label>
+    <select>
+      <option formControlName="state">Select</option>
+      <option formControlName="state">Andhrapradesh</option>
+      <option formControlName="state">Telangana</option>
+      <option formControlName="state">Karnataka</option>
+      <option formControlName="state">Tamilnadu</option>
+      <option formControlName="state">Kerala</option>
+    </select>
+    <label>City :</label>
+    <select formControlName='city' >
+      <option value="">Select</option>
+      <option value="hyderabad">Hyderabad</option>
+      <option value="bengaluru">Bengaluru</option>
+      <option value="mumbai">Mumbai</option>
+    </select><br><br>
+  <p class="lblError" *ngIf="permanent.get('city').hasError('required') && !permanent.get('city').pristine ">
+    City Is Required</p>
+  </div>
+
+
+  </div>
+  <div class="col-md-5"></div>
+  <div class="col-md-4">
+  <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+  </form>
+
+
+  </div>
+
