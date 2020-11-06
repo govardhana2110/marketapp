@@ -16,6 +16,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { from } from 'rxjs';
 
 const arr:Routes=[
+  {path : '',component:EmployeeComponent},
   {path : 'employee',component:EmployeeComponent},
   {path : 'home',component:HomeComponent},
   {path : 'cart',component:CartComponent},

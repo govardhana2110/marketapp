@@ -68,6 +68,9 @@ oneditskillclick(){
   this._router.navigate(['/editskill'])
 
 }
+onaddclick(){
+  this._router.navigate(['/addemp'])
 
+}
 
 }
