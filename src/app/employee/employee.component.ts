@@ -72,5 +72,17 @@ onaddclick(){
   this._router.navigate(['/addemp'])
 
 }
+ondeleteemp(){
+
+}
+ondeletequalification(){
+
+}
+ondeleteexperience(){
+
+}
+ondeleteskill(){
+
+}
 
 }

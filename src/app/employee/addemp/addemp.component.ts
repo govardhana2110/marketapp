@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators,FormBuilder, Form } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmpService } from '../emp.service';
 @Component({
   selector: 'app-addemp',
   templateUrl: './addemp.component.html',
@@ -13,12 +14,24 @@ flag1:boolean=false;
 flag2:boolean=false;
 flag3:boolean=false;
 flag4:boolean=false;
+sid:string;
+   sdno_street:String;
+   svillage:String;
+   spost_office:String;
+   smandal:String;
+   sdistrict:String;
+   spin_code:String;
+   scountry:string;
+   sstate:string;
+   scity:string;
 registrationform:FormGroup;
 permanent:FormGroup;
 qualification:FormGroup;
 experience:FormGroup;
 skill:FormGroup;
-  constructor(private fb: FormBuilder,private _router:Router) { }
+  constructor(private fb: FormBuilder,
+    private _router:Router,
+    private _data:EmpService) { }
 
   ngOnInit(): void {
     this.registrationform = new FormGroup({
@@ -48,7 +61,7 @@ skill:FormGroup;
       marital_status:new FormControl(null,[Validators.required]),
       bank_name:new FormControl(null,[Validators.required]),
       payment_type:new FormControl(null,[Validators.required]),
-      accounnt_type:new FormControl(null,[Validators.required]),
+      account_type:new FormControl(null,[Validators.required]),
       acc_no:new FormControl(null,[Validators.required]),
       IFSC:new FormControl(null,[Validators.required]),
 
@@ -65,6 +78,7 @@ skill:FormGroup;
     country:new FormControl(null,[Validators.required]),
     state:new FormControl(null,[Validators.required]),
     city:new FormControl(null,[Validators.required]),
+    permanent_address:new FormControl(),
   }),
     id:new FormControl(null,[Validators.required]),
     presentdno_street:new FormControl(null,[Validators.required]),
@@ -88,8 +102,42 @@ skill:FormGroup;
     skill_details:this.fb.array([this.skillgroup()]),
 
   });
+  this.permanent.get('address_group').get('Permanent_address').valueChanges.subscribe((x) => this.setAddress(x, this.permanent.get('address_group').value));
+    this.permanent.get('address_group').get('Permanent_address').valueChanges.subscribe((t) => this.editAddress(t));
   this.registrationform.get('user_dob').valueChanges.subscribe((x)=> this.updateage(x));
 }
+editAddress(v:boolean){
+  if(v==true){
+      this.permanent.get('address_group').valueChanges.subscribe((y) => this.setAddress(this.permanent.get('address_group').get('Permanent_address').value, y));//this.editAddress(x, this.empInfo.get('Padd').value));
+  }
+}
+setAddress(val:boolean, paddressGrp:FormGroup){
+  if(val==true){
+    this.sid=paddressGrp['id'];
+    this.sdno_street=paddressGrp['dno_street'];
+    this.svillage=paddressGrp['village'];
+    this.spost_office=paddressGrp['post_office'];
+    this.smandal=paddressGrp['mandal'];
+    this.sdistrict=paddressGrp['district'];
+    this.spin_code=paddressGrp['pin_code'];
+    this.scountry=paddressGrp['country'];
+    this.sstate=paddressGrp['state'];
+    this.scity=paddressGrp['city'];
+  }
+  else{
+    this.sid=null;
+    this.sdno_street=null;
+    this.svillage=null;
+    this.spost_office=null;
+    this.smandal=null;
+    this.sdistrict=null;
+    this.spin_code=null;
+    this.scountry=null;
+    this.sstate=null;
+    this.scity=null;
+  }
+}
+
    qualificationgroup(){
     return this.fb.group({
         id: new FormControl(null,[Validators.required]),
@@ -283,6 +331,13 @@ skill:FormGroup;
     var ans=yd-bdy;
     console.log(ans);
     this.age=ans;
+     }
+     onaddclick(){
+      this._data.addtask(this.registrationform.value).subscribe((x)=>{});
+      this._data.addtask(this.permanent.value).subscribe((x)=>{});
+      this._data.addtask(this.qualification.value).subscribe((x)=>{});
+      this._data.addtask(this.experience.value).subscribe((x)=>{});
+      this._data.addtask(this.skill.value).subscribe((x)=>{});
      }
 
 }

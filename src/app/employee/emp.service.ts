@@ -31,4 +31,9 @@ export class EmpService {
   getAllquali(){
     return this._http.get<qualification[]>(this.url3);
   }
+  addtask(item:registration){
+    let body=JSON.stringify(item);
+    let head=new HttpHeaders().set('Content-Type','application/json');
+    return this._http.post(this.url2,body,{headers:head});
+      }
 }

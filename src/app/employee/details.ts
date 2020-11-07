@@ -22,7 +22,7 @@ export class experience {
     public experience:string,){}
 }
 export class registration{
-  constructor( public employee_number,
+  constructor( public id,
     public name:string,
     public title:string,
     public first_name:string,

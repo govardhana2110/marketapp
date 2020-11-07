@@ -10,27 +10,33 @@
       <th style="border: black 1px solid;text-align: center;">Aadhar</th>
       <th style="border: black 1px solid;text-align: center;">Account No</th>
       <th style="border: black 1px solid;text-align: center;">IFSC</th>
-      <th style="border: black 1px solid;text-align: center;">Actions</th>
+      <th style="border: black 1px solid;text-align: center;"> Edit Actions</th>
+      <th style="border: black 1px solid;text-align: center;"> Delete Actions</th>
 
 
 
     </thead>
     <tbody>
       <tr *ngFor="let item of reg_arr">
-        <td  style="border: black 1px solid;text-align: center;">{{item.employee_number}}</td>
+        <td  style="border: black 1px solid;text-align: center;">{{item.id}}</td>
         <td style="border: black 1px solid;text-align: center;">{{item.name}}</td>
          <td style="border: black 1px solid;text-align: center;">{{item.personal_phone}}</td>
          <td style="border: black 1px solid;text-align: center;">{{item.PAN}}</td>
          <td style="border: black 1px solid;text-align: center;">{{item.aadhar}}</td>
          <td style="border: black 1px solid;text-align: center;">{{item.acc_no}}</td>
          <td style="border: black 1px solid;text-align: center;">{{item.IFSC}}</td>
-         <td>
-           <button (click)="oneditbasicclick()">Edit Basic Details</button>
-           <button (click)="oneditaddressclick()">Edit Address</button>
-           <button (click)="oneditqualificationclick()">Edit Qualification</button>
-           <button (click)="oneditexperienceclick()">Edit Experience</button>
-           <button (click)="oneditskillclick()">Edit Skill</button>
-           <button>Delete Employee</button>
+         <td style="border: black 1px solid;text-align: center;">
+           <button (click)="oneditbasicclick()">Edit Basic Details</button>&nbsp;
+           <button (click)="oneditaddressclick()">Edit Address</button>&nbsp;
+           <button (click)="oneditqualificationclick()">Edit Qualification</button>&nbsp;<br>
+           <button (click)="oneditexperienceclick()">Edit Experience</button>&nbsp;
+           <button (click)="oneditskillclick()">Edit Skill</button>&nbsp;
+         </td>
+         <td style="border: black 1px solid;text-align: center;">
+           <button (click)="ondeleteemp()">Delete Employee</button>&nbsp;
+           <button (click)="ondeletequalification()">Delete Qualification</button>&nbsp;<br>
+           <button (click)="ondeleteexperience()">Delete Experience</button>&nbsp;
+           <button (click)="ondeleteskill()">Delete Skill</button>&nbsp;
          </td>
 
         <td>
@@ -41,13 +47,13 @@
     </tbody>
 
   </table><br><br>
-  <button (click)="onaddclick()">Add</button>
+  <button (click)="onaddclick()">Add New Employee</button>&nbsp;&nbsp;
   <button (click)="onshowclick()">Show Full Details</button>
   </div>
 </div>
 <div class="container">
   <div *ngIf="flag1">
-  <h2>Registration Details</h2>
+  <h2>Employee Full Details</h2>
   <button (click)="onhideclick()">Hide Details</button>
   <table class="table">
     <thead>
@@ -86,7 +92,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of reg_arr">
-        <td>{{item.employee_number}}</td>
+        <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{item.title}}</td>
         <td>{{item.first_name}}</td>

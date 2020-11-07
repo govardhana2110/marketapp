@@ -7,13 +7,13 @@
   <div class="row">
 
     <h3 style="text-align: center;">Basic Information</h3>
-    <div class="col-sm-6 form-froup div">
+    <div class="col-sm-3 form-froup div">
   <label>Employee Number <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
-  <input type="text" formControlName="employee_number" placeholder="Enter Employee Number" class="form-control" ><br>
+  <input type="text" formControlName="employee_number" placeholder="Enter Employee Number" class="form-control" >
   <p class="lblError" *ngIf="registrationform.get('employee_number').hasError('required') && !registrationform.get('employee_number').pristine ">
     Employee number is required</p>
   <label> Name <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
-  <input type="text" formControlName="name" placeholder="Enter Employee Name" class="form-control"  ><br>
+  <input type="text" formControlName="name" placeholder="Enter Employee Name" class="form-control"  >
   <p class="lblError" *ngIf="registrationform.get('name').hasError('required') && !registrationform.get('name').pristine ">
     name is required</p>
   <label> Title <span>(</span><span class="lblError">*</span><span>) :</span></label>
@@ -21,9 +21,9 @@
     <option>Mrs.</option>
     <option>Mr.</option>
     <option>Miss</option>
-  </select><br>
+  </select>
   <label>First Name <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
-  <input type="text" [disabled]="true" formControlName="first_name" placeholder="Enter First Name" class="form-control" ><br>
+  <input type="text" [disabled]="true" formControlName="first_name" placeholder="Enter First Name" class="form-control" >
   <p class="lblError" *ngIf="registrationform.get('first_name').hasError('required') && !registrationform.get('first_name').pristine ">
     First Name is required</p>
   <label>Middle Name :</label><br>
@@ -35,28 +35,41 @@
     <input type="radio" formControlName="user_gender"  value="male"> Male
     <input type="radio" formControlName="user_gender"  value="female"> Female<br>
   </div><br>
+  <label>Marital Status :</label>
+<select formControlName="marital_status">
+<option >Select</option>
+<option  >Single</option>
+<option  >Married</option>
+</select><br>
+(<span class="lblError">*</span>) Indicates The Fields Are Mandatory
+</div>
+<div class="col-sm-3 form-group div">
   <label>Date Of Birth <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
-  <input type="date" formControlName="user_dob" class="form-control"  ><br>
+  <input type="date" formControlName="user_dob" class="form-control"  >
   <p class="lblError" *ngIf="registrationform.get('user_dob').hasError('required') && !registrationform.get('user_dob').pristine ">
     date of birth is required</p>
   <label>Age :</label><br>
-  <input type="number" [disabled]="true" class="form-control" formControlName="age" value={{age}} ><br>
-</div>
-<div class="col-sm-6 form-group div">
+  <input type="number" [disabled]="true" class="form-control" formControlName="age" value={{age}} >
   <label>Official Phone :</label><br>
-  <input type="number" placeholder="Enter Official Phone Number" class="form-control"  officephone><br>
+  <input type="number" placeholder="Enter Official Phone Number" class="form-control"  officephone>
   <label>Personal Phone  <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
-  <input type="text" formControlName="personal_phone"placeholder="Enter Personal Phone Number" class="form-control"  phone><br>
+  <input type="text" formControlName="personal_phone"placeholder="Enter Personal Phone Number" class="form-control"  phone>
   <p class="lblError" *ngIf="registrationform.get('personal_phone').hasError('required') && !registrationform.get('personal_phone').pristine ">
     Personal phone is required</p>
     <p class="lblError" *ngIf="registrationform.get('personal_phone').hasError('minlength') && !registrationform.get('personal_phone').pristine ">
       Phone Should Have minimum 10 digits</p>
   <label>Extension Official Phone : </label><br>
-  <input type="number" placeholder="Enter Official Phone Number" formControlName="ofc_extn_phn" class="form-control" ><br>
+  <input type="number" placeholder="Enter Official Phone Number" formControlName="ofc_extn_phn" class="form-control" >
   <label>Fax :</label><br>
-  <input type="text" placeholder="Enter Fax" formControlName="fax"  class="form-control" ><br>
+  <input type="text" placeholder="Enter Fax" formControlName="fax"  class="form-control" >
+  <label>Birth Place <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
+  <input type="text" formControlName="birth_place" placeholder="Enter Birth Place" class="form-control"  >
+  <p class="lblError" *ngIf="registrationform.get('birth_place').hasError('required') && !registrationform.get('birth_place').pristine">
+  Birth place Is Required</p>
+</div>
+<div class="col-sm-3 form-group div">
   <label>Official Mail :</label><br>
-  <input type="text" formControlName="ofc_email" placeholder="Enter Official Mail" class="form-control"  ><br>
+  <input type="text" formControlName="ofc_email" placeholder="Enter Official Mail" class="form-control"  >
   <p class="lblError" *ngIf="registrationform.get('ofc_email').hasError('email') && !registrationform.get('ofc_email').pristine ">
     enter currect mail</p>
   <label>Personal Mail <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
@@ -65,80 +78,72 @@
     Personal mail is required</p>
     <p class="lblError" *ngIf="registrationform.get('personal_mail').hasError('email') && !registrationform.get('personal_mail').pristine ">
     enter currect mail</p>
-  <label>Photo :</label><br>
-  <input type="file" placeholder="Upload Photo" formControlName="photo" class="form-control"  ><br>
-<div class="col-sm-6 form-group div"></div>
-<label>Birth Place <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
-<input type="text" formControlName="birth_place" placeholder="Enter Birth Place" class="form-control"  ><br><br>
-<p class="lblError" *ngIf="registrationform.get('birth_place').hasError('required') && !registrationform.get('birth_place').pristine">
-Birth place Is Required</p>
 <label>Religion :</label>
-<select>
-<option formControlName="relegion">Select</option>
-<option formControlName="relegion">Hindu</option>
-<option formControlName="relegion">Muslim</option>
-<option formControlName="relegion">Cristian</option>
-</select>
+<select formControlName="relegion">
+<option >Select</option>
+<option >Hindu</option>
+<option >Muslim</option>
+<option >Cristian</option>
+</select><br>
 <label>Cast :</label>
-<select>
-<option formControlName="cast">Select</option>
-<option formControlName="cast">OC</option>
-<option formControlName="cast">SC&ST</option>
-<option formControlName="cast">BC</option>
-<option formControlName="cast">OBC</option>
+<select formControlName="cast">
+<option >Select</option>
+<option >OC</option>
+<option >SC&ST</option>
+<option >BC</option>
+<option >OBC</option>
 </select><br>
 <label>Nationality <span>(</span><span class="lblError">*</span><span>) :</span> </label>
-<select>
-<option formControlName="nationality">Select</option>
-<option formControlName="nationality">Indian</option>
-<option formControlName="nationality">NRI</option>
+<select formControlName="nationality">
+<option >Select</option>
+<option >Indian</option>
+<option >NRI</option>
 </select><br>
 <label>Voter Id :</label><br>
-<input type="text" placeholder="Enter Voter Id Number" class="form-control" formControlName="voter_id" ><br>
+<input type="text" placeholder="Enter Voter Id Number" class="form-control" formControlName="voter_id" >
 <label>PAN No <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
-<input type="text" formControlName="PAN" placeholder="Enter PAN Number" class="form-control"  ><br>
+<input type="text" formControlName="PAN" placeholder="Enter PAN Number" class="form-control"  >
 <p class="lblError" *ngIf="registrationform.get('PAN').hasError('required') && !registrationform.get('PAN').pristine">
 PAN no Is Required</p>
 <label>Aadhar No <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
-<input type="text" formControlName="aadhar_no" placeholder="Enter Aadhar Number" class="form-control"  aadhar><br><br>
-<p class="lblError" *ngIf="registrationform.get('aadhar_no').hasError('required') && !registrationform.get('aadhar_no').pristine">
+<input type="text" formControlName="aadhar" placeholder="Enter Aadhar Number" class="form-control"  aadhar>
+<p class="lblError" *ngIf="registrationform.get('aadhar').hasError('required') && !registrationform.get('aadhar').pristine">
 Aadhar Is Required</p>
-<p class="lblError" *ngIf="registrationform.get('aadhar_no').hasError('minlength') && !registrationform.get('aadhar_no').pristine">
+<p class="lblError" *ngIf="registrationform.get('aadhar').hasError('minlength') && !registrationform.get('aadhar').pristine">
   Aadhar Should have 12 Digits</p>
-<label>Marital Status :</label>
-<select>
-<option formControlName="marital_status">Select</option>
-<option  formControlName="marital_status">Single</option>
-<option  formControlName="marital_status">Married</option>
-</select><br>
+</div>
+<div class="col-sm-3 form-group div">
 <label>Bank name <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
-<input type="text" formControlName="bank_name" placeholder="Enter Bank Name" class="form-control"  ><br>
+<input type="text" formControlName="bank_name" placeholder="Enter Bank Name" class="form-control"  >
 <p class="lblError" *ngIf="registrationform.get('bank_name').hasError('required') && !registrationform.get('bank_name').pristine">
 bank name Is Required</p>
 <label>Payment Type <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
-<input type="text" formControlName="payment_type" placeholder="Enter Payment Type" class="form-control"  ><br>
+<input type="text" formControlName="payment_type" placeholder="Enter Payment Type" class="form-control"  >
 <p class="lblError" *ngIf="registrationform.get('payment_type').hasError('required') && !registrationform.get('payment_type').pristine">
 Payment Type Is Required</p>
 <label>Account Type :</label><br>
-<input type="text" placeholder="Enter Account Type" class="form-control" formControlName="accouunt_type"  ><br>
+<input type="text" placeholder="Enter Account Type" class="form-control" formControlName="account_type"  >
 <p class="lblError" *ngIf="registrationform.get('account_type').hasError('required') && !registrationform.get('account_type').pristine">
   Account Type Is Required</p>
 <label>Account No <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
-<input type="number" formControlName="acc_no" placeholder="Enter Account No" class="form-control"  ><br>
+<input type="number" formControlName="acc_no" placeholder="Enter Account No" class="form-control"  >
 <p class="lblError" *ngIf="registrationform.get('acc_no').hasError('required') && !registrationform.get('acc_no').pristine">
 Account no Is Required</p>
 <label>IFCS Code <span>(</span><span class="lblError">*</span><span>) :</span> </label><br>
-<input type="text" formControlName="IFSC" placeholder="Enter IFSC Code" class="form-control"  ><br>
+<input type="text" formControlName="IFSC" placeholder="Enter IFSC Code" class="form-control"  >
 <p class="lblError" *ngIf="registrationform.get('IFSC').hasError('required') && !registrationform.get('IFSC').pristine">
-IFSC code Is Required</p>
+IFSC code Is Required</p><br>
+<label>Photo :</label><br>
+<input type="file" placeholder="Upload Photo" formControlName="photo" class="form-control"  ><br>
+
+<button type="submit" class="btn btn-primary">Save</button> &nbsp;&nbsp;
+<button (click)="onNextClick()" class="btn btn-primary">Next</button>
+
 </div>
-
-
 </div>
 <div class="col-md-4"></div>
 <div class="col-md-4">
-  <button type="submit" class="btn btn-primary">Save</button>
-  <button (click)="onNextClick()" class="btn btn-primary">Next</button>
+
 </div>
 
 </form>
@@ -148,143 +153,143 @@ IFSC code Is Required</p>
 
 <div class="container">
   <div *ngIf="flag1">
-
   <form [formGroup]='permanent' (ngSubmit)="onSave1Click()">
     <div class="row">
     <div class="col-sm-6 form-group div">
   <h3> Permanent Address Details <span>(</span><span class="lblError" >*</span><span>)</span></h3>
-    <div formGroupName="address_group">
-      <label>ID :</label><br>
-      <input type="text" formControlName='id' class="form-control"  placeholder="Enter ID" ><br>
+  <div formGroupName="address_group">
+    <label>ID :</label><br>
+    <input type="text" formControlName='id' class="form-control"  placeholder="Enter ID" >
     <label>D.No/Street :</label><br>
-  <input type="text" formControlName='dno_street' class="form-control"  placeholder="Enter D.no/street" ><br>
+  <input type="text" formControlName='dno_street' class="form-control"  placeholder="Enter D.no/street" >
   <p *ngIf="permanent.get('address_group').get('dno_street').hasError('required') && !permanent.get('address_group').get('dno_street').pristine" class="lblError">dno_street is required</p>
     <label>Village :</label><br>
-  <input type="text"  formControlName='village' placeholder="Enter village" class="form-control"  ><br>
+  <input type="text"  formControlName='village' placeholder="Enter village" class="form-control"  >
   <p class="lblError" *ngIf="permanent.get('address_group').get('village').hasError('required') && !permanent.get('address_group').get('village').pristine ">
     Village Is Required</p>
     <label>Post Office :</label><br>
-  <input type="text" formControlName='post_office' placeholder="Enter post office" class="form-control"  ><br>
-  <p class="lblError" *ngIf="permanent .get('address_group').get('post_office').hasError('required') && !permanent.get('address_group').get('post_office').pristine ">
+  <input type="text" formControlName='post_office' placeholder="Enter post office" class="form-control"  >
+  <p class="lblError" *ngIf="permanent .get('address_group').get('dno_street').hasError('required') && !permanent.get('address_group').get('post_office').pristine ">
     Post Office Is Required</p>
     <label>Mandal :</label><br>
-  <input type="text" formControlName='mandal' placeholder="Enter mandal" class="form-control"  ><br>
+  <input type="text" formControlName='mandal' placeholder="Enter mandal" class="form-control"  >
   <p class="lblError" *ngIf="permanent.get('address_group').get('mandal').hasError('required') && !permanent.get('address_group').get('mandal').pristine ">
     Mandal Is Required</p>
     <label>District :</label><br>
-    <select>
-      <option formControlName="district">Select</option>
-      <option formControlName="district">Anantapur</option>
-      <option formControlName="district">Karnool</option>
-      <option formControlName="district">Kadapa</option>
-      <option formControlName="district">Chittor</option>
-      <option formControlName="district">Nellor</option>
+    <select formControlName="district">
+      <option >Select</option>
+      <option >Anantapur</option>
+      <option >Karnool</option>
+      <option >Kadapa</option>
+      <option >Chittor</option>
+      <option >Nellor</option>
     </select><br><br>
     <label>Pin Code :</label><br>
-    <input type="number" formControlName='pin_code' placeholder="Enter Pin code" class="form-control"  ><br>
+    <input type="number" formControlName='pin_code' placeholder="Enter Pin code" class="form-control"  >
   <p class="lblError" *ngIf="permanent.get('address_group').get('pin_code').hasError('required') && !permanent.get('address_group').get('pin_code').pristine ">
     Pin Code Is Required</p>
     <label>Country :</label>
-  <select>
-    <option formControlName="country">Select</option>
-    <option formControlName="country">America</option>
-    <option formControlName="country"> United Kingdom</option>
-    <option formControlName="country">Japan</option>
-    <option formControlName="country">Austrelia</option>
-    <option formControlName="country">Singapor</option>
-    <option formControlName="country">Russia</option>
-    <option formControlName="country">China</option>
-    <option formControlName="country">India</option>
-    <option formControlName="country">UAE</option>
-    <option formControlName="country">Bangladesh</option>
-    <option formControlName="country">Nepal</option>
-    <option formControlName="country">Africa</option>
-    <option formControlName="country">Argentina</option>
-    <option formControlName="country">Belgium</option>
-    <option formControlName="country">Canada</option>
-    <option formControlName="country">Denkark</option>
-    <option formControlName="country">England</option>
-    <option formControlName="country">France</option>
-  </select>
-  <label>State :</label>
-  <select>
-    <option formControlName="state">Select</option>
-    <option formControlName="state">Andhrapradesh</option>
-    <option formControlName="state">Telangana</option>
-    <option formControlName="state">Karnataka</option>
-    <option formControlName="state">Tamilnadu</option>
-    <option formControlName="state">Kerala</option>
-  </select>
-  <label>City :</label>
-  <select formControlName='city' >
-    <option value="">Select</option>
-    <option value="hyderabad">Hyderabad</option>
-    <option value="bengaluru">Bengaluru</option>
-    <option value="mumbai">Mumbai</option>
-  </select><br><br>
-<p class="lblError" *ngIf="permanent.get('city').hasError('required') && !permanent.get('city').pristine ">
-  City Is Required</p>
+    <select formControlName="country">
+      <option >Select</option>
+      <option >America</option>
+      <option > United Kingdom</option>
+      <option >Japan</option>
+      <option >Austrelia</option>
+      <option >Singapor</option>
+      <option >Russia</option>
+      <option >China</option>
+      <option >India</option>
+      <option >UAE</option>
+      <option >Bangladesh</option>
+      <option >Nepal</option>
+      <option >Africa</option>
+      <option >Argentina</option>
+      <option >Belgium</option>
+      <option >Canada</option>
+      <option >Denkark</option>
+      <option >England</option>
+      <option >France</option>
+    </select>
+    <label>State :</label>
+    <select formControlName="state">
+      <option >Select</option>
+      <option >Andhrapradesh</option>
+      <option >Telangana</option>
+      <option >Karnataka</option>
+      <option >Tamilnadu</option>
+      <option >Kerala</option>
+    </select>
+    <label>City :</label>
+    <select formControlName='city' >
+      <option value="">Select</option>
+      <option value="hyderabad">Hyderabad</option>
+      <option value="bengaluru">Bengaluru</option>
+      <option value="mumbai">Mumbai</option>
+    </select><br><br>
+  </div>
+  <div class="col-sm-6 form-group div">
+
   <div class="form-check">
-    <input  class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+    <input formControlName="permanent_address" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
     <label class="form-check-label" for="defaultCheck1" >
      Copy Same to Permanent Address
     </label>
   </div>
-  </div>
+
   <h3> Present Address Details</h3>
   <div>
     <label>ID :</label><br>
-  <input type="text" formControlName='id' placeholder="Enter D.no/street" class="form-control"  ><br>
+  <input type="text" formControlName='id' placeholder="Enter ID" class="form-control"  >
     <label>D.No/Street :</label><br>
-  <input type="text" formControlName='presentdno_street' placeholder="Enter D.no/street" class="form-control"  ><br>
+  <input type="text" formControlName='presentdno_street' placeholder="Enter D.no/street" class="form-control"  >
     <label>Village :</label><br>
-  <input type="text"  formControlName='present_village' placeholder="Enter village"  class="form-control" ><br>
+  <input type="text"  formControlName='present_village' placeholder="Enter village"  class="form-control" >
     <label>Post Office :</label><br>
-  <input type="text" formControlName='presentpost_office' placeholder="Enter post office" class="form-control"  ><br>
+  <input type="text" formControlName='presentpost_office' placeholder="Enter post office" class="form-control"  >
     <label>Mandal :</label><br>
-  <input type="text" formControlName='present_mandal' placeholder="Enter mandal" class="form-control" ><br>
+  <input type="text" formControlName='present_mandal' placeholder="Enter mandal" class="form-control" >
   <label>District :</label><br>
-  <select>
-    <option formControlName="present_district">Select</option>
-    <option formControlName="present_district">Anantapur</option>
-    <option formControlName="present_district">Karnool</option>
-    <option formControlName="present_district">Kadapa</option>
-    <option formControlName="present_district">Chittor</option>
-    <option formControlName="present_district">Nellor</option>
+  <select formControlName="present_district">
+    <option >Select</option>
+    <option >Anantapur</option>
+    <option >Karnool</option>
+    <option >Kadapa</option>
+    <option >Chittor</option>
+    <option >Nellor</option>
   </select><br><br>
     <label>Pin Code :</label><br>
-  <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control" ><br>
+  <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control" >
     </div>
     <label>Country :</label>
-    <select>
-      <option formControlName="country">Select</option>
-      <option formControlName="country">America</option>
-      <option formControlName="country"> United Kingdom</option>
-      <option formControlName="country">Japan</option>
-      <option formControlName="country">Austrelia</option>
-      <option formControlName="country">Singapor</option>
-      <option formControlName="country">Russia</option>
-      <option formControlName="country">China</option>
-      <option formControlName="country">India</option>
-      <option formControlName="country">UAE</option>
-      <option formControlName="country">Bangladesh</option>
-      <option formControlName="country">Nepal</option>
-      <option formControlName="country">Africa</option>
-      <option formControlName="country">Argentina</option>
-      <option formControlName="country">Belgium</option>
-      <option formControlName="country">Canada</option>
-      <option formControlName="country">Denkark</option>
-      <option formControlName="country">England</option>
-      <option formControlName="country">France</option>
+    <select formControlName="country">
+      <option >Select</option>
+      <option >America</option>
+      <option > United Kingdom</option>
+      <option >Japan</option>
+      <option >Austrelia</option>
+      <option >Singapor</option>
+      <option >Russia</option>
+      <option >China</option>
+      <option >India</option>
+      <option >UAE</option>
+      <option >Bangladesh</option>
+      <option >Nepal</option>
+      <option >Africa</option>
+      <option >Argentina</option>
+      <option >Belgium</option>
+      <option >Canada</option>
+      <option >Denkark</option>
+      <option >England</option>
+      <option >France</option>
     </select>
     <label>State :</label>
-    <select>
-      <option formControlName="state">Select</option>
-      <option formControlName="state">Andhrapradesh</option>
-      <option formControlName="state">Telangana</option>
-      <option formControlName="state">Karnataka</option>
-      <option formControlName="state">Tamilnadu</option>
-      <option formControlName="state">Kerala</option>
+    <select formControlName="state">
+      <option >Select</option>
+      <option >Andhrapradesh</option>
+      <option >Telangana</option>
+      <option >Karnataka</option>
+      <option >Tamilnadu</option>
+      <option >Kerala</option>
     </select>
     <label>City :</label>
     <select formControlName='city' >
@@ -297,7 +302,7 @@ IFSC code Is Required</p>
     City Is Required</p>
   </div>
 
-
+</div>
   </div>
   <div class="col-md-5"></div>
   <div class="col-md-4">
@@ -408,7 +413,7 @@ IFSC code Is Required</p>
 
   <div>
     <div *ngIf="flag4">
-    <form [formGroup]='skill'(ngSubmit)="onSave4Click()">
+    <form [formGroup]='skill'(ngSubmit)="onaddclick()">
 
    <h3 style="text-align: center;">Skill</h3>
    <div formArrayName="skill_details" ><div><br></div>
