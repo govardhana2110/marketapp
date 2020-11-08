@@ -25,6 +25,27 @@ qualification:FormGroup;
 
     });
   }
+  get qualiArray()
+  {
+    return<FormArray>this.qualification.get('qualification_details');
+
+  }
+  addqualification()
+  {
+    this.qualiArray.push(this.qualificationgroup());
+  }
+
+  deletequalification(index)
+  {
+  this.qualiArray.removeAt(index);
+  }
+
+
+  myReset()
+  {
+  this.qualiArray.reset();
+  }
+
   getang(form):Array<any>{
     return form.controls.qualification_details.controls;
   }

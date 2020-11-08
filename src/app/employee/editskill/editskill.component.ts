@@ -28,6 +28,27 @@ skill:FormGroup;
 
     });
   }
+
+  get skillarray(){
+    return<FormArray>this.skill.get('skill_details');
+  }
+  addskill()
+  {
+    this.skillarray.push(this.skillgroup());
+  }
+
+
+  deleteskill(index)
+  {
+  this.skillarray.removeAt(index);
+  }
+
+
+  mySkillReset()
+  {
+  this.skillarray.reset();
+  }
+
   skillgetang(form):Array<any>{
     return form.controls.skill_details.controls;
   }

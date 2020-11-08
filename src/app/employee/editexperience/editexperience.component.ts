@@ -25,6 +25,26 @@ experience:FormGroup;
         experience: new FormControl (null,[Validators.required]),
     });
   }
+  get experiencearray(){
+    return<FormArray>this.experience.get('skill_details');
+  }
+  addexperience()
+  {
+    this.experiencearray.push(this.experiencegroup());
+  }
+
+
+  deleteexperience(index)
+  {
+  this.experiencearray.removeAt(index);
+  }
+
+
+  experienceReset()
+  {
+  this.experiencearray.reset();
+  }
+
   Duplicate(fromdate, todate): boolean {
     let myArray = this.expgetang(this.experience);
     let test = myArray.filter(data => data.controls.dategroup.get('todate').value >= fromdate && fromdate != null)

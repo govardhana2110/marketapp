@@ -1,45 +1,57 @@
 <div class="container">
-
   <form [formGroup]='experience'(ngSubmit)="onSaveClick()">
     <h3 style="text-align: center;">Experience</h3>
-<div formArrayName="experience_details" ><div><br></div>
-<!-- <div *ngFor="let item of experience.controls; let y=index;" [formGroupName]="y" > -->
-<div class="row">
-  <div formGroupName="dategroup">
-  <div class="col-sm-2 form-group div">
-    <label>ID<span class="lblError">*</span></label>
-    <input type="date" class="form-control" formControlName="id" placeholder="Enter From Date">
-    <label>From Date<span class="lblError">*</span></label>
-    <input type="date" class="form-control" formControlName="fromdate" placeholder="Enter From Date">
-    <p class="lblError"*ngIf="experience.get('dategroup').get('fromdate').hasError('required') && !experience.get('dategroup').get('fromdate').pristine ">From Date is required!...</p>
-    <!-- <p class="lblError" *ngIf="Duplicate(item.get('dategroup').get('fromdate').value, y) && y > 0">Date should not overlap</p>
-    <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">No Date duplicates allowed</p> -->
-</div>
+    <button type="button" class="btn btn-success"  (click)="addexperience()" >Add Experience</button>
+    <div formArrayName="experience_details" ><div><br></div>
+    <div *ngFor="let item of experiencearray.controls; let y=index;" [formGroupName]="y" >
+     <div class="row">
+      <div class="col-sm-2 form-group div">
+        <label>ID<span class="lblError">*</span></label>
+        <input type="date" class="form-control" formControlName="id" placeholder="Enter From Date">
+             </div>
+       <div formGroupName="dategroup">
+       <div class="col-sm-2 form-group div">
+         <label>From Date<span class="lblError">*</span></label>
+         <input type="date" class="form-control" formControlName="fromdate" placeholder="Enter From Date">
+         <p class="lblError"*ngIf="item.get('dategroup').get('fromdate').hasError('required') && !item.get('dategroup').get('fromdate').pristine ">From Date is required!...</p>
+         <p class="lblError" *ngIf="Duplicate(item.get('dategroup').get('fromdate').value, y) && y > 0">Date should not overlap</p>
+         <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">No Date duplicates allowed</p>
+     </div>
 
-<div class="col-sm-2 form-group div">
-  <label>To Date<span class="lblError">*</span></label>
-  <input type="date" class="form-control" formControlName="todate"  placeholder="To Date name">
-      <p class="lblError"*ngIf="experience.get('dategroup').get('todate').hasError('required') && !experience.get('dategroup').get('todate').pristine ">To Date is required!...</p>
-      <p class="lblError"*ngIf="experience.get('dategroup').hasError('dates') && !experience.get('dategroup').pristine ">From Date should be less than To Date</p>
-</div>
-</div>
+     <div class="col-sm-2 form-group div">
+       <label>To Date<span class="lblError">*</span></label>
+       <input type="date" class="form-control" formControlName="todate"  placeholder="To Date name">
+           <p class="lblError"*ngIf="item.get('dategroup').get('todate').hasError('required') && !item.get('dategroup').get('todate').pristine ">To Date is required!...</p>
+           <p class="lblError"*ngIf="item.get('dategroup').hasError('dates') && !item.get('dategroup').pristine ">From Date should be less than To Date</p>
+     </div>
+   </div>
 
-<div class="col-sm-2 form-group div">
-  <label>Organisation<span class="lblError">*</span></label>
-  <input type="text" class="form-control"  formControlName="organisation" placeholder="enter organisation">
-  <p class="lblError"*ngIf="experience.get('organisation').hasError('required') && !experience.get('organisation').pristine ">organisation is required</p>
-</div>
+     <div class="col-sm-2 form-group div">
+       <label>Organisation<span class="lblError">*</span></label>
+       <input type="text" class="form-control"  formControlName="organisation" placeholder="enter organisation">
+       <p class="lblError"*ngIf="item.get('organisation').hasError('required') && !item.get('organisation').pristine ">organisation is required</p>
+     </div>
 
-<div class="col-sm-2 form-group div">
-  <label>experience<span class="lblError">*</span></label>
-  <input type="text" class="form-control" formControlName="experience" placeholder="Enter experience">
-  <p class="lblError"*ngIf="experience.get('experience').hasError('required') && !experience.get('experience').pristine ">experience is required</p>
-</div>
+     <div class="col-sm-2 form-group div">
+       <label>experience<span class="lblError">*</span></label>
+       <input type="text" class="form-control" formControlName="experience" placeholder="Enter experience">
+       <p class="lblError"*ngIf="item.get('experience').hasError('required') && !item.get('experience').pristine ">experience is required</p>
+     </div>
 
-</div>
-</div>
+
+
+     <div>&nbsp;&nbsp;</div>
+     <div class="col-sm-2 form-group div">
+
+     &nbsp;&nbsp;&nbsp;&nbsp; <button type="button"class="btn btn-danger btn-sm pull"(click)="deleteexperience(y)" >Delete</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;<button  (click)="experienceReset()" class="btn btn-primary btn-sm pull">Edit</button>
+     <div>&nbsp;</div>
+   </div>
+   </div>
+   </div>
+     </div>
 <!-- </div> -->
 <button type="submit">Save</button>
   </form>
-
 </div>
+

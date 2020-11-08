@@ -226,30 +226,30 @@ IFSC code Is Required</p><br>
       <option value="bengaluru">Bengaluru</option>
       <option value="mumbai">Mumbai</option>
     </select><br><br>
+    <div class="form-check">
+      <input formControlName="Permanent_address" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+      <label class="form-check-label" for="defaultCheck1" >
+       Copy Same to Permanent Address
+      </label>
+    </div>
   </div>
+
+</div>
   <div class="col-sm-6 form-group div">
-
-  <div class="form-check">
-    <input formControlName="permanent_address" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-    <label class="form-check-label" for="defaultCheck1" >
-     Copy Same to Permanent Address
-    </label>
-  </div>
-
   <h3> Present Address Details</h3>
   <div>
     <label>ID :</label><br>
-  <input type="text" formControlName='id' placeholder="Enter ID" class="form-control"  >
+  <input type="text" formControlName='pid' placeholder="Enter ID" class="form-control" value={{sid}} >
     <label>D.No/Street :</label><br>
-  <input type="text" formControlName='presentdno_street' placeholder="Enter D.no/street" class="form-control"  >
+  <input type="text" formControlName='presentdno_street' placeholder="Enter D.no/street" class="form-control" value={{sdno_street}} >
     <label>Village :</label><br>
-  <input type="text"  formControlName='present_village' placeholder="Enter village"  class="form-control" >
+  <input type="text"  formControlName='present_village' placeholder="Enter village"  class="form-control" value={{svillage}} >
     <label>Post Office :</label><br>
-  <input type="text" formControlName='presentpost_office' placeholder="Enter post office" class="form-control"  >
+  <input type="text" formControlName='presentpost_office' placeholder="Enter post office" class="form-control" value={{spost_office}} >
     <label>Mandal :</label><br>
-  <input type="text" formControlName='present_mandal' placeholder="Enter mandal" class="form-control" >
+  <input type="text" formControlName='present_mandal' placeholder="Enter mandal" class="form-control" value={{smandal}} >
   <label>District :</label><br>
-  <select formControlName="present_district">
+  <select formControlName="present_district" value={{sdistrict}}>
     <option >Select</option>
     <option >Anantapur</option>
     <option >Karnool</option>
@@ -258,10 +258,10 @@ IFSC code Is Required</p><br>
     <option >Nellor</option>
   </select><br><br>
     <label>Pin Code :</label><br>
-  <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control" >
+  <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control" value={{spin_code}} >
     </div>
     <label>Country :</label>
-    <select formControlName="country">
+    <select formControlName="pcountry" value={{scountry}}>
       <option >Select</option>
       <option >America</option>
       <option > United Kingdom</option>
@@ -283,7 +283,7 @@ IFSC code Is Required</p><br>
       <option >France</option>
     </select>
     <label>State :</label>
-    <select formControlName="state">
+    <select formControlName="pstate" value={{sstate}}>
       <option >Select</option>
       <option >Andhrapradesh</option>
       <option >Telangana</option>
@@ -292,22 +292,22 @@ IFSC code Is Required</p><br>
       <option >Kerala</option>
     </select>
     <label>City :</label>
-    <select formControlName='city' >
+    <select formControlName='pcity' value={{scity}} >
       <option value="">Select</option>
       <option value="hyderabad">Hyderabad</option>
       <option value="bengaluru">Bengaluru</option>
       <option value="mumbai">Mumbai</option>
     </select><br><br>
-  <p class="lblError" *ngIf="permanent.get('city').hasError('required') && !permanent.get('city').pristine ">
+  <p class="lblError" *ngIf="permanent.get('pcity').hasError('required') && !permanent.get('pcity').pristine ">
     City Is Required</p>
   </div>
 
 </div>
-  </div>
+
   <div class="col-md-5"></div>
   <div class="col-md-4">
   <button (click)="onBackClick()"  class="btn btn-primary"> << Back</button>&nbsp;
-  <button type="submit" class="btn btn-primary">Save</button>
+  <button type="submit" class="btn btn-primary">Save</button>&nbsp;
   <button (click)="onNextClick1()"  class="btn btn-primary"> Next >></button>&nbsp;
   </div>
   </form>
@@ -318,40 +318,49 @@ IFSC code Is Required</p><br>
 
   <div class="container">
     <div *ngIf="flag2">
-    <form [formGroup]='qualification'(ngSubmit)="onSave2Click()">
-      <div formArrayName="qualification_details" ><div><br></div>
-      <!-- <div *ngFor="let item of qualification; let i=index;" [formGroupName]="i" > -->
-      <div class="row">
-        <div class="col-sm-2 form-group div">
-          <label>Qualification<span class="lblError">*</span></label>
-        <input type="text" class="form-control" formControlName="id" placeholder="Enter Qualification">
-        <p class="lblError"*ngIf="qualification.get('id').hasError('required') && !qualification.get('id').pristine">Qualification is required</p>
-        <!-- <p class="lblError" *ngIf="qualification.get('id').value!='' && duplicate(qualification.get('id').value) && i > 0">Duplicates not Allowed</p>
-        <label>Qualification<span class="lblError">*</span></label> -->
-        <input type="text" class="form-control" formControlName="qualification" placeholder="Enter Qualification">
-        <p class="lblError"*ngIf="qualification.get('qualification').hasError('required') && !qualification.get('qualification').pristine">Qualification is required</p>
-        <!-- <p class="lblError" *ngIf="qualification.get('qualification').value!='' && duplicate(qualification.get('qualification').value) && i > 0">Duplicates not Allowed</p> -->
-      </div>
-
-      <div class="col-sm-2 form-group div">
-        <label>Institute<span class="lblError">*</span></label><br>
-        <input type="text" class="form-control" formControlName="institute"  placeholder="Institute name">
-        <p class="lblError"*ngIf="qualification.get('institute').hasError('required') && !qualification.get('institute').pristine ">Institute is required</p>
-      </div>
-
-      <div class="col-sm-2 form-group div">
-        <label>Passing Year<span class="lblError">*</span></label>
-        <input type="date" class="form-control"  formControlName="year" placeholder="Passing Year">
-        <p class="lblError"*ngIf="qualification.get('year').hasError('required') && !qualification.get('year').pristine ">Passing Year is required</p>
-      </div>
-
-      <div class="col-sm-2 form-group div">
-        <label>Score<span class="lblError">*</span></label>
-        <input type="text" class="form-control" formControlName="score" placeholder="Enter Score">
-        <p class="lblError"*ngIf="qualification.get('score').hasError('required') && !qualification.get('score').pristine ">Score is required</p>
-      </div>
+      <form [formGroup]='qualification'(ngSubmit)="onSave2Click()">
+        <button type="button"class="btn btn-danger btn-sm pull"(click)="addqualification()" >Add</button>
+        <div formArrayName="qualification_details" ><div><br></div>
+         <div *ngFor="let item of qualiArray.controls; let i=index;" [formGroupName]="i" >
+  <div class="row">
+    <div class="col-sm-2 form-group div">
+      <label>ID<span class="lblError">*</span></label>
+      <input type="text" class="form-control" formControlName="id" placeholder="Enter Qualification">
+      <!-- <p class="lblError"*ngIf="item.get('').hasError('required') && !item.get('qualification').pristine">Qualification is required</p>
+      <p class="lblError" *ngIf="item.get('qualification').value!='' && duplicate(item.get('qualification').value,i) && i > 0">Duplicates not Allowed</p> -->
     </div>
+    <div class="col-sm-2 form-group div">
+    <label>Qualification<span class="lblError">*</span></label>
+    <input type="text" class="form-control" formControlName="qualification" placeholder="Enter Qualification">
+    <p class="lblError"*ngIf="item.get('qualification').hasError('required') && !item.get('qualification').pristine">Qualification is required</p>
+    <p class="lblError" *ngIf="item.get('qualification').value!='' && duplicate(item.get('qualification').value,i) && i > 0">Duplicates not Allowed</p>
+  </div>
+
+  <div class="col-sm-2 form-group div">
+    <label>Institute<span class="lblError">*</span></label><br>
+    <input type="text" class="form-control" formControlName="institute"  placeholder="Institute name">
+    <p class="lblError"*ngIf="item.get('institute').hasError('required') && !item.get('institute').pristine ">Institute is required</p>
+  </div>
+
+  <div class="col-sm-2 form-group div">
+    <label>Passing Year<span class="lblError">*</span></label>
+    <input type="date" class="form-control"  formControlName="year" placeholder="Passing Year">
+    <p class="lblError"*ngIf="item.get('year').hasError('required') && !item.get('year').pristine ">Passing Year is required</p>
+  </div>
+
+  <div class="col-sm-2 form-group div">
+    <label>Score<span class="lblError">*</span></label>
+    <input type="text" class="form-control" formControlName="score" placeholder="Enter Score">
+    <p class="lblError"*ngIf="item.get('score').hasError('required') && !item.get('score').pristine ">Score is required</p>
+  </div>
+  <div class="col-sm-2 form-group div">
+    <button type="button"class="btn btn-danger btn-sm pull"(click)="deletequalification(i)" >Delete</button>
+     &nbsp;&nbsp;&nbsp;&nbsp;<button  (click)="myReset()" class="btn btn-primary btn-sm pull">Edit</button>
+    <div>&nbsp;</div>
     </div>
+</div>
+</div>
+  </div>
   <!-- </div> -->
   <button (click)="onBack1Click()"><< Back</button>
   <button type="submit">Save</button>
@@ -366,42 +375,55 @@ IFSC code Is Required</p><br>
     <div *ngIf="flag3">
     <form [formGroup]='experience'(ngSubmit)="onSave3Click()">
       <h3 style="text-align: center;">Experience</h3>
-  <div formArrayName="experience_details" ><div><br></div>
- <!-- <div *ngFor="let item of experience.controls; let y=index;" [formGroupName]="y" > -->
-  <div class="row">
-    <div formGroupName="dategroup">
-    <div class="col-sm-2 form-group div">
-      <label>ID<span class="lblError">*</span></label>
-      <input type="date" class="form-control" formControlName="id" placeholder="Enter From Date">
-      <label>From Date<span class="lblError">*</span></label>
-      <input type="date" class="form-control" formControlName="fromdate" placeholder="Enter From Date">
-      <p class="lblError"*ngIf="experience.get('dategroup').get('fromdate').hasError('required') && !experience.get('dategroup').get('fromdate').pristine ">From Date is required!...</p>
-      <!-- <p class="lblError" *ngIf="Duplicate(item.get('dategroup').get('fromdate').value, y) && y > 0">Date should not overlap</p>
-      <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">No Date duplicates allowed</p> -->
-  </div>
+      <button type="button" class="btn btn-success"  (click)="addexperience()" >Add Experience</button>
+      <div formArrayName="experience_details" ><div><br></div>
+      <div *ngFor="let item of experiencearray.controls; let y=index;" [formGroupName]="y" >
+       <div class="row">
+        <div class="col-sm-2 form-group div">
+          <label>ID<span class="lblError">*</span></label>
+          <input type="date" class="form-control" formControlName="id" placeholder="Enter From Date">
+               </div>
+         <div formGroupName="dategroup">
+         <div class="col-sm-2 form-group div">
+           <label>From Date<span class="lblError">*</span></label>
+           <input type="date" class="form-control" formControlName="fromdate" placeholder="Enter From Date">
+           <p class="lblError"*ngIf="item.get('dategroup').get('fromdate').hasError('required') && !item.get('dategroup').get('fromdate').pristine ">From Date is required!...</p>
+           <p class="lblError" *ngIf="Duplicate(item.get('dategroup').get('fromdate').value, y) && y > 0">Date should not overlap</p>
+           <p class="lblError" *ngIf="Duplicate1(item.get('dategroup').get('fromdate').value, y) && y > 0">No Date duplicates allowed</p>
+       </div>
 
-  <div class="col-sm-2 form-group div">
-    <label>To Date<span class="lblError">*</span></label>
-    <input type="date" class="form-control" formControlName="todate"  placeholder="To Date name">
-        <p class="lblError"*ngIf="experience.get('dategroup').get('todate').hasError('required') && !experience.get('dategroup').get('todate').pristine ">To Date is required!...</p>
-        <p class="lblError"*ngIf="experience.get('dategroup').hasError('dates') && !experience.get('dategroup').pristine ">From Date should be less than To Date</p>
-  </div>
-</div>
+       <div class="col-sm-2 form-group div">
+         <label>To Date<span class="lblError">*</span></label>
+         <input type="date" class="form-control" formControlName="todate"  placeholder="To Date name">
+             <p class="lblError"*ngIf="item.get('dategroup').get('todate').hasError('required') && !item.get('dategroup').get('todate').pristine ">To Date is required!...</p>
+             <p class="lblError"*ngIf="item.get('dategroup').hasError('dates') && !item.get('dategroup').pristine ">From Date should be less than To Date</p>
+       </div>
+     </div>
 
-  <div class="col-sm-2 form-group div">
-    <label>Organisation<span class="lblError">*</span></label>
-    <input type="text" class="form-control"  formControlName="organisation" placeholder="enter organisation">
-    <p class="lblError"*ngIf="experience.get('organisation').hasError('required') && !experience.get('organisation').pristine ">organisation is required</p>
-  </div>
+       <div class="col-sm-2 form-group div">
+         <label>Organisation<span class="lblError">*</span></label>
+         <input type="text" class="form-control"  formControlName="organisation" placeholder="enter organisation">
+         <p class="lblError"*ngIf="item.get('organisation').hasError('required') && !item.get('organisation').pristine ">organisation is required</p>
+       </div>
 
-  <div class="col-sm-2 form-group div">
-    <label>experience<span class="lblError">*</span></label>
-    <input type="text" class="form-control" formControlName="experience" placeholder="Enter experience">
-    <p class="lblError"*ngIf="experience.get('experience').hasError('required') && !experience.get('experience').pristine ">experience is required</p>
-  </div>
+       <div class="col-sm-2 form-group div">
+         <label>experience<span class="lblError">*</span></label>
+         <input type="text" class="form-control" formControlName="experience" placeholder="Enter experience">
+         <p class="lblError"*ngIf="item.get('experience').hasError('required') && !item.get('experience').pristine ">experience is required</p>
+       </div>
 
-</div>
-</div>
+
+
+       <div>&nbsp;&nbsp;</div>
+       <div class="col-sm-2 form-group div">
+
+       &nbsp;&nbsp;&nbsp;&nbsp; <button type="button"class="btn btn-danger btn-sm pull"(click)="deleteexperience(y)" >Delete</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;<button  (click)="experienceReset()" class="btn btn-primary btn-sm pull">Edit</button>
+       <div>&nbsp;</div>
+     </div>
+     </div>
+     </div>
+       </div>
 <!-- </div> -->
 <button (click)="onBack2Click()"><< Back</button>
   <button type="submit">Save</button>
@@ -416,49 +438,62 @@ IFSC code Is Required</p><br>
     <form [formGroup]='skill'(ngSubmit)="onaddclick()">
 
    <h3 style="text-align: center;">Skill</h3>
-   <div formArrayName="skill_details" ><div><br></div>
-  <!-- <div *ngFor="let item of skill.controls; let a=index;" [formGroupName]="a" > -->
-   <div class="row">
-     <div class="col-sm-2 form-group div">
+   <button type="button" class="btn btn-success"  (click)="addskill()" >Add Skill</button><div><br></div>
+  <div formArrayName="skill_details" ><div><br></div>
+ <div *ngFor="let item of skillarray.controls; let a=index;" [formGroupName]="a" >
+
+
+
+  <div class="row">
+    <div class="col-sm-2 form-group div">
       <label>ID<span class="lblError">*</span></label>
       <input type="text" class="form-control" formControlName="id" placeholder="Enter catagory">
-     <label>Skill<span class="lblError">*</span></label>
-     <input type="text" class="form-control" formControlName="skill" placeholder="Enter catagory">
-     <p class="lblError"*ngIf="skill.get('skill').hasError('required') && !skill.get('skill').pristine">skill is required</p>
-     <!-- <p class="lblError" *ngIf=" item.get('skill').value!='' &&skillduplicate(item.get('skill').value, a) && a > 0">Duplicates not Allowed</p> -->
-   </div>
+      <!-- <p class="lblError"*ngIf="item.get('skill').hasError('required') && !item.get('skill').pristine">skill is required</p>
+      <p class="lblError" *ngIf=" item.get('skill').value!='' &&skillduplicate(item.get('skill').value, a) && a > 0">Duplicates not Allowed</p> -->
+    </div>
+    <div class="col-sm-2 form-group div">
+    <label>Skill<span class="lblError">*</span></label>
+    <input type="text" class="form-control" formControlName="skill" placeholder="Enter catagory">
+    <p class="lblError"*ngIf="item.get('skill').hasError('required') && !item.get('skill').pristine">skill is required</p>
+    <p class="lblError" *ngIf=" item.get('skill').value!='' &&skillduplicate(item.get('skill').value, a) && a > 0">Duplicates not Allowed</p>
+  </div>
 
-   <div class="col-sm-2 form-group div">
-     <label>skill catagory<span class="lblError">*</span></label><br>
-     <input type="text" class="form-control" formControlName="skillcatagory"  placeholder="skillcatogary">
-     <p class="lblError"*ngIf="skill.get('skillcatagory').hasError('required') && !skill.get('skillcatagory').pristine ">catogary is required</p>
-   </div>
+  <div class="col-sm-2 form-group div">
+    <label>skill catagory<span class="lblError">*</span></label><br>
+    <input type="text" class="form-control" formControlName="skillcatagory"  placeholder="skillcatogary">
+    <p class="lblError"*ngIf="item.get('skillcatagory').hasError('required') && !item.get('skillcatagory').pristine ">catogary is required</p>
+  </div>
 
-   <div class="col-sm-2 form-group div">
-     <label>skill level<span class="lblError">*</span></label>
-     <input type="text" class="form-control"  formControlName="skilllevel" placeholder="skill level">
-     <p class="lblError"*ngIf="skill.get('skilllevel').hasError('required') && !skill.get('skilllevel').pristine ">skill leve is required</p>
-   </div>
+  <div class="col-sm-2 form-group div">
+    <label>skill level<span class="lblError">*</span></label>
+    <input type="text" class="form-control"  formControlName="skilllevel" placeholder="skill level">
+    <p class="lblError"*ngIf="item.get('skilllevel').hasError('required') && !item.get('skilllevel').pristine ">skill leve is required</p>
+  </div>
 
-   <div class="col-sm-2 form-group div">
-     <label>iscurrent<span class="lblError">*</span></label><br>
-     <input type="radio" formControlName="iscurrent"  value="yes"> Yes
-     <input type="radio" formControlName="iscurrent"  value="no"> No<br>
-     <p class="lblError"*ngIf="skill.get('iscurrent').hasError('required') && !skill.get('iscurrent').pristine ">is current required</p>
-   </div>
-   <div class="col-sm-2 form-group div">
-     <label>experience<span class="lblError">*</span></label>
-     <input type="text" class="form-control" formControlName="experience" placeholder="Enter experience">
-     <p class="lblError"*ngIf="skill.get('experience').hasError('required') && !skill.get('experience').pristine ">experience is required</p>
-   </div>
+  <div class="col-sm-2 form-group div">
+    <label>iscurrent<span class="lblError">*</span></label><br>
+    <input type="radio" formControlName="iscurrent"  value="yes"> Yes
+    <input type="radio" formControlName="iscurrent"  value="no"> No<br>
+    <p class="lblError"*ngIf="item.get('iscurrent').hasError('required') && !item.get('iscurrent').pristine ">is current required</p>
+  </div>
+  <div class="col-sm-2 form-group div">
+    <label>experience<span class="lblError">*</span></label>
+    <input type="text" class="form-control" formControlName="experience" placeholder="Enter experience">
+    <p class="lblError"*ngIf="item.get('experience').hasError('required') && !item.get('experience').pristine ">experience is required</p>
+  </div>
 
+</div>
 
+  <div>&nbsp;&nbsp;</div>
+  <div class="col-sm-2 form-group div">
 
-   <div>&nbsp;&nbsp;</div>
-   <div class="col-sm-2 form-group div">
- </div>
- </div>
- </div>
+  &nbsp;&nbsp;&nbsp;&nbsp; <button type="button"class="btn btn-danger btn-sm pull"(click)="deleteskill(a)" >Delete</button>
+   &nbsp;&nbsp;&nbsp;&nbsp;<button  (click)="mySkillReset()" class="btn btn-primary tn-sm pull">Edit</button>
+  <div>&nbsp;</div>
+</div>
+
+</div>
+  </div>
    <!-- </div> -->
    <button (click)="onBack3Click()"><< Back</button>
   <button type="submit">Save</button>

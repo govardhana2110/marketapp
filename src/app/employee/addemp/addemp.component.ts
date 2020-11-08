@@ -78,18 +78,19 @@ skill:FormGroup;
     country:new FormControl(null,[Validators.required]),
     state:new FormControl(null,[Validators.required]),
     city:new FormControl(null,[Validators.required]),
-    permanent_address:new FormControl(),
+    Permanent_address:new FormControl(null),
   }),
-    id:new FormControl(null,[Validators.required]),
+
+    pid:new FormControl(null,[Validators.required]),
     presentdno_street:new FormControl(null,[Validators.required]),
     present_village:new FormControl(null,[Validators.required]),
     presentpost_office:new FormControl(null,[Validators.required]),
     present_mandal:new FormControl(null,[Validators.required]),
     present_district:new FormControl(null,[Validators.required]),
     presentpin_code:new FormControl(null,[Validators.required]),
-    country:new FormControl(null,[Validators.required]),
-    state:new FormControl(null,[Validators.required]),
-    city:new FormControl(null,[Validators.required]),
+    pcountry:new FormControl(null,[Validators.required]),
+    pstate:new FormControl(null,[Validators.required]),
+    pcity:new FormControl(null,[Validators.required]),
   });
   this.qualification=this.fb.group({
     qualification_details:this.fb.array( [this.qualificationgroup()]),
@@ -148,6 +149,27 @@ setAddress(val:boolean, paddressGrp:FormGroup){
 
     });
   }
+  get qualiArray()
+  {
+    return<FormArray>this.qualification.get('qualification_details');
+
+  }
+  addqualification()
+  {
+    this.qualiArray.push(this.qualificationgroup());
+  }
+
+  deletequalification(index)
+  {
+  this.qualiArray.removeAt(index);
+  }
+
+
+  myReset()
+  {
+  this.qualiArray.reset();
+  }
+
   getang(form):Array<any>{
     return form.controls.qualification_details.controls;
   }
@@ -170,6 +192,25 @@ setAddress(val:boolean, paddressGrp:FormGroup){
         organisation: new FormControl (null,[Validators.required]),
         experience: new FormControl (null,[Validators.required]),
     });
+  }
+  get experiencearray(){
+    return<FormArray>this.experience.get('skill_details');
+  }
+  addexperience()
+  {
+    this.experiencearray.push(this.experiencegroup());
+  }
+
+
+  deleteexperience(index)
+  {
+  this.experiencearray.removeAt(index);
+  }
+
+
+  experienceReset()
+  {
+  this.experiencearray.reset();
   }
   Duplicate(fromdate, todate): boolean {
     let myArray = this.expgetang(this.experience);
@@ -218,6 +259,26 @@ setAddress(val:boolean, paddressGrp:FormGroup){
 
     });
   }
+  get skillarray(){
+    return<FormArray>this.skill.get('skill_details');
+  }
+  addskill()
+  {
+    this.skillarray.push(this.skillgroup());
+  }
+
+
+  deleteskill(index)
+  {
+  this.skillarray.removeAt(index);
+  }
+
+
+  mySkillReset()
+  {
+  this.skillarray.reset();
+  }
+
   skillgetang(form):Array<any>{
     return form.controls.skill_details.controls;
   }

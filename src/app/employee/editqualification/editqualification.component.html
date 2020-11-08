@@ -1,42 +1,51 @@
-<div class="container">
 
-  <form [formGroup]='qualification'(ngSubmit)="onSaveClick()">
-    <div formArrayName="qualification_details" ><div><br></div>
-    <!-- <div *ngFor="let item of qualification; let i=index;" [formGroupName]="i" > -->
-    <div class="row">
-      <div class="col-sm-2 form-group div">
-        <label>Qualification<span class="lblError">*</span></label>
+
+  <div class="container">
+      <form [formGroup]='qualification'(ngSubmit)="onSaveClick()">
+        <button type="button"class="btn btn-danger btn-sm pull"(click)="addqualification()" >Add</button>
+        <div formArrayName="qualification_details" ><div><br></div>
+         <div *ngFor="let item of qualiArray.controls; let i=index;" [formGroupName]="i" >
+  <div class="row">
+    <div class="col-sm-2 form-group div">
+      <label>ID<span class="lblError">*</span></label>
       <input type="text" class="form-control" formControlName="id" placeholder="Enter Qualification">
-      <p class="lblError"*ngIf="qualification.get('id').hasError('required') && !qualification.get('id').pristine">Qualification is required</p>
-      <!-- <p class="lblError" *ngIf="qualification.get('id').value!='' && duplicate(qualification.get('id').value) && i > 0">Duplicates not Allowed</p>
-      <label>Qualification<span class="lblError">*</span></label> -->
-      <input type="text" class="form-control" formControlName="qualification" placeholder="Enter Qualification">
-      <p class="lblError"*ngIf="qualification.get('qualification').hasError('required') && !qualification.get('qualification').pristine">Qualification is required</p>
-      <!-- <p class="lblError" *ngIf="qualification.get('qualification').value!='' && duplicate(qualification.get('qualification').value) && i > 0">Duplicates not Allowed</p> -->
+      <!-- <p class="lblError"*ngIf="item.get('').hasError('required') && !item.get('qualification').pristine">Qualification is required</p>
+      <p class="lblError" *ngIf="item.get('qualification').value!='' && duplicate(item.get('qualification').value,i) && i > 0">Duplicates not Allowed</p> -->
     </div>
-
     <div class="col-sm-2 form-group div">
-      <label>Institute<span class="lblError">*</span></label><br>
-      <input type="text" class="form-control" formControlName="institute"  placeholder="Institute name">
-      <p class="lblError"*ngIf="qualification.get('institute').hasError('required') && !qualification.get('institute').pristine ">Institute is required</p>
-    </div>
-
-    <div class="col-sm-2 form-group div">
-      <label>Passing Year<span class="lblError">*</span></label>
-      <input type="date" class="form-control"  formControlName="year" placeholder="Passing Year">
-      <p class="lblError"*ngIf="qualification.get('year').hasError('required') && !qualification.get('year').pristine ">Passing Year is required</p>
-    </div>
-
-    <div class="col-sm-2 form-group div">
-      <label>Score<span class="lblError">*</span></label>
-      <input type="text" class="form-control" formControlName="score" placeholder="Enter Score">
-      <p class="lblError"*ngIf="qualification.get('score').hasError('required') && !qualification.get('score').pristine ">Score is required</p>
-    </div>
+    <label>Qualification<span class="lblError">*</span></label>
+    <input type="text" class="form-control" formControlName="qualification" placeholder="Enter Qualification">
+    <p class="lblError"*ngIf="item.get('qualification').hasError('required') && !item.get('qualification').pristine">Qualification is required</p>
+    <p class="lblError" *ngIf="item.get('qualification').value!='' && duplicate(item.get('qualification').value,i) && i > 0">Duplicates not Allowed</p>
   </div>
-  </div>
-<!-- </div> -->
-<button type="submit">Save</button>
-  </form>
 
+  <div class="col-sm-2 form-group div">
+    <label>Institute<span class="lblError">*</span></label><br>
+    <input type="text" class="form-control" formControlName="institute"  placeholder="Institute name">
+    <p class="lblError"*ngIf="item.get('institute').hasError('required') && !item.get('institute').pristine ">Institute is required</p>
+  </div>
+
+  <div class="col-sm-2 form-group div">
+    <label>Passing Year<span class="lblError">*</span></label>
+    <input type="date" class="form-control"  formControlName="year" placeholder="Passing Year">
+    <p class="lblError"*ngIf="item.get('year').hasError('required') && !item.get('year').pristine ">Passing Year is required</p>
+  </div>
+
+  <div class="col-sm-2 form-group div">
+    <label>Score<span class="lblError">*</span></label>
+    <input type="text" class="form-control" formControlName="score" placeholder="Enter Score">
+    <p class="lblError"*ngIf="item.get('score').hasError('required') && !item.get('score').pristine ">Score is required</p>
+  </div>
+  <div class="col-sm-2 form-group div">
+    <button type="button"class="btn btn-danger btn-sm pull"(click)="deletequalification(i)" >Delete</button>
+     &nbsp;&nbsp;&nbsp;&nbsp;<button  (click)="myReset()" class="btn btn-primary btn-sm pull">Edit</button>
+    <div>&nbsp;</div>
+    </div>
 </div>
+</div>
+  </div>
+  <!-- </div> -->
+  <button type="submit">Save</button>
+    </form>
 
+  </div>

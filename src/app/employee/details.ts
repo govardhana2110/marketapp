@@ -1,5 +1,5 @@
 export class qualification{
-  constructor ( public id,
+  constructor ( public id:string,
     public qualification:string,
      public institute:string,
      public year:number,
@@ -7,7 +7,7 @@ export class qualification{
 
 }
 export class skill{
-  constructor(public id,
+  constructor(public id:string,
      public skillcatagory:string,
      public skill:string,
      public skilllevel:string,
@@ -15,7 +15,7 @@ export class skill{
      public experience:string){}
 }
 export class experience {
-  constructor( public id,
+  constructor( public id :string,
     public fromdate:string,
     public todate:string,
     public organisation:string,
