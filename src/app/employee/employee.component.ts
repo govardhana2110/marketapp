@@ -75,14 +75,5 @@ onaddclick(){
 ondeleteemp(){
 
 }
-ondeletequalification(){
-
-}
-ondeleteexperience(){
-
-}
-ondeleteskill(){
-
-}
 
 }

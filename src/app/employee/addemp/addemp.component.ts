@@ -35,7 +35,7 @@ skill:FormGroup;
 
   ngOnInit(): void {
     this.registrationform = new FormGroup({
-      employee_number:new FormControl(null,[Validators.required]),
+      id:new FormControl(null,[Validators.required]),
       name:new FormControl(null,[Validators.required]),
       title:new FormControl("Mr."),
       first_name:new FormControl(null,[Validators.required]),
@@ -392,13 +392,20 @@ setAddress(val:boolean, paddressGrp:FormGroup){
     var ans=yd-bdy;
     console.log(ans);
     this.age=ans;
-     }
-     onaddclick(){
+  }
+  onaddclick(){
       this._data.addtask(this.registrationform.value).subscribe((x)=>{});
-      this._data.addtask(this.permanent.value).subscribe((x)=>{});
-      this._data.addtask(this.qualification.value).subscribe((x)=>{});
-      this._data.addtask(this.experience.value).subscribe((x)=>{});
-      this._data.addtask(this.skill.value).subscribe((x)=>{});
-     }
-
+  }
+  onaddclick1(){
+    this._data.addtask(this.permanent.value).subscribe((x)=>{});
+}
+onaddclick2(){
+  this._data.addtask(this.qualification.value).subscribe((x)=>{});
+}
+onaddclick3(){
+  this._data.addtask(this.skill.value).subscribe((x)=>{});
+}
+onaddclick4(){
+  this._data.addtask(this.experience.value).subscribe((x)=>{});
+}
 }

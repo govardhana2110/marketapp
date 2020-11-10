@@ -58,9 +58,9 @@ export class EditaddressComponent implements OnInit {
     }
   }
   onSaveClick(){
-    alert('Saved Successfully')
-    console.log(this.permanent.value)
-    this._router.navigate(['/employee'])
+    // alert('Saved Successfully')
+    // console.log(this.permanent.value)
+    // this._router.navigate(['/employee'])
 
   }
   setAddress(val:boolean, paddressGrp:FormGroup){

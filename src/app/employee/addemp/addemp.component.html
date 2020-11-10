@@ -2,7 +2,7 @@
   <div class="border">
 <div class="container">
   <div *ngIf="flag">
-<form [formGroup]='registrationform'(ngSubmit)="onSaveClick()">
+<form [formGroup]='registrationform'(ngSubmit)="onaddclick()">
   <h1 style="text-align: center;">Registration Form</h1>
   <div class="row">
 
@@ -51,7 +51,7 @@
   <label>Age :</label><br>
   <input type="number" [disabled]="true" class="form-control" formControlName="age" value={{age}} >
   <label>Official Phone :</label><br>
-  <input type="number" placeholder="Enter Official Phone Number" class="form-control"  officephone>
+  <input type="number"  formControlName="official_phone" placeholder="Enter Official Phone Number" class="form-control"  officephone>
   <label>Personal Phone  <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
   <input type="text" formControlName="personal_phone"placeholder="Enter Personal Phone Number" class="form-control"  phone>
   <p class="lblError" *ngIf="registrationform.get('personal_phone').hasError('required') && !registrationform.get('personal_phone').pristine ">
