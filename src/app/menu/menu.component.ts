@@ -1,4 +1,5 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { LoadingService } from "../loading.service";
 
 @Component({
   selector: 'app-menu',
@@ -9,9 +10,15 @@ export class MenuComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor( private _regData:LoadingService) { }
 
   ngOnInit(): void {
   }
-
+onLogInClick(){
+this._regData.login("admin","1234");
+console.log(localStorage.getItem('user_name'));
+}
+onLogOutClick(){
+this._regData.logout();
+}
 }

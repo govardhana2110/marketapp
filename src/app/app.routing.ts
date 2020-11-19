@@ -13,17 +13,19 @@ import { EditexperienceComponent } from './employee/editexperience/editexperienc
 import { EditqualificationComponent } from './employee/editqualification/editqualification.component';
 import { EditskillComponent } from './employee/editskill/editskill.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { from } from 'rxjs';
+import { UsergaurdService } from "./usergaurd.service";
+import { useAnimation } from '@angular/animations';
 
 const arr:Routes=[
   {path : '',component:EmployeeComponent},
   {path : 'employee',component:EmployeeComponent},
   {path : 'home',component:HomeComponent},
-  {path : 'cart',component:CartComponent},
+  {path : 'cart',canActivate:[UsergaurdService], component:CartComponent},
   {path : 'login',component:LoginComponent },
   {path : 'menu',component:MenuComponent},
   {path : 'items',component:ItemsComponent},
   {path : 'addemp',component:AddempComponent},
+  {path : 'Task',canActivate:[UsergaurdService],canLoad:[UsergaurdService], loadChildren:()=>import ('./task7/task7.module').then(x=>x.Task7Module)},
   {path : 'editdetails',component:EditdetailsComponent},
   {path : 'editaddress',component:EditaddressComponent},
   {path : 'editexperience',component:EditexperienceComponent},

@@ -11,8 +11,6 @@ import { ErrorComponent } from './error/error.component';
 import { ItemsComponent } from './items/items.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import { Task7Component } from './task7/task7.component';
-import { from } from 'rxjs';
 import {HttpClientModule  } from "@angular/common/http";
 import { EmployeeComponent } from './employee/employee.component';
 import { EditdetailsComponent } from './employee/editdetails/editdetails.component';
@@ -21,6 +19,7 @@ import { EditqualificationComponent } from './employee/editqualification/editqua
 import { EditexperienceComponent } from './employee/editexperience/editexperience.component';
 import { EditskillComponent } from './employee/editskill/editskill.component';
 import { AddempComponent } from './employee/addemp/addemp.component';
+import { SharedModule } from "./shared.module";
 
 @NgModule({
   declarations: [
@@ -31,10 +30,6 @@ import { AddempComponent } from './employee/addemp/addemp.component';
     ItemsComponent,
     MenuComponent,
     HomeComponent,
-    Task7Component,
-    PhoneDirective,
-    OfficePhoneDirective,
-    AadharDirective,
     EmployeeComponent,
     EditdetailsComponent,
     EditaddressComponent,
@@ -42,6 +37,7 @@ import { AddempComponent } from './employee/addemp/addemp.component';
     EditexperienceComponent,
     EditskillComponent,
     AddempComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -49,7 +45,8 @@ import { AddempComponent } from './employee/addemp/addemp.component';
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
-    arrRouting
+    arrRouting,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

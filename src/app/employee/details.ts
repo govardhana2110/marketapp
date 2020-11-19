@@ -22,7 +22,8 @@ export class experience {
     public experience:string,){}
 }
 export class registration{
-  constructor( public id,
+  constructor(
+    public id:string,
     public name:string,
     public title:string,
     public first_name:string,
@@ -67,7 +68,7 @@ export class permanent{
     ){}
 }
 export class present{
-  constructor( public id:string,
+  constructor( public pid:string,
     public presentdno_street:string,
     public present_village:string,
     public presentpost_office:string,

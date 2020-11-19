@@ -85,11 +85,11 @@ this._data.getDetails2(this.id).subscribe((data:registration[])=>{
 });
 
   }
-  empedit(){
-    this._data.edittask(this.id.value).subscribe((x)=>{
-      this._router.navigate(['/employee']);
-    })
-    }
+  // empedit(){
+  //   this._data.edittask(this.id.value).subscribe((x)=>{
+  //     this._router.navigate(['/employee']);
+  //   })
+  //   }
   updateage(val:Date){
     var td=new Date();
     var yd=td.getFullYear();
