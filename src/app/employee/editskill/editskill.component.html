@@ -1,4 +1,6 @@
-<div>
+
+<div style="background-color: blanchedalmond;">
+<div class="container">
   <form [formGroup]='skill'(ngSubmit)="onSaveClick()">
 
  <h3 style="text-align: center;">Skill</h3>
@@ -46,19 +48,19 @@
   <p class="lblError"*ngIf="item.get('experience').hasError('required') && !item.get('experience').pristine ">experience is required</p>
 </div>
 
-</div>
+
 
 <div>&nbsp;&nbsp;</div>
 <div class="col-sm-2 form-group div">
-
-&nbsp;&nbsp;&nbsp;&nbsp; <button type="button"class="btn btn-danger btn-sm pull"(click)="deleteskill(a)" >Delete</button>
- &nbsp;&nbsp;&nbsp;&nbsp;<button  (click)="mySkillReset()" class="btn btn-primary tn-sm pull">Edit</button>
+<button type="button"class="btn btn-danger btn-sm pull"(click)="deleteskill(a)" >Delete</button>
+<button  (click)="mySkillReset()" class="btn btn-primary btn-sm pull">Edit</button>
 <div>&nbsp;</div>
 </div>
-
+</div>
 </div>
 </div>
  <!-- </div> -->
-<button type="submit">Save</button>
+<button type="submit" class="btn btn-primary">Save</button>
   </form>
+</div>
 </div>

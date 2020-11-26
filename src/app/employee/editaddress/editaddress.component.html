@@ -1,4 +1,4 @@
-
+<div style="background-color: blanchedalmond;">
 <div class="container">
   <form [formGroup]='permanent' (ngSubmit)="onSaveClick()">
     <div class="row">
@@ -82,7 +82,7 @@
   </div>
 
 </div>
-  <!-- <div class="col-sm-6 form-group div">
+  <div class="col-sm-6 form-group div">
   <h3> Present Address Details</h3>
   <div>
     <label>ID :</label><br>
@@ -147,11 +147,12 @@
     </select><br><br>
   <p class="lblError" *ngIf="permanent.get('pcity').hasError('required') && !permanent.get('pcity').pristine ">
     City Is Required</p>
-  </div> -->
+  </div>
 
 </div>
-<button type="submit">Save</button>
+<button type="submit" class="btn btn-primary">Save</button>
 
   </form>
 
   </div>
+</div>
