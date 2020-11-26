@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators,FormBuilder, Form } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmpService } from '../emp.service';
+import { skill} from '../details'
 @Component({
   selector: 'app-editskill',
   templateUrl: './editskill.component.html',
@@ -8,13 +10,34 @@ import { Router } from '@angular/router';
 })
 export class EditskillComponent implements OnInit {
 skill:FormGroup;
-  constructor(private fb: FormBuilder,private _router:Router) { }
+empid;
+  constructor(private fb: FormBuilder,
+    private _router:Router,
+    private _actroutes:ActivatedRoute,
+    private _data:EmpService) { }
 
   ngOnInit(): void {
     this.skill=this.fb.group({
       skill_details:this.fb.array([this.skillgroup()]),
 
     });
+    this.empid=this._actroutes.snapshot.params['id'];
+    // console.log('hello from qualification edit'),
+  this._data.getDetails5(this.empid).subscribe((data:skill[])=>{
+    this.skill.patchValue({
+    id:data[0].id,
+    skillcatagory:data[0].skillcatagory,
+    skill:data[0].skill,
+    skilllevel:data[0].skilllevel,
+    iscurrent:data[0].iscurrent,
+    experience:data[0].experience,
+  });
+});
+  }
+  onSaveClick(){
+     this._data.updateDetails5(this.skill.value).subscribe((x)=>{
+      this._router.navigate(['/employee'])
+    })
   }
   skillgroup(){
     return this.fb.group({
@@ -65,11 +88,7 @@ skill:FormGroup;
   }
   }
 
-  onSaveClick(){
-    alert('Saved Successfully')
- console.log(this.skill.value)
- this._router.navigate(['/employee'])
-  }
+
 
 
 }

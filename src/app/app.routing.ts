@@ -15,22 +15,27 @@ import { EditskillComponent } from './employee/editskill/editskill.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { UsergaurdService } from "./usergaurd.service";
 import { useAnimation } from '@angular/animations';
+import { UserresolverService } from './employee/userresolver.service';
+import { EmpresolverService } from './employee/empresolver.service';
 
 const arr:Routes=[
   {path : '',component:EmployeeComponent},
-  {path : 'employee',component:EmployeeComponent},
+  {path : 'employee',component:EmployeeComponent,resolve:{data:UserresolverService},},
   {path : 'home',component:HomeComponent},
   {path : 'cart',canActivate:[UsergaurdService], component:CartComponent},
   {path : 'login',component:LoginComponent },
   {path : 'menu',component:MenuComponent},
   {path : 'items',component:ItemsComponent},
   {path : 'addemp',component:AddempComponent},
-  {path : 'Task',canActivate:[UsergaurdService],canLoad:[UsergaurdService], loadChildren:()=>import ('./task7/task7.module').then(x=>x.Task7Module)},
-  {path : 'editdetails',component:EditdetailsComponent},
-  {path : 'editaddress',component:EditaddressComponent},
-  {path : 'editexperience',component:EditexperienceComponent},
-  {path : 'editqualification',component:EditqualificationComponent},
-  {path : 'editskill',component:EditskillComponent},
+  {path : 'Task',
+  canActivate:[UsergaurdService],
+  canLoad:[UsergaurdService],
+   loadChildren:()=>import ('./task7/task7.module').then(x=>x.Task7Module)},
+  {path : 'editdetails/:id',component:EditdetailsComponent},
+  {path : 'editaddress/:id',component:EditaddressComponent},
+  {path : 'editexperience/:id',component:EditexperienceComponent},
+  {path : 'editqualification/:id',component:EditqualificationComponent},
+  {path : 'editskill/:id',component:EditskillComponent},
   {path :'error', component: ErrorComponent},
   {path : "**" , redirectTo:'/error'},
 

@@ -5,7 +5,7 @@ import { LoadingService } from "./loading.service";
 @Injectable({
   providedIn: 'root'
 })
-export class UsergaurdService implements CanActivate {
+export class UsergaurdService implements CanActivate,CanLoad {
 
   constructor( private _router:Router,private _regData:LoadingService) { }
 

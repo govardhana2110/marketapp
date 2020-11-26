@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators,FormBuilder, Form } from '@angular/forms';
 import { Router } from '@angular/router';
-import { registration } from '../details';
+import { experience, permanent, present, qualification, registration, skill } from '../details';
 import { EmpService } from '../emp.service';
 @Component({
   selector: 'app-addemp',
@@ -32,6 +32,18 @@ qualification:FormGroup;
 experience:FormGroup;
 skill:FormGroup;
 registration_arr:registration[]=[];
+permanent_arr:permanent[]=[];
+present_arr:present[]=[];
+quali_arr:qualification[]=[];
+exp_arr:experience[]=[];
+skill_arr:skill[]=[];
+counting:number;
+counting1:number;
+counting2:number;
+response;
+response1;
+response2;
+
   constructor(private fb: FormBuilder,
     private _router:Router,
     private _data:EmpService) { }
@@ -52,7 +64,7 @@ registration_arr:registration[]=[];
       extn_ofc_phn:new FormControl (null,[Validators.required,Validators.minLength(10)]),
       fax:new FormControl(null,[Validators.required]),
       ofc_mail:new FormControl(null,[Validators.email]),
-      personal_mail:new FormControl(null,[Validators.required,Validators.email]),
+      personal_email:new FormControl(null,[Validators.required,Validators.email]),
       photo:new FormControl(),
       birth_place:new FormControl(null,[Validators.required]),
       relegion:new FormControl("select"),
@@ -85,19 +97,25 @@ registration_arr:registration[]=[];
   }),
 });
 this.present=new FormGroup({
-    pid:new FormControl(null,[Validators.required]),
+    id:new FormControl(null,[Validators.required]),
     presentdno_street:new FormControl(null,[Validators.required]),
     present_village:new FormControl(null,[Validators.required]),
     presentpost_office:new FormControl(null,[Validators.required]),
     present_mandal:new FormControl(null,[Validators.required]),
     present_district:new FormControl(null,[Validators.required]),
     presentpin_code:new FormControl(null,[Validators.required]),
-    pcountry:new FormControl(null,[Validators.required]),
-    pstate:new FormControl(null,[Validators.required]),
-    pcity:new FormControl(null,[Validators.required]),
+    country:new FormControl(null,[Validators.required]),
+    state:new FormControl(null,[Validators.required]),
+    city:new FormControl(null,[Validators.required]),
   });
 
-  this.qualification=this.fb.group({
+  this.qualification=
+    // id: new FormControl(null,[Validators.required]),
+    // qualification: new FormControl(null,[Validators.required]),
+    // institute:new FormControl (null,[Validators.required]),
+    // year: new FormControl (null,[Validators.required]),
+    // score: new FormControl (null,[Validators.required]),
+  this.fb.group({
     qualification_details:this.fb.array( [this.qualificationgroup()]),
   });
   this.experience=this.fb.group({
@@ -324,12 +342,13 @@ experiencegroup(){
   }
   onSave1Click(){
     // if(this.permanent.status=='VALID'){
-      this._data.addDetails1(this.permanent.value).subscribe(
+      this._data.addDetails1(this.permanent.get('address_group').value).subscribe(
         (x:any)=>{
           if (x.affectedRows==1) {
-            let temp=this.permanent.get('id').value;
-            console.log(temp);
-            alert('Added Successfully');;
+            this.permanent_arr.push(this.permanent.get('address_group').value);
+            // let temp=this.permanent.get('id').value;
+            // console.log(temp);
+            alert('Added Successfully');
           } else {
             if(x.code=='ER_DUP_ENTRY'){
               alert('Duplicate Email')
@@ -358,11 +377,29 @@ experiencegroup(){
 
   }
   onNextClick1(){
+
+    this._data.addDetails2(this.present.value).subscribe(
+      (x:any)=>{
+        if (x.affectedRows==1) {
+          this.present_arr.push(this.present.value);
+            let temp=this.present.get('id').value;
+             console.log(temp);
+          alert('Added Successfully');
+        } else {
+          if(x.code=='ER_DUP_ENTRY'){
+            alert('Duplicate Email')
+          }else{
+            console.log(x);
+          }
+        }
+
+      });
     this.flag=false;
     this.flag1=false;
     this.flag2=true;
     this.flag3=false;
     this.flag4=false;
+
 
   }
   onBack1Click(){
@@ -373,40 +410,17 @@ experiencegroup(){
     this.flag4=false;
 
   }
-  onSave2Click(){
-   // if(this.permanent.status=='VALID'){
-    this._data.addtask3(this.qualification.value).subscribe(
-      (x:any)=>{
-        if (x.affectedRows==1) {
-          let temp=this.qualification.get('id').value;
-          console.log(temp);
-          alert('Added Successfully');;
-        } else {
-          if(x.code=='ER_DUP_ENTRY'){
-            alert('Duplicate Email')
-          }else{
-            console.log(x);
-          }
-
-  //        if(x.affectedValue==1){
-  /*         this.registration_arr.push(this.registrationform.value);
-  //  alert('Saved Successfully');
-    console.log('new details', this.registrationform.value);
-   */
-  //       }
-  //       else if(x.code=='ER_DUP_ENTRY'){
-  //          alert('Duplicate');
-  //      }
-        }
-
-      });
-    // }
-    // else{
-    //     alert('not valid')
-    //   }
-    // alert('Saved Successfully');
-
-
+  onSave2Click():void{
+    this.counting=0;
+    this.response="";
+    this.quali_arr.push(this.qualification.get('qualification_details').value);
+   for (var a=0;a<=(this.qualification.get('qualification_details').value).length-1;a++)
+   {
+this._data.addDetails3(this.qualification.get('qualification_details').get([this.counting]).value).subscribe((x)=>{
+  alert ('Added Successfully')
+});
+this.counting++
+   }
 
   }
   onNextClick2(){
@@ -425,40 +439,26 @@ experiencegroup(){
     this.flag4=false;
 
   }
-  onSave3Click(){
-   // if(this.permanent.status=='VALID'){
-    this._data.addtask5(this.experience.value).subscribe(
-      (x:any)=>{
-        if (x.affectedRows==1) {
-          let temp=this.experience.get('id').value;
-          console.log(temp);
-          alert('Added Successfully');;
-        } else {
-          if(x.code=='ER_DUP_ENTRY'){
-            alert('Duplicate Email')
-          }else{
-            console.log(x);
-          }
+  onSave3Click():void{
+    {
+      this.counting1=0
+      this.response1="";
+      for(var i=0;i<=(this.experience.get('experience_details').value).length-1;i++)
+        {
+          {
+            this._data.addDetails4(this.experience.get('experience_details').get([this.counting1]).value).subscribe((x)=>
+            {
 
-  //        if(x.affectedValue==1){
-  /*         this.registration_arr.push(this.registrationform.value);
-  //  alert('Saved Successfully');
-    console.log('new details', this.registrationform.value);
-   */
-  //       }
-  //       else if(x.code=='ER_DUP_ENTRY'){
-  //          alert('Duplicate');
-  //      }
+              this.exp_arr.push(this.experience.get('experience_details').value);
+            }
+            );}
+
+          this.counting1++;
+          alert("Data Added Successfully!...");
+
         }
 
-      });
-    // }
-    // else{
-    //     alert('not valid')
-    //   }
-    // alert('Saved Successfully');
-
-
+      }
 
 
   }
@@ -478,42 +478,17 @@ experiencegroup(){
     this.flag4=false;
 
   }
-  onSave4Click(){
-   // if(this.permanent.status=='VALID'){
-    this._data.addtask3(this.skill.value).subscribe(
-      (x:any)=>{
-        if (x.affectedRows==1) {
-          let temp=this.skill.get('id').value;
-          console.log(temp);
-          alert('Added Successfully');;
-        } else {
-          if(x.code=='ER_DUP_ENTRY'){
-            alert('Duplicate Email')
-          }else{
-            console.log(x);
-          }
-
-  //        if(x.affectedValue==1){
-  /*         this.registration_arr.push(this.registrationform.value);
-  //  alert('Saved Successfully');
-    console.log('new details', this.registrationform.value);
-   */
-  //       }
-  //       else if(x.code=='ER_DUP_ENTRY'){
-  //          alert('Duplicate');
-  //      }
-        }
-
-      });
-    // }
-    // else{
-    //     alert('not valid')
-    //   }
-    // alert('Saved Successfully');
-
-
-
-
+  onaddclick(){
+    this.counting2=0;
+    this.response2="";
+    this.skill_arr.push(this.skill.get('skill_details').value);
+   for (var a=0;a<=(this.skill.get('skill_details').value).length-1;a++)
+   {
+this._data.addDetails5(this.skill.get('skill_details').get([this.counting2]).value).subscribe((x)=>{
+  alert ('Added Successfully')
+});
+this.counting2++
+   }
   }
 
   updateage(val:Date){
@@ -534,55 +509,6 @@ experiencegroup(){
 
 
 
-onaddclick(){
-  if(this.registrationform.status=='VALID'){
-  this._data.addDetails(this.registrationform.value).subscribe(
-    (x:any)=>{
-      if (x.affectedRows==1) {
-        let temp=this.registrationform.get('id').value;
-        console.log(temp);
-        alert('Added Successfully');;
-      } else {
-        if(x.code=='ER_DUP_ENTRY'){
-          alert('Duplicate Email')
-        }else{
-          console.log(x);
-        }
-
-//        if(x.affectedValue==1){
-/*         this.registration_arr.push(this.registrationform.value);
-//  alert('Saved Successfully');
-  console.log('new details', this.registrationform.value);
- */
-//       }
-//       else if(x.code=='ER_DUP_ENTRY'){
-//          alert('Duplicate');
-//      }
-      }
-
-    });
-  }
-  else{
-      alert('not valid')
-    }
-  // alert('Saved Successfully');
-  // console.log(this.signupForm.get('basicInfo').value);
-}
 
 
-// onaddclick1(){
-//   this._data.addtask1(this.permanent.value).subscribe((x)=>{});
-// }
-// onaddclick5(){
-//   this._data.addtask2(this.permanent.value).subscribe((x)=>{});
-// }
-// onaddclick2(){
-//   this._data.addtask3(this.qualification.value).subscribe((x)=>{});
-// }
-// onaddclick3(){
-//   this._data.addtask4(this.skill.value).subscribe((x)=>{});
-// }
-// onaddclick4(){
-//   this._data.addtask5(this.experience.value).subscribe((x)=>{});
-// }
 }

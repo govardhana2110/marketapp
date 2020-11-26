@@ -8,6 +8,9 @@ export class LoadingService {
 
   constructor( private _router:Router) { }
   currentUser=null;
+  get isLoggedIn():boolean{
+return !!this.currentUser;
+  }
   login(username:string,password:string){
    localStorage.setItem("user_name",username);
    if (username==="admin"){
@@ -26,6 +29,7 @@ export class LoadingService {
    };
   }
   logout(){
+    this.currentUser=null;
     localStorage.clear();
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators,FormBuilder, Form } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { experience } from '../details';
+import { EmpService } from '../emp.service';
 @Component({
   selector: 'app-editexperience',
   templateUrl: './editexperience.component.html',
@@ -8,13 +10,36 @@ import { Router } from '@angular/router';
 })
 export class EditexperienceComponent implements OnInit {
 experience:FormGroup;
-  constructor(private fb: FormBuilder,private _router:Router) { }
+empid;
+  constructor(private fb: FormBuilder,
+    private _router:Router,
+    private _actroutes:ActivatedRoute,
+    private _data:EmpService
+    ) { }
 
   ngOnInit(): void {
     this.experience=this.fb.group({
       experience_details:this.fb.array([this.experiencegroup()])
 
     });
+    this.empid=this._actroutes.snapshot.params['id'];
+    // console.log('hello from qualification edit'),
+  this._data.getDetails4(this.empid).subscribe((data:experience[])=>{
+    this.experience.patchValue({
+    id:data[0].id,
+    fromdate:data[0].fromdate,
+    todate:data[0].todate,
+    organisation:data[0].organisation,
+    experience:data[0].experience,
+  });
+});
+
+  }
+  onSaveClick(){
+    this._data.updateDetails4(this.experience.value).subscribe((x)=>{
+      this._router.navigate(['/employee'])
+    })
+
   }
   experiencegroup(){
     return this.fb.group({
@@ -26,7 +51,7 @@ experience:FormGroup;
     });
   }
   get experiencearray(){
-    return<FormArray>this.experience.get('skill_details');
+    return<FormArray>this.experience.get('experience_details');
   }
   addexperience()
   {
@@ -81,11 +106,6 @@ experience:FormGroup;
     }
 
   }
-  onSaveClick(){
-    alert('Saved Successfully')
-    console.log(this.experience.value)
-    this._router.navigate(['/employee'])
 
-  }
 
 }

@@ -11,7 +11,7 @@ import { ErrorComponent } from './error/error.component';
 import { ItemsComponent } from './items/items.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import {HttpClientModule  } from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS  } from "@angular/common/http";
 import { EmployeeComponent } from './employee/employee.component';
 import { EditdetailsComponent } from './employee/editdetails/editdetails.component';
 import { EditaddressComponent } from './employee/editaddress/editaddress.component';
@@ -20,6 +20,7 @@ import { EditexperienceComponent } from './employee/editexperience/editexperienc
 import { EditskillComponent } from './employee/editskill/editskill.component';
 import { AddempComponent } from './employee/addemp/addemp.component';
 import { SharedModule } from "./shared.module";
+import { HttpinterceptorstokenService } from './httpinterceptorstoken.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,12 @@ import { SharedModule } from "./shared.module";
     arrRouting,
     SharedModule
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:HttpinterceptorstokenService,
+    multi:true,
+  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

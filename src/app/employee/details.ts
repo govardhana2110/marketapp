@@ -37,7 +37,7 @@ export class registration{
     public extn_ofc_phn:string,
     public fax:string,
     public ofc_mail:string,
-    public personal_mail:string,
+    public personal_email:string,
     public photo:string,
     public birth_place:string,
     public relegion:string,
@@ -68,7 +68,7 @@ export class permanent{
     ){}
 }
 export class present{
-  constructor( public pid:string,
+  constructor( public id:string,
     public presentdno_street:string,
     public present_village:string,
     public presentpost_office:string,
@@ -77,5 +77,6 @@ export class present{
     public presentpin_code:string,
     public country:string,
     public state:string,
-    public city:string,){}
+    public city:string,
+    ){}
 }

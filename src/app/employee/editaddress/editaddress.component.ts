@@ -1,7 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators,FormBuilder, Form } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { permanent } from '../details';
+import { EmpService } from "../emp.service";
 @Component({
   selector: 'app-editaddress',
   templateUrl: './editaddress.component.html',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class EditaddressComponent implements OnInit {
   permanent:FormGroup;
-  sid:string;
+   sid:string;
    sdno_street:String;
    svillage:String;
    spost_office:String;
@@ -19,7 +21,8 @@ export class EditaddressComponent implements OnInit {
    scountry:string;
    sstate:string;
    scity:string;
-  constructor(private _router:Router) { }
+   empid;
+  constructor(private _router:Router,private _actroutes:ActivatedRoute,private _data:EmpService) { }
 
   ngOnInit(): void {
     this.permanent=new FormGroup({
@@ -50,18 +53,33 @@ export class EditaddressComponent implements OnInit {
     });
     this.permanent.get('address_group').get('Permanent_address').valueChanges.subscribe((x) => this.setAddress(x, this.permanent.get('address_group').value));
     this.permanent.get('address_group').get('Permanent_address').valueChanges.subscribe((t) => this.editAddress(t));
-
+    this.empid=this._actroutes.snapshot.params['id'];
+    this._data.getDetails1(this.empid).subscribe((data:permanent[])=>{
+      this.permanent.patchValue({
+      id:data[0].id,
+      dno_street:data[0].dno_street,
+      village:data[0].village,
+      post_office:data[0].post_office,
+      manda:data[0].mandal,
+      district:data[0].district,
+      pin_code:data[0].pin_code,
+      country:data[0].country,
+      state:data[0].state,
+      city:data[0].city,
+  });
+})
   }
   editAddress(v:boolean){
     if(v==true){
         this.permanent.get('address_group').valueChanges.subscribe((y) => this.setAddress(this.permanent.get('address_group').get('Permanent_address').value, y));//this.editAddress(x, this.empInfo.get('Padd').value));
-    }
+
+
+      }
   }
   onSaveClick(){
-    // alert('Saved Successfully')
-    // console.log(this.permanent.value)
-    // this._router.navigate(['/employee'])
-
+    this._data.updateDetails1(this.permanent.value).subscribe((x)=>{
+      this._router.navigate(['/employee']);
+    })
   }
   setAddress(val:boolean, paddressGrp:FormGroup){
     if(val==true){

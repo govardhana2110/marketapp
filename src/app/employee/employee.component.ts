@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import { experience,skill,qualification,permanent,present,registration} from './details';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmpService } from './emp.service';
+import { Items } from '../items/items';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -17,27 +18,30 @@ export class EmployeeComponent implements OnInit {
   permanent_arr:permanent[]=[];
   present_arr:present[]=[];
   reg_arr:registration[]=[];
-  constructor(private _data:EmpService ,private _router:Router) { }
+  constructor(private _data:EmpService ,
+    private _router:Router,
+    private _acRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._data.getAllexp().subscribe((data)=>{
+    this._data.getAllDetails4().subscribe((data)=>{
       this.exp_arr=data
     });
-    this._data.getAllskill().subscribe((data)=>{
+    this._data.getAllDetails5().subscribe((data)=>{
       this.skill_arr=data
     });
-    this._data.getAllquali().subscribe((data)=>{
+    this._data.getAllDetails3().subscribe((data)=>{
        this.quali_arr=data
     });
-    this._data.getAllpermanent().subscribe((data)=>{
+    this._data.getAllDetails1().subscribe((data)=>{
       this.permanent_arr=data
     });
-    this._data.getAllpresent().subscribe((data)=>{
+    this._data.getAllDetails2().subscribe((data)=>{
       this.present_arr=data
     });
-    this._data.getAllreg().subscribe((data)=>{
-      this.reg_arr=data
-    });
+    // this._data.getallDetails().subscribe((data)=>{
+    //   this.reg_arr=data
+    // });
+    this.reg_arr=this._acRoute.snapshot.data['data']
 
   }
 onshowclick(){
@@ -48,24 +52,24 @@ onhideclick(){
   this.flag=true;
   this.flag1=false;
 }
-oneditbasicclick(){
-  this._router.navigate(['/editdetails'])
+oneditbasicclick(item:registration){
+  this._router.navigate(['/editdetails',item.id])
 
 }
-oneditaddressclick(){
-  this._router.navigate(['/editaddress'])
+oneditaddressclick(item:permanent){
+  this._router.navigate(['/editaddress',item.id])
 
 }
-oneditqualificationclick(){
-  this._router.navigate(['/editqualification'])
+oneditqualificationclick(item:qualification){
+  this._router.navigate(['/editqualification',item.id])
 
 }
-oneditexperienceclick(){
-  this._router.navigate(['/editexperience'])
+oneditexperienceclick(item:experience){
+  this._router.navigate(['/editexperience',item.id])
 
 }
-oneditskillclick(){
-  this._router.navigate(['/editskill'])
+oneditskillclick(item:skill){
+  this._router.navigate(['/editskill',item.id])
 
 }
 onaddclick(){

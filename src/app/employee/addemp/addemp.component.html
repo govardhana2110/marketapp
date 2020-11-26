@@ -73,10 +73,10 @@
   <p class="lblError" *ngIf="registrationform.get('ofc_mail').hasError('email') && !registrationform.get('ofc_mail').pristine ">
     enter currect mail</p>
   <label>Personal Mail <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
-  <input type="text" formControlName="personal_mail" placeholder="Enter Personal Mail" class="form-control"  ><br>
-  <p class="lblError" *ngIf="registrationform.get('personal_mail').hasError('required') && !registrationform.get('personal_mail').pristine ">
+  <input type="text" formControlName="personal_email" placeholder="Enter Personal Mail" class="form-control"  ><br>
+  <p class="lblError" *ngIf="registrationform.get('personal_email').hasError('required') && !registrationform.get('personal_email').pristine ">
     Personal mail is required</p>
-    <p class="lblError" *ngIf="registrationform.get('personal_mail').hasError('email') && !registrationform.get('personal_mail').pristine ">
+    <p class="lblError" *ngIf="registrationform.get('personal_email').hasError('email') && !registrationform.get('personal_email').pristine ">
     enter currect mail</p>
 <label>Religion :</label>
 <select formControlName="relegion">
@@ -240,10 +240,10 @@ IFSC code Is Required</p><br>
 </form>
   <div class="col-sm-6 form-group div">
   <h3> Present Address Details</h3>
-  <!-- <form [formGroup]='permanent'>
+   <form [formGroup]='present' (ngSubmit)='onNextClick1()'>
   <div>
     <label>ID :</label><br>
-  <input type="text" formControlName='pid' placeholder="Enter ID" class="form-control" value={{sid}} >
+  <input type="text" formControlName='id' placeholder="Enter ID" class="form-control" value={{sid}} >
     <label>D.No/Street :</label><br>
   <input type="text" formControlName='presentdno_street' placeholder="Enter D.no/street" class="form-control" value={{sdno_street}} >
     <label>Village :</label><br>
@@ -265,7 +265,7 @@ IFSC code Is Required</p><br>
   <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control" value={{spin_code}} >
     </div>
     <label>Country :</label>
-    <select formControlName="pcountry" value={{scountry}}>
+    <select formControlName="country" value={{scountry}}>
       <option >Select</option>
       <option >America</option>
       <option > United Kingdom</option>
@@ -287,7 +287,7 @@ IFSC code Is Required</p><br>
       <option >France</option>
     </select>
     <label>State :</label>
-    <select formControlName="pstate" value={{sstate}}>
+    <select formControlName="state" value={{sstate}}>
       <option >Select</option>
       <option >Andhrapradesh</option>
       <option >Telangana</option>
@@ -296,15 +296,15 @@ IFSC code Is Required</p><br>
       <option >Kerala</option>
     </select>
     <label>City :</label>
-    <select formControlName='pcity' value={{scity}} >
+    <select formControlName='city' value={{scity}} >
       <option value="">Select</option>
       <option value="hyderabad">Hyderabad</option>
       <option value="bengaluru">Bengaluru</option>
       <option value="mumbai">Mumbai</option>
     </select><br><br>
-  <p class="lblError" *ngIf="permanent.get('pcity').hasError('required') && !permanent.get('pcity').pristine ">
+  <p class="lblError" *ngIf="present.get('city').hasError('required') && !present.get('city').pristine ">
     City Is Required</p>
-  </form> -->
+  </form>
   </div>
 
 </div>
@@ -329,8 +329,8 @@ IFSC code Is Required</p><br>
     <div class="col-sm-2 form-group div">
       <label>ID<span class="lblError">*</span></label>
       <input type="text" class="form-control" formControlName="id" placeholder="Enter Qualification">
-      <!-- <p class="lblError"*ngIf="item.get('').hasError('required') && !item.get('qualification').pristine">Qualification is required</p>
-      <p class="lblError" *ngIf="item.get('qualification').value!='' && duplicate(item.get('qualification').value,i) && i > 0">Duplicates not Allowed</p> -->
+      <p class="lblError"*ngIf="item.get('qualification').hasError('required') && !item.get('qualification').pristine">Qualification is required</p>
+      <p class="lblError" *ngIf="item.get('qualification').value!='' && duplicate(item.get('qualification').value,i) && i > 0">Duplicates not Allowed</p>
     </div>
     <div class="col-sm-2 form-group div">
     <label>Qualification<span class="lblError">*</span></label>
@@ -357,14 +357,14 @@ IFSC code Is Required</p><br>
     <p class="lblError"*ngIf="item.get('score').hasError('required') && !item.get('score').pristine ">Score is required</p>
   </div>
   <div class="col-sm-2 form-group div">
-    <button type="button"class="btn btn-danger btn-sm pull"(click)="deletequalification(i)" >Delete</button>
+    <button type="button"class="btn btn-danger btn-sm pull"(click)="deletequalification()" >Delete</button>
      &nbsp;&nbsp;&nbsp;&nbsp;<button  (click)="myReset()" class="btn btn-primary btn-sm pull">Edit</button>
     <div>&nbsp;</div>
     </div>
 </div>
 </div>
   </div>
-  <!-- </div> -->
+
   <button (click)="onBack1Click()"><< Back</button>
   <button type="submit">Save</button>
   <button (click)="onNextClick2()">Next >></button>

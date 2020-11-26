@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators,FormBuilder, Form } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { qualification } from '../details';
+import { EmpService } from "../emp.service";
 @Component({
   selector: 'app-editqualification',
   templateUrl: './editqualification.component.html',
@@ -8,12 +10,33 @@ import { Router } from '@angular/router';
 })
 export class EditqualificationComponent implements OnInit {
 qualification:FormGroup;
-  constructor(private fb: FormBuilder,private _router:Router) { }
+empid;
+  constructor(private fb: FormBuilder,
+    private _router:Router,
+    private _actroutes:ActivatedRoute,
+    private _data:EmpService) { }
 
   ngOnInit(): void {
     this.qualification=this.fb.group({
       qualification_details:this.fb.array( [this.qualificationgroup()]),
     });
+    this.empid=this._actroutes.snapshot.params['id'];
+    // console.log('hello from qualification edit'),
+  this._data.getDetails3(this.empid).subscribe((data:qualification[])=>{
+    this.qualification.patchValue({
+    id:data[0].id,
+    qualification:data[0].qualification,
+    institute:data[0].institute,
+    year:data[0].year,
+    score:data[0].score,
+  });
+});
+  }
+  onSaveClick(){
+    this._data.updateDetails3(this.qualification.value).subscribe((x)=>{
+      this._router.navigate(['/employee'])
+    })
+
   }
   qualificationgroup(){
     return this.fb.group({
@@ -60,11 +83,6 @@ qualification:FormGroup;
     return false;
   }
 }
-onSaveClick(){
-  alert('Saved Successfully')
-  console.log(this.qualification.value)
-  this._router.navigate(['/employee'])
 
-}
 
 }

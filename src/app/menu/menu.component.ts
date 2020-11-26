@@ -21,4 +21,7 @@ console.log(localStorage.getItem('user_name'));
 onLogOutClick(){
 this._regData.logout();
 }
+get isLoggedIn():boolean{
+  return this._regData.isLoggedIn;
+    }
 }

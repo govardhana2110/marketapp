@@ -26,11 +26,11 @@
          <td style="border: black 1px solid;text-align: center;">{{item.acc_no}}</td>
          <td style="border: black 1px solid;text-align: center;">{{item.IFSC}}</td>
          <td style="border: black 1px solid;text-align: center;">
-           <button (click)="oneditbasicclick()">Edit Basic Details</button>&nbsp;
-           <button (click)="oneditaddressclick()">Edit Address</button>&nbsp;
-           <button (click)="oneditqualificationclick()">Edit Qualification</button>&nbsp;<br>
-           <button (click)="oneditexperienceclick()">Edit Experience</button>&nbsp;
-           <button (click)="oneditskillclick()">Edit Skill</button>&nbsp;
+           <button (click)="oneditbasicclick(item)">Edit Basic Details</button>&nbsp;
+           <button (click)="oneditaddressclick(item)">Edit Address</button>&nbsp;
+           <button (click)="oneditqualificationclick(item)">Edit Qualification</button>&nbsp;<br>
+           <button (click)="oneditexperienceclick(item)">Edit Experience</button>&nbsp;
+           <button (click)="oneditskillclick(item)">Edit Skill</button>&nbsp;
          </td>
          <td style="border: black 1px solid;text-align: center;">
            <button (click)="ondeleteemp()">Delete Employee</button>&nbsp;
@@ -51,73 +51,73 @@
 <div class="container">
   <div *ngIf="flag1">
   <h2>Employee Full Details</h2>
-  <button (click)="onhideclick()">Hide Details</button>
+  <button (click)="onhideclick()">Hide Details</button><br>
   <table class="table">
     <thead>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Title</th>
-      <th>First Name</th>
-      <th>Middle Name</th>
-      <th>Last Name</th>
-      <th>Gender</th>
-      <th>DOB</th>
-      <th>Age</th>
-      <th>Official Phone</th>
-      <th>Personal Phone</th>
-      <th>Extn Ofc Phn</th>
-      <th>Fax</th>
-      <th>Office Mail</th>
-      <th>Personal Mail</th>
-      <th>Photo</th>
-      <th>Birth Place</th>
-      <th>Relegion</th>
-      <th>Cast</th>
-      <th>Nationality</th>
-      <th>Voter ID</th>
-      <th>PAN</th>
-      <th>Aadhar</th>
-      <th>Marital Status</th>
-      <th>Bank Name</th>
-      <th>Account Type</th>
-      <th>Payment Type</th>
-      <th>Account No</th>
-      <th>IFSC</th>
+      <th style="border: black 1px solid;text-align: center;">Id</th>
+      <th style="border: black 1px solid;text-align: center;">Name</th>
+      <th style="border: black 1px solid;text-align: center;">Title</th>
+      <th style="border: black 1px solid;text-align: center;">First Name</th>
+      <th style="border: black 1px solid;text-align: center;">Middle Name</th>
+      <th style="border: black 1px solid;text-align: center;">Last Name</th>
+      <th style="border: black 1px solid;text-align: center;">Gender</th>
+      <th style="border: black 1px solid;text-align: center;">DOB</th>
+      <th style="border: black 1px solid;text-align: center;">Age</th>
+      <th style="border: black 1px solid;text-align: center;">Official Phone</th>
+      <th style="border: black 1px solid;text-align: center;">Personal Phone</th>
+      <th style="border: black 1px solid;text-align: center;">Extn Ofc Phn</th>
+      <th style="border: black 1px solid;text-align: center;">Fax</th>
+      <th style="border: black 1px solid;text-align: center;">Office Mail</th>
+      <th style="border: black 1px solid;text-align: center;">Personal Mail</th>
+      <th style="border: black 1px solid;text-align: center;">Photo</th>
+      <th style="border: black 1px solid;text-align: center;">Birth Place</th>
+      <th style="border: black 1px solid;text-align: center;">Relegion</th>
+      <th style="border: black 1px solid;text-align: center;">Cast</th>
+      <th style="border: black 1px solid;text-align: center;">Nationality</th>
+      <th style="border: black 1px solid;text-align: center;">Voter ID</th>
+      <th style="border: black 1px solid;text-align: center;">PAN</th>
+      <th style="border: black 1px solid;text-align: center;">Aadhar</th>
+      <th style="border: black 1px solid;text-align: center;">Marital Status</th>
+      <th style="border: black 1px solid;text-align: center;">Bank Name</th>
+      <th style="border: black 1px solid;text-align: center;">Account Type</th>
+      <th style="border: black 1px solid;text-align: center;">Payment Type</th>
+      <th style="border: black 1px solid;text-align: center;">Account No</th>
+      <th style="border: black 1px solid;text-align: center;">IFSC</th>
 
 
 
     </thead>
     <tbody>
       <tr *ngFor="let item of reg_arr">
-        <td>{{item.id}}</td>
-        <td>{{item.name}}</td>
-        <td>{{item.title}}</td>
-        <td>{{item.first_name}}</td>
-        <td>{{item.middle_name}}</td>
-        <td>{{item.last_name}}</td>
-        <td>{{item.user_gender}}</td>
-        <td>{{item.user_dob}}</td>
-        <td>{{item.age}}</td>
-        <td>{{item.official_phone}}</td>
-         <td>{{item.personal_phone}}</td>
-         <td>{{item.extn_ofc_phn}}</td>
-         <td>{{item.fax}}</td>
-          <td>{{item.ofc_mail}}</td>
-         <td>{{item.personal_mail}}</td>
-         <td>{{item.photo}}</td>
-         <td>{{item.birth_place}}</td>
-         <td>{{item.relegion}}</td>
-         <td>{{item.cast}}</td>
-         <td>{{item.nationality}}</td>
-         <td>{{item.voter_id}}</td>
-         <td>{{item.PAN}}</td>
-         <td>{{item.aadhar}}</td>
-         <td>{{item.marital_status}}</td>
-         <td>{{item.bank_name}}</td>
-         <td>{{item.account_type}}</td>
-         <td>{{item.payment_type}}</td>
-         <td>{{item.acc_no}}</td>
-         <td>{{item.IFSC}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.id}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.name}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.title}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.first_name}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.middle_name}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.last_name}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.user_gender}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.user_dob}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.age}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.official_phone}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.personal_phone}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.extn_ofc_phn}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.fax}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.ofc_mail}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.personal_email}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.photo}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.birth_place}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.relegion}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.cast}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.nationality}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.voter_id}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.PAN}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.aadhar}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.marital_status}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.bank_name}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.account_type}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.payment_type}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.acc_no}}</td>
+         <td style="border: black 1px solid;text-align: center;">{{item.IFSC}}</td>
 
         <td>
           <!-- <button (click)="ondeleteclick(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
@@ -131,29 +131,29 @@
   <h3>Permanent Address</h3>
   <table class="table">
     <thead>
-      <th>Id</th>
-      <th>Dno/Street</th>
-      <th>Village</th>
-      <th>Post Office</th>
-      <th>Mandal</th>
-      <th>District</th>
-      <th>Pin Code</th>
-      <th>Country</th>
-      <th>State</th>
-      <th>City</th>
+      <th style="border: black 1px solid;text-align: center;" >Id</th>
+      <th style="border: black 1px solid;text-align: center;">Dno/Street</th>
+      <th style="border: black 1px solid;text-align: center;">Village</th>
+      <th style="border: black 1px solid;text-align: center;">Post Office</th>
+      <th style="border: black 1px solid;text-align: center;">Mandal</th>
+      <th style="border: black 1px solid;text-align: center;">District</th>
+      <th style="border: black 1px solid;text-align: center;">Pin Code</th>
+      <th style="border: black 1px solid;text-align: center;">Country</th>
+      <th style="border: black 1px solid;text-align: center;">State</th>
+      <th style="border: black 1px solid;text-align: center;">City</th>
     </thead>
     <tbody>
       <tr *ngFor="let item of permanent_arr">
-        <td>{{item.id}}</td>
-        <td>{{item.dno_street}}</td>
-        <td>{{item.village}}</td>
-        <td>{{item.post_office}}</td>
-        <td>{{item.mandal}}</td>
-        <td>{{item.district}}</td>
-        <td>{{item.pin_code}}</td>
-        <td>{{item.country}}</td>
-        <td>{{item.state}}</td>
-        <td>{{item.city}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.id}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.dno_street}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.village}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.post_office}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.mandal}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.district}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.pin_code}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.country}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.state}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.city}}</td>
         <td>
           <!-- <button (click)="ondeleteemployee(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
           <button (click)="editemp(item)" class="btn btn-warning">Edit</button> -->
@@ -165,28 +165,29 @@
   <h3>Present Address</h3>
   <table class="table">
     <thead>
-      <th>Id</th>
-      <th>Dno/Street</th>
-      <th>Village</th>
-      <th>Post Office</th>
-      <th>Mandal</th>
-      <th>District</th>
-      <th>Pin Code</th>
-      <th>Country</th>
-      <th>State</th>
-      <th>City</th>
+      <th style="border: black 1px solid;text-align: center;">Id</th>
+      <th style="border: black 1px solid;text-align: center;">Dno/Street</th>
+      <th style="border: black 1px solid;text-align: center;">Village</th>
+      <th style="border: black 1px solid;text-align: center;">Post Office</th>
+      <th style="border: black 1px solid;text-align: center;">Mandal</th>
+      <th style="border: black 1px solid;text-align: center;">District</th>
+      <th style="border: black 1px solid;text-align: center;">Pin Code</th>
+      <th style="border: black 1px solid;text-align: center;">Country</th>
+      <th style="border: black 1px solid;text-align: center;">State</th>
+      <th style="border: black 1px solid;text-align: center;">City</th>
     </thead>
     <tbody>
       <tr *ngFor="let item of present_arr">
-        <td>{{item.id}}</td>
-        <td>{{item.present_village}}</td>
-        <td>{{item.presentpost_office}}</td>
-        <td>{{item.present_mandal}}</td>
-        <td>{{item.present_district}}</td>
-        <td>{{item.presentpin_code}}</td>
-        <td>{{item.country}}</td>
-        <td>{{item.state}}</td>
-        <td>{{item.city}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.id}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.presentdno_street}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.present_village}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.presentpost_office}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.present_mandal}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.present_district}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.presentpin_code}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.country}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.state}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.city}}</td>
         <td>
           <!-- <button (click)="ondeleteemployee(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
           <button (click)="editemp(item)" class="btn btn-warning">Edit</button> -->
@@ -198,19 +199,19 @@
   <h2>Qualification Display</h2>
   <table class="table">
     <thead>
-      <th> Id</th>
-      <th>Qualification</th>
-      <th>Institute</th>
-      <th>Year</th>
-      <th>Score</th>
+      <th style="border: black 1px solid;text-align: center;"> Id</th>
+      <th style="border: black 1px solid;text-align: center;">Qualification</th>
+      <th style="border: black 1px solid;text-align: center;">Institute</th>
+      <th style="border: black 1px solid;text-align: center;">Year</th>
+      <th style="border: black 1px solid;text-align: center;">Score</th>
     </thead>
     <tbody>
       <tr *ngFor="let item of quali_arr">
-        <td>{{item.id}}</td>
-        <td>{{item.qualification}}</td>
-        <td>{{item.institute}}</td>
-        <td>{{item.year}}</td>
-        <td>{{item.score}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.id}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.qualification}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.institute}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.year}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.score}}</td>
         <td>
           <!-- <button (click)="ondeleteproduct(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
           <button (click)="editpro(item)" class="btn btn-warning">Edit</button> -->
@@ -222,19 +223,19 @@
   <h2>Experience Display</h2>
   <table class="table">
     <thead>
-      <th> Id</th>
-      <th>From Date</th>
-      <th>To Date</th>
-      <th>Organisation</th>
-      <th>Experience</th>
+      <th style="border: black 1px solid;text-align: center;"> Id</th>
+      <th style="border: black 1px solid;text-align: center;">From Date</th>
+      <th style="border: black 1px solid;text-align: center;">To Date</th>
+      <th style="border: black 1px solid;text-align: center;">Organisation</th>
+      <th style="border: black 1px solid;text-align: center;">Experience</th>
     </thead>
     <tbody>
       <tr *ngFor="let item of exp_arr">
-        <td>{{item.id}}</td>
-        <td>{{item.fromdate}}</td>
-        <td>{{item.todate}}</td>
-        <td>{{item.organisation}}</td>
-        <td>{{item.experience}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.id}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.fromdate}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.todate}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.organisation}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.experience}}</td>
         <td>
           <!-- <button (click)="ondeleteproduct(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
           <button (click)="editpro(item)" class="btn btn-warning">Edit</button> -->
@@ -247,21 +248,21 @@
 <h2>Skill Display</h2>
 <table class="table">
   <thead>
-    <th> Id</th>
-    <th>Skill Catagory</th>
-    <th>Skill</th>
-    <th>Skill Level</th>
-    <th>IS Current</th>
-    <th>Experience</th>
+    <th style="border: black 1px solid;text-align: center;"> Id</th>
+    <th style="border: black 1px solid;text-align: center;">Skill Catagory</th>
+    <th style="border: black 1px solid;text-align: center;">Skill</th>
+    <th style="border: black 1px solid;text-align: center;">Skill Level</th>
+    <th style="border: black 1px solid;text-align: center;">IS Current</th>
+    <th style="border: black 1px solid;text-align: center;">Experience</th>
   </thead>
   <tbody>
     <tr *ngFor="let item of skill_arr">
-      <td>{{item.id}}</td>
-      <td>{{item.skillcatagory}}</td>
-      <td>{{item.skill}}</td>
-      <td>{{item.skilllevel}}</td>
-      <td>{{item.iscurrent}}</td>
-      <td>{{item.experience}}</td>
+      <td style="border: black 1px solid;text-align: center;">{{item.id}}</td>
+      <td style="border: black 1px solid;text-align: center;">{{item.skillcatagory}}</td>
+      <td style="border: black 1px solid;text-align: center;">{{item.skill}}</td>
+      <td style="border: black 1px solid;text-align: center;">{{item.skilllevel}}</td>
+      <td style="border: black 1px solid;text-align: center;">{{item.iscurrent}}</td>
+      <td style="border: black 1px solid;text-align: center;">{{item.experience}}</td>
       <td>
         <!-- <button (click)="ondeleteproduct(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
         <button (click)="editpro(item)" class="btn btn-warning">Edit</button> -->
