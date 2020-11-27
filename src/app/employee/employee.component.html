@@ -26,14 +26,14 @@
          <td style="border: black 1px solid;text-align: center;">{{item.acc_no}}</td>
          <td style="border: black 1px solid;text-align: center;">{{item.IFSC}}</td>
          <td style="border: black 1px solid;text-align: center;">
-           <button (click)="oneditbasicclick(item)">Edit Basic Details</button>&nbsp;
-           <button (click)="oneditaddressclick(item)">Edit Address</button>&nbsp;
-           <button (click)="oneditqualificationclick(item)">Edit Qualification</button>&nbsp;<br>
-           <button (click)="oneditexperienceclick(item)">Edit Experience</button>&nbsp;
-           <button (click)="oneditskillclick(item)">Edit Skill</button>&nbsp;
+           <button (click)="oneditbasicclick(item)" class="btn btn-warning">Edit Basic Details</button>&nbsp;
+           <button (click)="oneditaddressclick(item)" class="btn btn-warning">Edit Address</button>&nbsp;<br><br>
+           <button (click)="oneditqualificationclick(item)" class="btn btn-warning">Edit Qualification</button>&nbsp;<br><br>
+           <button (click)="oneditexperienceclick(item)" class="btn btn-warning">Edit Experience</button>&nbsp;
+           <button (click)="oneditskillclick(item)" class="btn btn-warning">Edit Skill</button>&nbsp;
          </td>
          <td style="border: black 1px solid;text-align: center;">
-           <button (click)="ondeleteemp()">Delete Employee</button>&nbsp;
+           <button (click)="ondeleteemp(item)" class="btn btn-danger">Delete Employee</button>&nbsp;
 
          </td>
 
@@ -45,13 +45,13 @@
     </tbody>
 
   </table><br><br>
-  <button (click)="onshowclick()">Show Full Details</button>
+  <button (click)="onshowclick()" class="btn btn-primary">Show Full Details</button><br>
   </div>
 </div>
 <div class="container">
   <div *ngIf="flag1">
   <h2>Employee Full Details</h2>
-  <button (click)="onhideclick()">Hide Details</button><br>
+  <button (click)="onhideclick()" class="btn btn-primary">Hide Details</button><br><br>
   <table class="table">
     <thead>
       <th style="border: black 1px solid;text-align: center;">Id</th>

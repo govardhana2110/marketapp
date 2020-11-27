@@ -109,13 +109,7 @@ this.present=new FormGroup({
     city:new FormControl(null,[Validators.required]),
   });
 
-  this.qualification=
-    // id: new FormControl(null,[Validators.required]),
-    // qualification: new FormControl(null,[Validators.required]),
-    // institute:new FormControl (null,[Validators.required]),
-    // year: new FormControl (null,[Validators.required]),
-    // score: new FormControl (null,[Validators.required]),
-  this.fb.group({
+  this.qualification=this.fb.group({
     qualification_details:this.fb.array( [this.qualificationgroup()]),
   });
   this.experience=this.fb.group({
@@ -341,13 +335,10 @@ experiencegroup(){
 
   }
   onSave1Click(){
-    // if(this.permanent.status=='VALID'){
       this._data.addDetails1(this.permanent.get('address_group').value).subscribe(
         (x:any)=>{
           if (x.affectedRows==1) {
             this.permanent_arr.push(this.permanent.get('address_group').value);
-            // let temp=this.permanent.get('id').value;
-            // console.log(temp);
             alert('Added Successfully');
           } else {
             if(x.code=='ER_DUP_ENTRY'){
@@ -355,24 +346,10 @@ experiencegroup(){
             }else{
               console.log(x);
             }
-
-    //        if(x.affectedValue==1){
-    /*         this.registration_arr.push(this.registrationform.value);
-    //  alert('Saved Successfully');
-      console.log('new details', this.registrationform.value);
-     */
-    //       }
-    //       else if(x.code=='ER_DUP_ENTRY'){
-    //          alert('Duplicate');
-    //      }
           }
 
         });
-      // }
-      // else{
-      //     alert('not valid')
-      //   }
-      // alert('Saved Successfully');
+
 
 
   }
@@ -499,16 +476,5 @@ this.counting2++
     this.age=ans;
     this.registrationform.get('age').setValue(ans);
   }
-// onaddclick(){
-//   this._data.addDetails(this.registrationform.value).subscribe((x)=>{
-//     this.registration_arr.push(this.registrationform.value);
-// alert('Saved Successfully');
-//     console.log('new details', this.registrationform.value);
-//   });
-// }
-
-
-
-
 
 }

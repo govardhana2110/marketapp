@@ -18,9 +18,9 @@
     name is required</p>
   <label> Title <span>(</span><span class="lblError">*</span><span>) :</span></label>
   <select class="form-control" formControlName="title">
-    <option>Mrs.</option>
-    <option>Mr.</option>
-    <option>Miss</option>
+    <option value="Mrs.">Mrs.</option>
+    <option value="Mr.">Mr.</option>
+    <option value="Miss.">Miss</option>
   </select>
   <label>First Name <span>(</span><span class="lblError">*</span><span>) :</span></label><br>
   <input type="text" formControlName="first_name" placeholder="Enter First Name" class="form-control" >
@@ -37,9 +37,9 @@
   </div><br>
   <label>Marital Status :</label>
 <select formControlName="marital_status">
-<option >Select</option>
-<option  >Single</option>
-<option  >Married</option>
+<option value="Select">Select</option>
+<option value="Single">Single</option>
+<option value="Married">Married</option>
 </select><br>
 (<span class="lblError">*</span>) Indicates The Fields Are Mandatory
 </div>
@@ -137,7 +137,7 @@ IFSC code Is Required</p><br>
 <input type="file" placeholder="Upload Photo" formControlName="photo" class="form-control"  ><br>
 
 <button type="submit" class="btn btn-primary">Save</button> &nbsp;&nbsp;
-<button (click)="onNextClick()" class="btn btn-primary">Next</button>
+<button (click)="onNextClick()" class="btn btn-primary">Next >></button>
 
 </div>
 </div>
@@ -321,7 +321,7 @@ IFSC code Is Required</p><br>
 
   <div class="container">
     <div *ngIf="flag2">
-      <h1 style="text-align: center;"></h1>
+      <h1 style="text-align: center;"> Qualification</h1>
       <form [formGroup]='qualification'(ngSubmit)="onSave2Click()">
         <button type="button"class="btn btn-success btn-sm pull"(click)="addqualification()" >Add</button>
         <div formArrayName="qualification_details" ><div><br></div>
@@ -378,7 +378,7 @@ IFSC code Is Required</p><br>
   <div class="container">
     <div *ngIf="flag3">
     <form [formGroup]='experience'(ngSubmit)="onSave3Click()">
-      <h3 style="text-align: center;">Experience</h3>
+      <h1 style="text-align: center;">Experience</h1>
   &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success"  (click)="addexperience()" >Add Experience</button><div><br></div>
   <div formArrayName="experience_details" ><div><br></div>
  <div *ngFor="let item of experiencearray.controls; let y=index;" [formGroupName]="y" >
@@ -443,7 +443,7 @@ IFSC code Is Required</p><br>
     <div *ngIf="flag4">
     <form [formGroup]='skill'(ngSubmit)="onaddclick()">
 
-   <h3 style="text-align: center;">Skill</h3>
+   <h1 style="text-align: center;">Skill</h1>
    <button type="button" class="btn btn-success"  (click)="addskill()" >Add Skill</button><div><br></div>
   <div formArrayName="skill_details" ><div><br></div>
  <div *ngFor="let item of skillarray.controls; let a=index;" [formGroupName]="a" >

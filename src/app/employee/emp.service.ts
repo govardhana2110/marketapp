@@ -33,7 +33,10 @@ export class EmpService {
       let body = JSON.stringify(item);
      return this._http.put(this.url2 + item.id, body, { headers: head });
      }
-
+  deleteDetails(Id){
+      let head=new HttpHeaders().set('Content-Type','application/json');
+      return this._http.delete(this.url2+Id,{headers:head});
+    }
 
      //////////////permanent Address Details//////////
 
@@ -56,6 +59,10 @@ export class EmpService {
       let body = JSON.stringify(item);
      return this._http.put(this.url + item.id, body, { headers: head });
      }
+     deleteDetails1(Id){
+      let head=new HttpHeaders().set('Content-Type','application/json');
+      return this._http.delete(this.url1+Id,{headers:head});
+    }
  /////////////PResent Address ////////
 
   getAllDetails2(){
@@ -85,6 +92,10 @@ export class EmpService {
     let body = JSON.stringify(item);
    return this._http.put(this.url3 + item.id, body, { headers: head });
    }
+   deleteDetails3(Id){
+    let head=new HttpHeaders().set('Content-Type','application/json');
+    return this._http.delete(this.url3+Id,{headers:head});
+  }
 
    /////////Experience Details//////////
 
@@ -105,7 +116,10 @@ export class EmpService {
     let body = JSON.stringify(item);
    return this._http.put(this.url5 + item.id, body, { headers: head });
    }
-
+   deleteDetails4(Id){
+    let head=new HttpHeaders().set('Content-Type','application/json');
+    return this._http.delete(this.url5+Id,{headers:head});
+  }
   ///////////Skill Details///////////
   getAllDetails5(){
     return this._http.get<skill[]>(this.url4);
@@ -123,4 +137,8 @@ export class EmpService {
     let body = JSON.stringify(item);
    return this._http.put(this.url4 + item.id, body, { headers: head });
    }
+   deleteDetails5(Id){
+    let head=new HttpHeaders().set('Content-Type','application/json');
+    return this._http.delete(this.url4+Id,{headers:head});
+  }
 }
