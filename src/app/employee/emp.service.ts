@@ -80,7 +80,7 @@ export class EmpService {
   updateDetails2(item:present) {
     let head = new HttpHeaders().set('Content-Type', 'application/json');
     let body = JSON.stringify(item);
-   return this._http.put(this.url1 + item.pid, body, { headers: head });
+   return this._http.put(this.url1 + item.id, body, { headers: head });
    }
   //////////Qualification Details///////////
   getAllDetails3(){

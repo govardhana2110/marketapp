@@ -30,16 +30,16 @@ this.present=new FormGroup({
 this.empid=this._actroutes.snapshot.params['id'];
     this._data.getDetails2(this.empid).subscribe((data:present[])=>{
       this.present.patchValue({
-      pid:data[0].pid,
+      id:data[0].id,
       presengtdno_street:data[0].presentdno_street,
       present_village:data[0].present_village,
       presentpost_office:data[0].presentpost_office,
       prsent_mandal:data[0].present_mandal,
       presenrt_district:data[0].present_district,
       presentpin_code:data[0].presentpin_code,
-      pcountry:data[0].pcountry,
-      pstate:data[0].pstate,
-      pcity:data[0].pcity,
+      pcountry:data[0].country,
+      pstate:data[0].state,
+      pcity:data[0].city,
   });
 })
   }

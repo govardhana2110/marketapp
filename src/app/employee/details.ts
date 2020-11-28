@@ -68,15 +68,15 @@ export class permanent{
     ){}
 }
 export class present{
-  constructor( public pid:string,
+  constructor( public id:string,
     public presentdno_street:string,
     public present_village:string,
     public presentpost_office:string,
     public present_mandal:string,
     public present_district:string,
     public presentpin_code:string,
-    public pcountry:string,
-    public pstate:string,
-    public pcity:string,
+    public country:string,
+    public state:string,
+    public city:string,
     ){}
 }

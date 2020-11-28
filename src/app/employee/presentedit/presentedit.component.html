@@ -1,5 +1,9 @@
+<div style="background-color: blanchedalmond;" >
+  <div class="container">
+
 <form [formGroup]='present' (ngSubmit)='onSaveClick()'>
   <div>
+    <h3>Present Address Details</h3>
     <label>ID :</label><br>
   <input type="text" formControlName='pid' placeholder="Enter ID" class="form-control" >
     <label>D.No/Street :</label><br>
@@ -20,7 +24,7 @@
     <option >Nellor</option>
   </select><br><br>
     <label>Pin Code :</label><br>
-  <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control"  >
+  <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control"  ><br>
     </div>
     <label>Country :</label>
     <select formControlName="country" >
@@ -62,4 +66,7 @@
     </select><br><br>
   <p class="lblError" *ngIf="present.get('pcity').hasError('required') && !present.get('pcity').pristine ">
     City Is Required</p>
+    <button class="btn btn-primary" type="submit">Save</button>
   </form>
+  </div>
+  </div>

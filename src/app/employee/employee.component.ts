@@ -61,7 +61,7 @@ oneditpermanentclick(item:permanent){
 
 }
 oneditpresentclick(item:present){
-  this._router.navigate(['/present',item.pid])
+  this._router.navigate(['/present',item.id])
 
 }
 oneditqualificationclick(item:qualification){
