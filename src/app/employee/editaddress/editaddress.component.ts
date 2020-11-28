@@ -60,7 +60,7 @@ export class EditaddressComponent implements OnInit {
       dno_street:data[0].dno_street,
       village:data[0].village,
       post_office:data[0].post_office,
-      manda:data[0].mandal,
+      mandal:data[0].mandal,
       district:data[0].district,
       pin_code:data[0].pin_code,
       country:data[0].country,

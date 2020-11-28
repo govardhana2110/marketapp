@@ -27,7 +27,8 @@
          <td style="border: black 1px solid;text-align: center;">{{item.IFSC}}</td>
          <td style="border: black 1px solid;text-align: center;">
            <button (click)="oneditbasicclick(item)" class="btn btn-warning">Edit Basic Details</button>&nbsp;
-           <button (click)="oneditaddressclick(item)" class="btn btn-warning">Edit Address</button>&nbsp;<br><br>
+           <button (click)="oneditpermanentclick(item)" class="btn btn-warning">Edit permanent Address</button>&nbsp;<br><br>
+           <button (click)="oneditpresentclick(item)" class="btn btn-warning">Edit present Address</button>&nbsp;<br><br>
            <button (click)="oneditqualificationclick(item)" class="btn btn-warning">Edit Qualification</button>&nbsp;<br><br>
            <button (click)="oneditexperienceclick(item)" class="btn btn-warning">Edit Experience</button>&nbsp;
            <button (click)="oneditskillclick(item)" class="btn btn-warning">Edit Skill</button>&nbsp;
@@ -178,16 +179,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of present_arr">
-        <td style="border: black 1px solid;text-align: center;">{{item.id}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.pid}}</td>
         <td style="border: black 1px solid;text-align: center;">{{item.presentdno_street}}</td>
         <td style="border: black 1px solid;text-align: center;">{{item.present_village}}</td>
         <td style="border: black 1px solid;text-align: center;">{{item.presentpost_office}}</td>
         <td style="border: black 1px solid;text-align: center;">{{item.present_mandal}}</td>
         <td style="border: black 1px solid;text-align: center;">{{item.present_district}}</td>
         <td style="border: black 1px solid;text-align: center;">{{item.presentpin_code}}</td>
-        <td style="border: black 1px solid;text-align: center;">{{item.country}}</td>
-        <td style="border: black 1px solid;text-align: center;">{{item.state}}</td>
-        <td style="border: black 1px solid;text-align: center;">{{item.city}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.pcountry}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.pstate}}</td>
+        <td style="border: black 1px solid;text-align: center;">{{item.pcity}}</td>
         <td>
           <!-- <button (click)="ondeleteemployee(item)" class="btn btn-danger">Delete</button>&nbsp;&nbsp;
           <button (click)="editemp(item)" class="btn btn-warning">Edit</button> -->

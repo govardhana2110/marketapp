@@ -56,8 +56,12 @@ oneditbasicclick(item:registration){
   this._router.navigate(['/editdetails',item.id])
 
 }
-oneditaddressclick(item:permanent){
-  this._router.navigate(['/editaddress',item.id])
+oneditpermanentclick(item:permanent){
+  this._router.navigate(['/permanent',item.id])
+
+}
+oneditpresentclick(item:present){
+  this._router.navigate(['/present',item.pid])
 
 }
 oneditqualificationclick(item:qualification){

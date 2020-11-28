@@ -178,6 +178,7 @@ setAddress(val:boolean, paddressGrp:FormGroup){
 
   deletequalification(index)
   {
+//  confirm("are you sure do you want to delete?")
   this.qualiArray.removeAt(index);
   }
 

@@ -1,0 +1,65 @@
+<form [formGroup]='present' (ngSubmit)='onSaveClick()'>
+  <div>
+    <label>ID :</label><br>
+  <input type="text" formControlName='pid' placeholder="Enter ID" class="form-control" >
+    <label>D.No/Street :</label><br>
+  <input type="text" formControlName='presentdno_street' placeholder="Enter D.no/street" class="form-control"  >
+    <label>Village :</label><br>
+  <input type="text"  formControlName='present_village' placeholder="Enter village"  class="form-control" >
+    <label>Post Office :</label><br>
+  <input type="text" formControlName='presentpost_office' placeholder="Enter post office" class="form-control" >
+    <label>Mandal :</label><br>
+  <input type="text" formControlName='present_mandal' placeholder="Enter mandal" class="form-control"  >
+  <label>District :</label><br>
+  <select formControlName="present_district">
+    <option >Select</option>
+    <option >Anantapur</option>
+    <option >Karnool</option>
+    <option >Kadapa</option>
+    <option >Chittor</option>
+    <option >Nellor</option>
+  </select><br><br>
+    <label>Pin Code :</label><br>
+  <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control"  >
+    </div>
+    <label>Country :</label>
+    <select formControlName="country" >
+      <option >Select</option>
+      <option >America</option>
+      <option > United Kingdom</option>
+      <option >Japan</option>
+      <option >Austrelia</option>
+      <option >Singapor</option>
+      <option >Russia</option>
+      <option >China</option>
+      <option >India</option>
+      <option >UAE</option>
+      <option >Bangladesh</option>
+      <option >Nepal</option>
+      <option >Africa</option>
+      <option >Argentina</option>
+      <option >Belgium</option>
+      <option >Canada</option>
+      <option >Denkark</option>
+      <option >England</option>
+      <option >France</option>
+    </select>
+    <label>State :</label>
+    <select formControlName="pstate" >
+      <option >Select</option>
+      <option >Andhrapradesh</option>
+      <option >Telangana</option>
+      <option >Karnataka</option>
+      <option >Tamilnadu</option>
+      <option >Kerala</option>
+    </select>
+    <label>City :</label>
+    <select formControlName='pcity' >
+      <option value="">Select</option>
+      <option value="hyderabad">Hyderabad</option>
+      <option value="bengaluru">Bengaluru</option>
+      <option value="mumbai">Mumbai</option>
+    </select><br><br>
+  <p class="lblError" *ngIf="present.get('pcity').hasError('required') && !present.get('pcity').pristine ">
+    City Is Required</p>
+  </form>

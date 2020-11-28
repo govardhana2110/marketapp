@@ -21,7 +21,8 @@ import { EditskillComponent } from './employee/editskill/editskill.component';
 import { AddempComponent } from './employee/addemp/addemp.component';
 import { SharedModule } from "./shared.module";
 import { HttpinterceptorstokenService } from './httpinterceptorstoken.service';
-
+import { PermanenteditComponent  } from "./employee/permanentedit/permanentedit.component";
+import { PresenteditComponent } from "./employee/presentedit/presentedit.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,8 @@ import { HttpinterceptorstokenService } from './httpinterceptorstoken.service';
     EmployeeComponent,
     EditdetailsComponent,
     EditaddressComponent,
+    PresenteditComponent,
+    PermanenteditComponent,
     EditqualificationComponent,
     EditexperienceComponent,
     EditskillComponent,

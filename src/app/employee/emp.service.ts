@@ -52,7 +52,7 @@ export class EmpService {
       return this._http.post(this.url,body,{headers:head});
     }
     getDetails1(id){
-      return this._http.get<permanent[]>(this.url+id);
+      return this._http.get<permanent[]>(this.url1+id);
     }
     updateDetails1(item:permanent) {
       let head = new HttpHeaders().set('Content-Type', 'application/json');
@@ -74,6 +74,14 @@ export class EmpService {
     console.log(body);
     return this._http.post(this.url1,body,{headers:head});
   }
+  getDetails2(pid){
+    return this._http.get<present[]>(this.url1+pid);
+  }
+  updateDetails2(item:present) {
+    let head = new HttpHeaders().set('Content-Type', 'application/json');
+    let body = JSON.stringify(item);
+   return this._http.put(this.url1 + item.pid, body, { headers: head });
+   }
   //////////Qualification Details///////////
   getAllDetails3(){
     return this._http.get<qualification[]>(this.url3);

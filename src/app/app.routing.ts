@@ -17,7 +17,8 @@ import { UsergaurdService } from "./usergaurd.service";
 import { useAnimation } from '@angular/animations';
 import { UserresolverService } from './employee/userresolver.service';
 import { EmpresolverService } from './employee/empresolver.service';
-
+import { PermanenteditComponent } from "./employee/permanentedit/permanentedit.component";
+import { PresenteditComponent } from "./employee/presentedit/presentedit.component";
 const arr:Routes=[
   {path : '',component:EmployeeComponent},
   {path : 'employee',component:EmployeeComponent,resolve:{data:UserresolverService},},
@@ -32,7 +33,8 @@ const arr:Routes=[
   canLoad:[UsergaurdService],
    loadChildren:()=>import ('./task7/task7.module').then(x=>x.Task7Module)},
   {path : 'editdetails/:id',component:EditdetailsComponent},
-  {path : 'editaddress/:id',component:EditaddressComponent},
+  {path : 'permanent/:id',component:PermanenteditComponent},
+  {path : 'present/:id',component:PresenteditComponent},
   {path : 'editexperience/:id',component:EditexperienceComponent},
   {path : 'editqualification/:id',component:EditqualificationComponent},
   {path : 'editskill/:id',component:EditskillComponent},

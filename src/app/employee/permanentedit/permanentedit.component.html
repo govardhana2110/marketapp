@@ -1,0 +1,82 @@
+<form [formGroup]='permanent' (ngSubmit)="onSaveClick()">
+
+  <div class="col-sm-6 form-group div">
+<h3> Permanent Address Details <span>(</span><span class="lblError" >*</span><span>)</span></h3>
+  <label>ID :</label><br>
+  <input type="text" formControlName='id' class="form-control"  placeholder="Enter ID" >
+  <label>D.No/Street :</label><br>
+<input type="text" formControlName='dno_street' class="form-control"  placeholder="Enter D.no/street" >
+<p *ngIf="permanent.get('dno_street').hasError('required') && !permanent.get('dno_street').pristine" class="lblError">dno_street is required</p>
+  <label>Village :</label><br>
+<input type="text"  formControlName='village' placeholder="Enter village" class="form-control"  >
+<p class="lblError" *ngIf="permanent.get('village').hasError('required') && !permanent.get('village').pristine ">
+  Village Is Required</p>
+  <label>Post Office :</label><br>
+<input type="text" formControlName='post_office' placeholder="Enter post office" class="form-control"  >
+<p class="lblError" *ngIf="permanent .get('dno_street').hasError('required') && !permanent.get('post_office').pristine ">
+  Post Office Is Required</p>
+  <label>Mandal :</label><br>
+<input type="text" formControlName='mandal' placeholder="Enter mandal" class="form-control"  >
+<p class="lblError" *ngIf="permanent.get('mandal').hasError('required') && !permanent.get('mandal').pristine ">
+  Mandal Is Required</p>
+  <label>District :</label><br>
+  <select formControlName="district">
+    <option >Select</option>
+    <option >Anantapur</option>
+    <option >Karnool</option>
+    <option >Kadapa</option>
+    <option >Chittor</option>
+    <option >Nellor</option>
+  </select><br><br>
+  <label>Pin Code :</label><br>
+  <input type="number" formControlName='pin_code' placeholder="Enter Pin code" class="form-control"  >
+<p class="lblError" *ngIf="permanent.get('pin_code').hasError('required') && !permanent.get('pin_code').pristine ">
+  Pin Code Is Required</p>
+  <label>Country :</label>
+  <select formControlName="country">
+    <option >Select</option>
+    <option >America</option>
+    <option > United Kingdom</option>
+    <option >Japan</option>
+    <option >Austrelia</option>
+    <option >Singapor</option>
+    <option >Russia</option>
+    <option >China</option>
+    <option >India</option>
+    <option >UAE</option>
+    <option >Bangladesh</option>
+    <option >Nepal</option>
+    <option >Africa</option>
+    <option >Argentina</option>
+    <option >Belgium</option>
+    <option >Canada</option>
+    <option >Denkark</option>
+    <option >England</option>
+    <option >France</option>
+  </select>
+  <label>State :</label>
+  <select formControlName="state">
+    <option >Select</option>
+    <option >Andhrapradesh</option>
+    <option >Telangana</option>
+    <option >Karnataka</option>
+    <option >Tamilnadu</option>
+    <option >Kerala</option>
+  </select>
+  <label>City :</label>
+  <select formControlName='city' >
+    <option value="">Select</option>
+    <option value="hyderabad">Hyderabad</option>
+    <option value="bengaluru">Bengaluru</option>
+    <option value="mumbai">Mumbai</option>
+  </select><br><br>
+  <div class="form-check">
+    <input formControlName="Permanent_address" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+    <label class="form-check-label" for="defaultCheck1" >
+     Copy Same to Permanent Address
+    </label><br>
+    <button type="submit" class="btn btn-primary">Save</button>&nbsp;
+  </div>
+
+</div>
+</form>
