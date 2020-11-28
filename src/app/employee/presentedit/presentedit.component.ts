@@ -15,16 +15,16 @@ empid;
 
   ngOnInit(): void {
 this.present=new FormGroup({
-  pid:new FormControl(null,[Validators.required]),
+  id:new FormControl(null,[Validators.required]),
   presentdno_street:new FormControl(null,[Validators.required]),
   present_village:new FormControl(null,[Validators.required]),
   presentpost_office:new FormControl(null,[Validators.required]),
   present_mandal:new FormControl(null,[Validators.required]),
   present_district:new FormControl(null,[Validators.required]),
   presentpin_code:new FormControl(null,[Validators.required]),
-  pcountry:new FormControl(null,[Validators.required]),
-  pstate:new FormControl(null,[Validators.required]),
-  pcity:new FormControl(null,[Validators.required]),
+  country:new FormControl(null,[Validators.required]),
+  state:new FormControl(null,[Validators.required]),
+  city:new FormControl(null,[Validators.required]),
 });
 
 this.empid=this._actroutes.snapshot.params['id'];
