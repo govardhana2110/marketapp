@@ -84,6 +84,7 @@ ondeleteemp(item:registration){
   if (confirm('Are you sure you want to delete?')) {
   this._data.deleteDetails(item.id).subscribe((x:any)=>{
 this.reg_arr.splice(this.reg_arr.indexOf(item),1);
+this._router.navigate(['/employee'])
   });
 }
 

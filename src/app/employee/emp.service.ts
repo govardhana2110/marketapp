@@ -52,7 +52,7 @@ export class EmpService {
       return this._http.post(this.url,body,{headers:head});
     }
     getDetails1(id){
-      return this._http.get<permanent[]>(this.url1+id);
+      return this._http.get<permanent[]>(this.url+id);
     }
     updateDetails1(item:permanent) {
       let head = new HttpHeaders().set('Content-Type', 'application/json');
@@ -61,7 +61,7 @@ export class EmpService {
      }
      deleteDetails1(Id){
       let head=new HttpHeaders().set('Content-Type','application/json');
-      return this._http.delete(this.url1+Id,{headers:head});
+      return this._http.delete(this.url+Id,{headers:head});
     }
  /////////////PResent Address ////////
 
@@ -82,6 +82,10 @@ export class EmpService {
     let body = JSON.stringify(item);
    return this._http.put(this.url1 + item.id, body, { headers: head });
    }
+   deleteDetails2(Id){
+    let head=new HttpHeaders().set('Content-Type','application/json');
+    return this._http.delete(this.url1+Id,{headers:head});
+  }
   //////////Qualification Details///////////
   getAllDetails3(){
     return this._http.get<qualification[]>(this.url3);
