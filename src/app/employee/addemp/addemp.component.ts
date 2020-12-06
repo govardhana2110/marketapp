@@ -354,6 +354,25 @@ experiencegroup(){
 
 
   }
+  onaddclick(){
+    this._data.addDetails(this.registrationform.value).subscribe(
+      (x:any)=>{
+        if (x.affectedRows==1) {
+          this.registration_arr.push(this.registrationform.value);
+          alert('Added Successfully');
+        } else {
+          if(x.code=='ER_DUP_ENTRY'){
+            alert('Duplicate Email')
+          }else{
+            console.log(x);
+          }
+        }
+
+      });
+
+
+
+}
   onNextClick1(){
 
     this._data.addDetails2(this.present.value).subscribe(
@@ -456,7 +475,7 @@ this.counting++
     this.flag4=false;
 
   }
-  onaddclick(){
+  onaddclick1(){
     this.counting2=0;
     this.response2="";
     this.skill_arr.push(this.skill.get('skill_details').value);
