@@ -304,17 +304,18 @@ IFSC code Is Required</p><br>
     </select><br><br>
   <p class="lblError" *ngIf="present.get('city').hasError('required') && !present.get('city').pristine ">
     City Is Required</p>
+    <div class="col-md-5"></div>
+  <div class="col-md-4">
+  <button (click)="onBackClick()"  class="btn btn-primary"> << Back</button>&nbsp;
+
+  <button type="submit"  class="btn btn-primary"> Next >></button>&nbsp;
+  </div>
   </form>
   </div>
 
 </div>
 
-  <div class="col-md-5"></div>
-  <div class="col-md-4">
-  <button (click)="onBackClick()"  class="btn btn-primary"> << Back</button>&nbsp;
-
-  <button (click)="onNextClick1()"  class="btn btn-primary"> Next >></button>&nbsp;
-  </div>
+  
   </div>
   </div>
 
