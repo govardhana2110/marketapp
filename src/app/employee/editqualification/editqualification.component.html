@@ -4,7 +4,7 @@
   <div class="container">
       <h1 style="text-align: center;"> Qualification</h1>
       <form [formGroup]='qualification'(ngSubmit)="onSaveClick()">
-        <button type="button"class="btn btn-success btn-sm pull"(click)="addqualification()" >Add</button>
+        <!-- <button type="button"class="btn btn-success btn-sm pull"(click)="addqualification()" >Add</button> -->
         <div formArrayName="qualification_details" ><div><br></div>
          <div *ngFor="let item of qualiArray.controls; let i=index;" [formGroupName]="i" >
   <div class="row">
@@ -38,11 +38,11 @@
     <input type="text" class="form-control" formControlName="score" placeholder="Enter Score">
     <p class="lblError"*ngIf="item.get('score').hasError('required') && !item.get('score').pristine ">Score is required</p>
   </div>
-  <div class="col-sm-2 form-group div">
+  <!-- <div class="col-sm-2 form-group div">
     &nbsp;&nbsp;&nbsp;&nbsp; <button type="button"class="btn btn-danger btn-sm pull"(click)="deletequalification()" >Delete</button>&nbsp;
      &nbsp;&nbsp;&nbsp;&nbsp;<button  (click)="myReset()" class="btn btn-primary btn-sm pull">Edit</button>
     <div>&nbsp;</div>
-    </div>
+    </div> -->
 </div>
 </div>
   </div>

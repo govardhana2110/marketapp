@@ -11,6 +11,7 @@ import { EmpService } from "../emp.service";
 export class EditqualificationComponent implements OnInit {
 qualification:FormGroup;
 empid;
+i:number;
   constructor(private fb: FormBuilder,
     private _router:Router,
     private _actroutes:ActivatedRoute,
@@ -20,18 +21,28 @@ empid;
     this.qualification=this.fb.group({
       qualification_details:this.fb.array( [this.qualificationgroup()]),
     });
-    this.empid=this._actroutes.snapshot.params['id'];
-    // console.log('hello from qualification edit'),
-  this._data.getDetails3(this.empid).subscribe((data:qualification[])=>{
-    this.qualification.patchValue({
-    id:data[0].id,
-    qualification:data[0].qualification,
-    institute:data[0].institute,
-    year:data[0].year,
-    score:data[0].score,
+
+
+this.empid=this._actroutes.snapshot.params['id'];
+  this._data.getDetails3(this.empid).subscribe((data:qualification[]) =>
+      {
+          for(let i=0; i<=data.length-1;i++)
+          {
+           const control = <FormArray>this.qualification.get('qualification_details');
+           control.push(this.qualificationgroup());
+            let item =control.at(i);
+            item.patchValue({
+          id:data[i].id,
+          qualification:data[i].qualification,
+          institute:data[i].institute,
+          year:data[i].year,
+          score:data[i].score,
   });
+}
 });
   }
+
+
   onSaveClick(){
     this._data.updateDetails3(this.qualification.value).subscribe((x)=>{
       this._router.navigate(['/employee'])
