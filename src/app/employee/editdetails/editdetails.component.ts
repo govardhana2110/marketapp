@@ -87,6 +87,7 @@ export class EditdetailsComponent implements OnInit {
   }
   empedit(){
     this._data.updateDetails(this.registrationform.value).subscribe((x)=>{
+
       this._router.navigate(['/employee']);
     })
     }

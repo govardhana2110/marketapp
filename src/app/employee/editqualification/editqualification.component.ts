@@ -45,6 +45,7 @@ this.empid=this._actroutes.snapshot.params['id'];
 
   onSaveClick(){
     this._data.updateDetails3(this.qualification.value).subscribe((x)=>{
+
       this._router.navigate(['/employee'])
     })
 
