@@ -21,19 +21,28 @@ empid;
       skill_details:this.fb.array([this.skillgroup()]),
 
     });
+
+
     this.empid=this._actroutes.snapshot.params['id'];
-    // console.log('hello from qualification edit'),
-  this._data.getDetails5(this.empid).subscribe((data:skill[])=>{
-    this.skill.patchValue({
-    id:data[0].id,
-    skillcatagory:data[0].skillcatagory,
-    skill:data[0].skill,
-    skilllevel:data[0].skilllevel,
-    iscurrent:data[0].iscurrent,
-    experience:data[0].experience,
-  });
-});
+    this._data.getDetails5(this.empid).subscribe((data:skill[]) =>
+        {
+            for(let i=0; i<=data.length-1;i++)
+            {
+             const control = <FormArray>this.skill.get('skill_details');
+             control.push(this.skillgroup());
+              let item =control.at(i);
+              item.patchValue({
+                id:data[i].id,
+                skillcatagory:data[i].skillcatagory,
+                skill:data[i].skill,
+                skilllevel:data[i].skilllevel,
+                iscurrent:data[i].iscurrent,
+                experience:data[i].experience,
+    });
   }
+  });
+    }
+
   onSaveClick(){
      this._data.updateDetails5(this.skill.value).subscribe((x)=>{
       this._router.navigate(['/employee'])

@@ -22,19 +22,28 @@ empid;
       experience_details:this.fb.array([this.experiencegroup()])
 
     });
-    this.empid=this._actroutes.snapshot.params['id'];
-    // console.log('hello from qualification edit'),
-  this._data.getDetails4(this.empid).subscribe((data:experience[])=>{
-    this.experience.patchValue({
-    id:data[0].id,
-    fromdate:data[0].fromdate,
-    todate:data[0].todate,
-    organisation:data[0].organisation,
-    experience:data[0].experience,
-  });
-});
 
+
+
+
+    this.empid=this._actroutes.snapshot.params['id'];
+    this._data.getDetails4(this.empid).subscribe((data:experience[]) =>
+        {
+            for(let i=0; i<=data.length-1;i++)
+            {
+             const control = <FormArray>this.experience.get('experience_details');
+             control.push(this.experiencegroup());
+              let item =control.at(i);
+              item.patchValue({
+                id:data[i].id,
+                fromdate:data[i].fromdate,
+                todate:data[i].todate,
+                organisation:data[i].organisation,
+                experience:data[i].experience,
+    });
   }
+  });
+    }
   onSaveClick(){
     this._data.updateDetails4(this.experience.value).subscribe((x)=>{
       this._router.navigate(['/employee'])
