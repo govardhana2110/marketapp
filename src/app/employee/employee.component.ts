@@ -4,6 +4,7 @@ import { experience,skill,qualification,permanent,present,registration} from './
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpService } from './emp.service';
 import { Items } from '../items/items';
+import { MatIconModule } from "@angular/material/icon"
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',

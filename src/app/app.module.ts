@@ -23,6 +23,10 @@ import { SharedModule } from "./shared.module";
 import { HttpinterceptorstokenService } from './httpinterceptorstoken.service';
 import { PermanenteditComponent  } from "./employee/permanentedit/permanentedit.component";
 import { PresenteditComponent } from "./employee/presentedit/presentedit.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule}from "@angular/material/icon"
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +54,9 @@ import { PresenteditComponent } from "./employee/presentedit/presentedit.compone
     RouterModule,
     HttpClientModule,
     arrRouting,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,
