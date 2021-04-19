@@ -170,7 +170,7 @@ IFSC code Is Required</p><br>
     Village Is Required</p>
     <label>Post Office :</label><br>
   <input type="text" formControlName='post_office' placeholder="Enter post office" class="form-control"  >
-  <p class="lblError" *ngIf="permanent .get('address_group').get('dno_street').hasError('required') && !permanent.get('address_group').get('post_office').pristine ">
+  <p class="lblError" *ngIf="permanent .get('address_group').get('post_office').hasError('required') && !permanent.get('address_group').get('post_office').pristine ">
     Post Office Is Required</p>
     <label>Mandal :</label><br>
   <input type="text" formControlName='mandal' placeholder="Enter mandal" class="form-control"  >
@@ -189,7 +189,7 @@ IFSC code Is Required</p><br>
     <input type="number" formControlName='pin_code' placeholder="Enter Pin code" class="form-control"  >
   <p class="lblError" *ngIf="permanent.get('address_group').get('pin_code').hasError('required') && !permanent.get('address_group').get('pin_code').pristine ">
     Pin Code Is Required</p>
-    <label>Country :</label>
+    <!-- <label>Country :</label>
     <select formControlName="country">
       <option >Select</option>
       <option >America</option>
@@ -210,8 +210,26 @@ IFSC code Is Required</p><br>
       <option >Denkark</option>
       <option >England</option>
       <option >France</option>
-    </select>
-    <label>State :</label>
+    </select> -->
+
+<label>State</label>
+<select [(ngModel)]="selectedCountry.id" (change)="onSelect($event.target.value)">
+  <option value="0">--Select--</option>
+  <option *ngFor="let country of countries" value= {{country.id}}>{{country.name}}</option>
+</select>
+
+<br/><br/>
+
+<div>
+<label>District</label>
+<select>
+  <option value="0">--Select--</option>
+  <option *ngFor="let state of states " value= {{state.id}}>{{state.name}}</option>
+</select>
+</div>
+
+
+    <!-- <label>State :</label>
     <select formControlName="state">
       <option >Select</option>
       <option >Andhrapradesh</option>
@@ -226,7 +244,7 @@ IFSC code Is Required</p><br>
       <option value="hyderabad">Hyderabad</option>
       <option value="bengaluru">Bengaluru</option>
       <option value="mumbai">Mumbai</option>
-    </select><br><br>
+    </select><br><br> -->
     <div class="form-check">
       <input formControlName="Permanent_address" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
       <label class="form-check-label" for="defaultCheck1" >
@@ -252,6 +270,10 @@ IFSC code Is Required</p><br>
   <input type="text" formControlName='presentpost_office' placeholder="Enter post office" class="form-control" value={{spost_office}} >
     <label>Mandal :</label><br>
   <input type="text" formControlName='present_mandal' placeholder="Enter mandal" class="form-control" value={{smandal}} >
+
+
+
+
   <label>District :</label><br>
   <select formControlName="present_district" value={{sdistrict}}>
     <option >Select</option>
@@ -264,7 +286,24 @@ IFSC code Is Required</p><br>
     <label>Pin Code :</label><br>
   <input type="number" formControlName='presentpin_code' placeholder="Enter Pin code" class="form-control" value={{spin_code}} >
     </div>
-    <label>Country :</label>
+
+
+    <label>State</label>
+<select [(ngModel)]="selectedCountry.id" (change)="onSelect($event.target.value)">
+  <option value="0">--Select--</option>
+  <option *ngFor="let country of countries" value= {{country.id}}>{{country.name}}</option>
+</select>
+
+<br/><br/>
+
+<div>
+<label>District</label>
+<select>
+  <option value="0">--Select--</option>
+  <option *ngFor="let state of states " value= {{state.id}}>{{state.name}}</option>
+</select>
+</div>
+    <!-- <label>Country :</label>
     <select formControlName="country" value={{scountry}}>
       <option >Select</option>
       <option >America</option>
@@ -303,7 +342,7 @@ IFSC code Is Required</p><br>
       <option value="mumbai">Mumbai</option>
     </select><br><br>
   <p class="lblError" *ngIf="present.get('city').hasError('required') && !present.get('city').pristine ">
-    City Is Required</p>
+    City Is Required</p>-->
     <div class="col-md-5"></div>
   <div class="col-md-4">
   <button (click)="onBackClick()"  class="btn btn-primary"> << Back</button>&nbsp;
@@ -315,7 +354,7 @@ IFSC code Is Required</p><br>
 
 </div>
 
-  
+
   </div>
   </div>
 

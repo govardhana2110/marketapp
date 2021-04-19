@@ -3,12 +3,18 @@ import { FormArray, FormControl, FormGroup, Validators,FormBuilder, Form } from 
 import { Router } from '@angular/router';
 import { experience, permanent, present, qualification, registration, skill } from '../details';
 import { EmpService } from '../emp.service';
+import { Country,State,city } from "../country";
 @Component({
   selector: 'app-addemp',
   templateUrl: './addemp.component.html',
   styleUrls: ['./addemp.component.css']
 })
 export class AddempComponent implements OnInit {
+
+  selectedCountry: Country = new Country(2, 'Karnataka');
+  countries: Country[];
+  states: State[];
+  cities:city[]
 age;
 flag:boolean=true;
 flag1:boolean=false;
@@ -123,7 +129,23 @@ this.present=new FormGroup({
   this.permanent.get('address_group').get('Permanent_address').valueChanges.subscribe((x) => this.setAddress(x, this.permanent.get('address_group').value));
     this.permanent.get('address_group').get('Permanent_address').valueChanges.subscribe((t) => this.editAddress(t));
   this.registrationform.get('user_dob').valueChanges.subscribe((x)=> this.updateage(x));
+
+
+
+  this.countries = this._data.getCountries();
+    this.onSelect(this.selectedCountry.id);
+
+
+
 }
+
+
+onSelect(countryid) {
+  this.states = this._data.getStates().filter((item) => item.countryid == countryid);
+}
+
+
+
 editAddress(v:boolean){
   if(v==true){
       this.permanent.get('address_group').valueChanges.subscribe((y) => this.setAddress(this.permanent.get('address_group').get('Permanent_address').value, y));//this.editAddress(x, this.empInfo.get('Padd').value));

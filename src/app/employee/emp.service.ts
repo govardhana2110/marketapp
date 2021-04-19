@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { experience,skill,qualification,permanent,present,registration} from './details';
+import { Country,State,city} from "./country"
 @Injectable({
   providedIn: 'root'
 })
@@ -152,5 +153,52 @@ export class EmpService {
    deleteDetails5(Id){
     let head=new HttpHeaders().set('Content-Type','application/json');
     return this._http.delete(this.url4+Id,{headers:head});
+  }
+  getCountries() {
+    return [
+     new Country(1, 'Andhrapradesh' ),
+     new Country(2, 'Karnataka' ),
+
+    ];
+  }
+
+  getStates() {
+   return [
+     new State(1, 1, 'Anantapur' ),
+     new State(2, 1, 'Karnool' ),
+     new State(3, 1, 'Chittor'),
+     new State(4, 1, 'Kadapa'),
+     new State(5, 2, 'ABC' ),
+     new State(6, 2, 'DEF'),
+     new State(7, 2, 'GHI' ),
+     new State(8, 2, 'PQR' ),
+     new State(9, 2, 'XYZ' ),
+
+
+    ];
+  }
+  getcity(){
+
+
+    return [
+     new city(1,1,1,'anantapur'),
+     new city(2,1,1,'anantapur'),
+     new city(3,1,1,'anantapur'),
+     new city(4,1,1,'anantapur'),
+     new city(5,1,2,'anantapur'),
+     new city(6,1,2,'anantapur'),
+     new city(7,1,2,'anantapur'),
+     new city(8,2,2,'anantapur'),
+     new city(9,2,3,'anantapur'),
+     new city(10,2,3,'anantapur'),
+     new city(11,2,3,'anantapur'),
+     new city(12,2,3,'anantapur'),
+     new city(13,2,4,'anantapur'),
+     new city(14,2,4,'anantapur'),
+     new city(15,2,4,'anantapur'),
+     new city(16,2,4,'anantapur'),
+
+    ];
+
   }
 }

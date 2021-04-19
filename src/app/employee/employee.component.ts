@@ -5,12 +5,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmpService } from './emp.service';
 import { Items } from '../items/items';
 import { MatIconModule } from "@angular/material/icon"
+import { Country,State } from "./country";
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
+
+
+
+
+
   flag:boolean=true;
   flag1:boolean=false;
   exp_arr:experience[]=[];
@@ -24,6 +30,9 @@ export class EmployeeComponent implements OnInit {
     private _acRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+
+
+
     this._data.getAllDetails4().subscribe((data)=>{
       this.exp_arr=data
     });
@@ -45,6 +54,9 @@ export class EmployeeComponent implements OnInit {
     this.reg_arr=this._acRoute.snapshot.data['data']
 
   }
+
+
+
 onshowclick(){
   this.flag=false;
   this.flag1=true;
